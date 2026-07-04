@@ -1,0 +1,59 @@
+{
+  "name": "Plataforma Jurídico-Mineral",
+  "short_name": "Jur. Mineral",
+  "description": "Plataforma Jurídico-Mineral: CFEM, TAH, Multas ANM e Taxa de Vistoria — Direito Minerário ANM",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "background_color": "#0f1117",
+  "theme_color": "#f59e0b",
+  "orientation": "any",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "categories": ["productivity", "utilities", "legal"],
+  "id": "plataforma-juridico-mineral",
+  "icons": [
+    { "src": "icons/icon-72.png",   "sizes": "72x72",   "type": "image/png", "purpose": "maskable any" },
+    { "src": "icons/icon-96.png",   "sizes": "96x96",   "type": "image/png", "purpose": "maskable any" },
+    { "src": "icons/icon-128.png",  "sizes": "128x128", "type": "image/png", "purpose": "maskable any" },
+    { "src": "icons/icon-144.png",  "sizes": "144x144", "type": "image/png", "purpose": "maskable any" },
+    { "src": "icons/icon-152.png",  "sizes": "152x152", "type": "image/png", "purpose": "maskable any" },
+    { "src": "icons/icon-192.png",  "sizes": "192x192", "type": "image/png", "purpose": "maskable any" },
+    { "src": "icons/icon-384.png",  "sizes": "384x384", "type": "image/png", "purpose": "maskable any" },
+    { "src": "icons/icon-512.png",  "sizes": "512x512", "type": "image/png", "purpose": "maskable any" },
+    { "src": "icons/icon.svg",      "sizes": "any",     "type": "image/svg+xml", "purpose": "maskable any" }
+  ],
+  "screenshots": [
+    {
+      "src": "icons/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Dashboard desktop — Plataforma Jurídico-Mineral"
+    },
+    {
+      "src": "icons/screenshot-narrow.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Dashboard mobile — Plataforma Jurídico-Mineral"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "CFEM",
+      "short_name": "CFEM",
+      "description": "Consultar CFEM",
+      "url": "/?goto=cfem",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Assistente Jurídico",
+      "short_name": "Chat",
+      "description": "Abrir assistente jurídico",
+      "url": "/?goto=chat",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+    }
+  ]
+}

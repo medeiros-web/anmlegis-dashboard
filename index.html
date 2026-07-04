@@ -1,0 +1,3107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f59e0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#b45309" media="(prefers-color-scheme: light)">
+<meta name="description" content="Plataforma Jurídico-Mineral: CFEM, TAH, Multas ANM e Taxa de Vistoria — Direito Minerário ANM">
+<meta name="keywords" content="CFEM, TAH, Multas ANM, Direito Minerário, ANM, jurisprudência mineral">
+<meta name="author" content="Plataforma Jurídico-Mineral">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Jur. Mineral">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Jur. Mineral">
+<meta name="msapplication-TileColor" content="#f59e0b">
+<meta name="msapplication-TileImage" content="/icons/icon-144.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152.png">
+<link rel="apple-touch-icon" sizes="128x128" href="/icons/icon-128.png">
+<link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+<title>Plataforma Jurídico-Mineral — Direito Minerário</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --sidebar-bg: #161b22;
+    --card: #1c2230;
+    --card-hover: #232b3a;
+    --hdr: 52px;
+    --safe-b: env(safe-area-inset-bottom, 0px);
+    --border: #2d3748;
+    --accent: #f59e0b;
+    --accent2: #3b82f6;
+    --accent3: #10b981;
+    --accent4: #ef4444;
+    --text: #e2e8f0;
+    --muted: #8892a4;
+    --tag: #1e3a5f;
+    --tag-text: #93c5fd;
+    --primary: var(--accent);
+  }
+  [data-theme="light"] {
+    --bg: #f4f6f9;
+    --sidebar-bg: #ffffff;
+    --card: #ffffff;
+    --card-hover: #f0f4f8;
+    --border: #d1d9e0;
+    --text: #1a202c;
+    --muted: #718096;
+    --tag: #dbeafe;
+    --tag-text: #1d4ed8;
+    --primary: #b45309;
+  }
+  [data-theme="light"] .hero { background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%); }
+  [data-theme="light"] th { background: rgba(0,0,0,.04); }
+  [data-theme="light"] code, [data-theme="light"] pre { background: #f1f5f9; color: #1e293b; }
+  [data-theme="light"] .copy-btn { background: rgba(180,83,9,.1); color: #92400e; }
+  [data-theme="light"] .chat-bubble { background: #f0f4f8; color: #1a202c; }
+  [data-theme="light"] .chat-msg.user .chat-bubble { background: #f59e0b; color: #fff; }
+  [data-theme="light"] #chat-panel { background: #ffffff; border-color: #d1d9e0; }
+  [data-theme="light"] #chat-head { background: #fff; border-color: #d1d9e0; }
+  [data-theme="light"] #chat-messages { background: #f9fafb; }
+  [data-theme="light"] #chat-quick { background: #ffffff; border-color: #d1d9e0; }
+  [data-theme="light"] #chat-form { background: #ffffff; border-color: #d1d9e0; }
+  [data-theme="light"] #chat-input { background: #f9fafb; color: #1a202c; border-color: #d1d9e0; }
+  [data-theme="light"] .cfg-input { background: #f9fafb; color: #1a202c; }
+  [data-theme="light"] #theme-btn, [data-theme="light"] #mob-theme-btn { color: #1a202c; }
+  [data-theme="light"] #bottom-nav { background: #fff; border-color: #e2e8f0; }
+  [data-theme="light"] #offline-bar { background: #7c3aed; }
+  [data-theme="light"] #mob-search-bar { background: #fff; border-color: #e2e8f0; }
+  [data-theme="light"] #search-mobile { background: #f4f6f9; color: #1a202c; border-color: #d1d9e0; }
+  :root {
+    --bnav-h: 60px;      /* bottom nav height */
+    --topbar-h: 52px;    /* mobile topbar */
+    --sidebar-w: 260px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); display: flex; min-height: 100vh; overscroll-behavior: none; }
+
+  /* ── SIDEBAR ─────────────────────────────────────────────────────────────── */
+  #sidebar {
+    width: var(--sidebar-w); min-height: 100vh; background: var(--sidebar-bg);
+    border-right: 1px solid var(--border); position: fixed; top: 0; left: 0;
+    overflow-y: auto; overflow-x: hidden; z-index: 300;
+    transition: transform .28s cubic-bezier(.4,0,.2,1);
+    display: flex; flex-direction: column;
+  }
+  .logo { padding: 20px 16px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .logo h1 { font-size: 13px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .logo p { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  #sidebar-nav { flex: 1; overflow-y: auto; }
+  .nav-group { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .nav-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; padding: 0 16px 6px; }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 11px 16px; /* 44px min touch target */
+    cursor: pointer; font-size: 13px; color: var(--muted);
+    transition: all .15s; border-left: 3px solid transparent;
+    min-height: 44px;
+  }
+  .nav-item:hover { color: var(--text); background: rgba(255,255,255,.04); }
+  .nav-item.active { color: var(--accent); border-left-color: var(--accent); background: rgba(245,158,11,.07); }
+  .nav-icon { font-size: 16px; width: 20px; text-align: center; flex-shrink: 0; }
+
+  /* ── MAIN ────────────────────────────────────────────────────────────────── */
+  #main { margin-left: var(--sidebar-w); flex: 1; padding: 24px; min-height: 100vh; }
+  .topbar { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+  .topbar h2 { font-size: 20px; font-weight: 700; flex: 1; }
+  #search {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 14px; color: var(--text); font-size: 13px; width: 280px; outline: none;
+  }
+  #search:focus { border-color: var(--accent2); }
+  #search::placeholder { color: var(--muted); }
+
+  /* SECTIONS */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* CARDS */
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px; margin-bottom: 16px; position: relative;
+  }
+  .card-title { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .card-body { font-size: 13px; line-height: 1.7; color: var(--text); }
+  .card-body p { margin-bottom: 8px; }
+
+  /* COPY BTN */
+  .copy-btn {
+    position: absolute; top: 14px; right: 14px;
+    background: rgba(59,130,246,.15); border: 1px solid rgba(59,130,246,.3);
+    color: var(--accent2); border-radius: 6px; padding: 4px 10px;
+    font-size: 11px; cursor: pointer; transition: all .15s;
+  }
+  .copy-btn:hover { background: rgba(59,130,246,.3); }
+  .copy-btn.copied { background: rgba(16,185,129,.15); border-color: rgba(16,185,129,.3); color: var(--accent3); }
+
+  /* BADGES */
+  .badge {
+    display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px;
+    border-radius: 20px; margin-right: 4px; margin-bottom: 4px;
+  }
+  .badge-yellow { background: rgba(245,158,11,.15); color: var(--accent); border: 1px solid rgba(245,158,11,.3); }
+  .badge-blue { background: rgba(59,130,246,.15); color: #93c5fd; border: 1px solid rgba(59,130,246,.3); }
+  .badge-green { background: rgba(16,185,129,.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,.3); }
+  .badge-red { background: rgba(239,68,68,.15); color: #fca5a5; border: 1px solid rgba(239,68,68,.3); }
+  .badge-purple { background: rgba(168,85,247,.15); color: #d8b4fe; border: 1px solid rgba(168,85,247,.3); }
+
+  /* TABLES */
+  .tbl-wrap { overflow-x: auto; margin-top: 10px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { background: rgba(255,255,255,.05); color: var(--muted); font-weight: 600; text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 11px; text-transform: uppercase; letter-spacing: .5px; }
+  td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,.04); vertical-align: top; }
+  tr:hover td { background: rgba(255,255,255,.02); }
+  tr:last-child td { border-bottom: none; }
+  .td-copy { cursor: pointer; color: var(--accent2); font-size: 11px; white-space: nowrap; }
+  .td-copy:hover { color: #60a5fa; }
+
+  /* ALERT BOX */
+  .alert { border-radius: 8px; padding: 12px 16px; font-size: 13px; margin-bottom: 12px; }
+  .alert-red { background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.3); color: #fca5a5; }
+  .alert-green { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.3); color: #6ee7b7; }
+  .alert-yellow { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.3); color: #fcd34d; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #1a2035 0%, #1c2a3a 100%); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 20px; }
+  .hero h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+  .hero p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+  .hero .tags { margin-top: 14px; }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  @media(max-width:900px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+  /* ─── MOBILE TOPBAR ─── */
+  #mobile-topbar {
+    display: none; position: fixed; top: 0; left: 0; right: 0;
+    height: var(--topbar-h); z-index: 250;
+    background: var(--sidebar-bg); border-bottom: 1px solid var(--border);
+    align-items: center; padding: 0 8px 0 4px; gap: 6px;
+  }
+  #burger {
+    background: none; border: none; color: var(--text); font-size: 22px; cursor: pointer;
+    padding: 0 10px; min-width: 44px; min-height: 44px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  #mob-title { font-size: 14px; font-weight: 700; color: var(--accent); flex: 1;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #mob-search-btn {
+    background: none; border: 1px solid var(--border); color: var(--muted);
+    border-radius: 8px; min-width: 36px; min-height: 36px; cursor: pointer;
+    font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  #mob-theme-btn {
+    background: none; border: none; color: var(--text); cursor: pointer;
+    font-size: 18px; min-width: 36px; min-height: 36px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  /* MOBILE SEARCH BAR (hidden by default, shown on search icon tap) */
+  #mob-search-bar {
+    display: none; position: fixed; top: var(--topbar-h); left: 0; right: 0;
+    background: var(--sidebar-bg); border-bottom: 1px solid var(--border);
+    padding: 8px 12px; z-index: 249;
+  }
+  #mob-search-bar.open { display: flex; }
+  #search-mobile {
+    flex: 1; background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 10px 14px; color: var(--text); font-size: 14px; outline: none;
+  }
+  #search-mobile:focus { border-color: var(--accent); }
+  #search-mobile::placeholder { color: var(--muted); }
+  #mob-search-close { background: none; border: none; color: var(--muted); font-size: 16px; padding: 8px; cursor: pointer; }
+
+  /* OVERLAY */
+  #mob-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55);
+    z-index: 290; backdrop-filter: blur(3px);
+  }
+  #mob-overlay.mob-open { display: block; }
+
+  /* ─── BOTTOM NAV ─── */
+  #bottom-nav {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    height: calc(var(--bnav-h) + var(--safe-b));
+    background: var(--sidebar-bg); border-top: 1px solid var(--border);
+    z-index: 250; padding-bottom: var(--safe-b);
+    align-items: stretch;
+  }
+  .bn-item {
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 3px; cursor: pointer;
+    color: var(--muted); transition: color .15s, background .15s;
+    min-height: 44px; border: none; background: none; padding: 4px 2px 0;
+    -webkit-appearance: none;
+  }
+  .bn-item:active { background: rgba(255,255,255,.04); }
+  .bn-item.active { color: var(--accent); }
+  .bn-icon { font-size: 20px; line-height: 1; }
+  .bn-label { font-size: 10px; font-weight: 600; letter-spacing: .02em; }
+
+  /* ─── OFFLINE INDICATOR ─── */
+  #offline-bar {
+    display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+    background: #7c3aed; color: #fff; font-size: 12px; font-weight: 600;
+    text-align: center; padding: 6px 12px; letter-spacing: .03em;
+  }
+  #offline-bar.show { display: block; }
+  body.offline #mobile-topbar { top: 28px; }
+  body.offline #sidebar { top: 28px; }
+
+  /* PWA BANNER */
+  #pwa-banner {
+    display: none; position: fixed; z-index: 9000;
+    background: linear-gradient(135deg,#1a2035 0%,#1c2a3a 100%);
+    border: 1.5px solid var(--accent);
+    box-shadow: 0 8px 40px rgba(0,0,0,.6), 0 0 0 1px rgba(245,158,11,.15);
+  }
+  /* Desktop: bottom-right card */
+  @media(min-width:769px){
+    #pwa-banner {
+      bottom:24px; right:24px; left:auto; top:auto; transform:none;
+      border-radius:16px; padding:18px 20px; width:320px;
+      flex-direction:column; gap:12px; align-items:stretch;
+    }
+  }
+  /* Mobile: bottom full-width strip */
+  @media(max-width:768px){
+    #pwa-banner {
+      bottom:0; left:0; right:0; border-radius:16px 16px 0 0;
+      padding:16px 18px calc(16px + var(--safe-b)); border-left:none; border-right:none; border-bottom:none;
+      flex-direction:column; gap:10px; align-items:stretch;
+    }
+  }
+  .pwa-banner-top { display:flex; align-items:center; gap:10px; }
+  .pwa-banner-icon { font-size:28px; flex-shrink:0; }
+  .pwa-banner-info { flex:1; }
+  .pwa-banner-info strong { display:block; font-size:14px; font-weight:700; color:var(--accent); }
+  .pwa-banner-info small { font-size:12px; color:var(--muted); }
+  .pwa-banner-close { background:none; border:none; color:var(--muted); font-size:18px; cursor:pointer; padding:0 4px; flex-shrink:0; line-height:1; }
+  #pwa-install-btn {
+    width:100%; padding:11px; background:var(--accent); color:#0a0e1a;
+    border:none; border-radius:10px; font-size:14px; font-weight:800;
+    cursor:pointer; transition:.15s; display:flex; align-items:center; justify-content:center; gap:6px;
+  }
+  #pwa-install-btn:hover { background:#fbbf24; transform:scale(1.02); }
+  .pwa-hints { font-size:11px; color:var(--muted); text-align:center; }
+
+  /* ─── DESKTOP ONLY ──────────────────────────────────────────────────────── */
+  @media(min-width: 769px) {
+    #mobile-topbar, #mob-search-bar, #bottom-nav, #offline-bar { display: none !important; }
+    /* Sidebar always visible on desktop */
+    #sidebar { transform: none !important; }
+    #main { margin-left: var(--sidebar-w); }
+    /* Theme button in desktop topbar */
+    #theme-btn { display: inline-flex; }
+  }
+
+  /* ─── MOBILE ─────────────────────────────────────────────────────────────── */
+  @media(max-width: 768px) {
+    /* Show mobile chrome */
+    #mobile-topbar { display: flex; }
+    #bottom-nav    { display: flex; }
+
+    /* Main content: below topbar, above bottom nav */
+    #main {
+      margin-left: 0 !important;
+      padding: calc(var(--topbar-h) + 12px) 12px calc(var(--bnav-h) + var(--safe-b) + 12px) !important;
+    }
+
+    /* Sidebar slides in from left */
+    #sidebar { transform: translateX(-100%); }
+    #sidebar.mob-open { transform: translateX(0); }
+    #sidebar.mob-open + * { pointer-events: none; }
+
+    /* Chat panel full-width */
+    #chat-panel { width: 100% !important; border-left: none; border-radius: 0; }
+    /* FAB above bottom nav */
+    #chat-fab { bottom: calc(var(--bnav-h) + var(--safe-b) + 14px) !important; right: 14px; }
+
+    /* Desktop topbar hidden */
+    .topbar { display: none !important; }
+    #search  { display: none !important; }
+    #theme-btn { display: none !important; }
+
+    /* Copy buttons go full width */
+    .copy-btn {
+      position: static !important;
+      display: block; margin-top: 12px; width: 100%;
+      text-align: center; padding: 10px;
+    }
+
+    /* Typography */
+    .hero { padding: 14px; }
+    .hero h2 { font-size: 16px; }
+    .hero p  { font-size: 13px; }
+    .card { padding: 12px; }
+    .card-title { font-size: 13px; }
+    pre { font-size: 11px; }
+
+    /* Stat cards */
+    .stat { padding: 12px; }
+    .stat .num { font-size: 22px; }
+    .stat .lbl { font-size: 10px; }
+
+    /* Tables scroll */
+    table { font-size: 11px; }
+    th, td { padding: 6px 8px; }
+
+    /* Grids single column */
+    .grid-2, .grid-3 { grid-template-columns: 1fr !important; }
+
+    /* Peças */
+    .peca-textarea { min-height: 260px; font-size: 12px; }
+
+    /* Admin */
+    .adm-btn { font-size: 11px; padding: 4px 8px; }
+    #sec-admin .grid-2 { grid-template-columns: 1fr !important; }
+
+    /* Login */
+    .login-card { padding: 28px 18px; }
+    .login-brand h1 { font-size: 20px; }
+
+    /* PWA banner */
+    #pwa-banner { bottom: calc(var(--bnav-h) + var(--safe-b)) !important; }
+
+    /* Toast */
+    #toast { bottom: calc(var(--bnav-h) + var(--safe-b) + 12px) !important; right: 12px; }
+  }
+
+  /* ─── TABLET (769–1024) ───────────────────────────────────────────────────── */
+  @media(min-width:769px) and (max-width:1024px) {
+    :root { --sidebar-w: 220px; }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+    .logo h1 { font-size: 12px; }
+  }
+
+  /* STAT CARDS */
+  .stat { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+  .stat .num { font-size: 28px; font-weight: 800; color: var(--accent); }
+  .stat .lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-top: 4px; }
+
+  /* CODE */
+  pre {
+    background: #0d1117; border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px; font-size: 12px; overflow-x: auto; white-space: pre-wrap;
+    color: #a8b5c8; line-height: 1.6; margin: 8px 0;
+  }
+  code { font-family: 'Cascadia Code', 'Fira Mono', monospace; }
+
+  /* TAG PILL */
+  .pill { display: inline-flex; align-items: center; gap: 4px; background: var(--tag); color: var(--tag-text); border-radius: 20px; padding: 3px 10px; font-size: 11px; font-weight: 600; margin: 2px; }
+
+  /* SEARCH highlight */
+  mark { background: rgba(245,158,11,.3); color: var(--accent); border-radius: 2px; }
+
+  /* TOAST */
+  #toast {
+    position: fixed; bottom: 24px; right: 24px; background: #1e3a2f;
+    border: 1px solid rgba(16,185,129,.4); color: #6ee7b7;
+    padding: 10px 18px; border-radius: 8px; font-size: 13px;
+    opacity: 0; transform: translateY(10px); transition: all .25s; pointer-events: none; z-index: 999;
+  }
+  #toast.show { opacity: 1; transform: translateY(0); }
+
+  /* SEARCH RESULTS */
+  #search-results { display: none; }
+  #search-results.active { display: block; }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+  .section-h { font-size: 15px; font-weight: 700; margin-bottom: 14px; color: var(--text); display: flex; align-items: center; gap: 8px; }
+  .section-h::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* ── LOGIN ── */
+  #login-screen {
+    position:fixed; inset:0; z-index:9999;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg,#0a0e1a 0%,#0f1622 50%,#111827 100%);
+    padding:16px;
+  }
+  #login-screen.hidden { display:none; }
+  .login-card {
+    width:100%; max-width:420px;
+    background:#161b27; border:1px solid #2d3748;
+    border-radius:20px; padding:40px 36px;
+    box-shadow:0 24px 80px rgba(0,0,0,.6);
+  }
+  .login-logo { font-size:48px; text-align:center; margin-bottom:8px; }
+  .login-brand { text-align:center; margin-bottom:28px; }
+  .login-brand h1 { font-size:24px; font-weight:800; color:#f59e0b; margin-bottom:4px; }
+  .login-brand p { font-size:13px; color:#8892a4; }
+  .login-field { margin-bottom:16px; }
+  .login-field label { display:block; font-size:12px; font-weight:600; color:#8892a4; margin-bottom:6px; text-transform:uppercase; letter-spacing:.05em; }
+  .login-field input {
+    width:100%; padding:12px 14px; background:#0f1117;
+    border:1.5px solid #2d3748; border-radius:10px;
+    color:#e2e8f0; font-size:14px; outline:none; box-sizing:border-box;
+    transition:border-color .15s;
+  }
+  .login-field input:focus { border-color:#f59e0b; }
+  .login-eye-row { position:relative; }
+  .login-eye-row input { padding-right:42px; }
+  .login-eye-btn { position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:#8892a4; cursor:pointer; font-size:17px; padding:0; }
+  #login-err { color:#f87171; font-size:13px; text-align:center; margin-bottom:12px; min-height:20px; }
+  .login-btn {
+    width:100%; padding:13px; background:#f59e0b; color:#0a0e1a;
+    border:none; border-radius:10px; font-size:15px; font-weight:800;
+    cursor:pointer; transition:.18s; margin-top:4px;
+  }
+  .login-btn:hover { background:#fbbf24; transform:scale(1.01); }
+  .login-btn:active { transform:scale(.99); }
+  .login-btn:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+  .login-footer { text-align:center; margin-top:24px; font-size:12px; color:#4b5563; }
+  /* logout btn no sidebar */
+  .logout-item { margin:8px 12px 16px; padding:10px 14px; border-radius:10px; background:rgba(239,68,68,.08); border:1px solid rgba(239,68,68,.2); color:#f87171; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px; transition:.15s; }
+  .logout-item:hover { background:rgba(239,68,68,.15); }
+  /* ── PEÇAS PROCESSUAIS ── */
+  .peca-card { background:var(--card); border:1px solid var(--border); border-radius:14px; margin-bottom:20px; overflow:hidden; }
+  .peca-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:18px 20px 14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .peca-title { font-size:17px; font-weight:700; color:var(--text); margin:8px 0 3px; }
+  .peca-sub { font-size:12px; color:var(--muted); }
+  .peca-badge { display:inline-block; font-size:10px; font-weight:700; padding:2px 8px; border-radius:99px; background:rgba(255,255,255,.08); color:var(--muted); margin-right:5px; margin-bottom:4px; border:1px solid var(--border); }
+  .peca-badge-green { background:rgba(16,185,129,.12); color:#059669; border-color:rgba(16,185,129,.3); }
+  .peca-badge-amber { background:rgba(245,158,11,.12); color:#d97706; border-color:rgba(245,158,11,.3); }
+  .peca-copy-btn { flex-shrink:0; background:var(--primary); color:#fff; border:none; border-radius:10px; padding:10px 18px; font-size:13px; font-weight:700; cursor:pointer; transition:.15s; white-space:nowrap; }
+  .peca-copy-btn:hover { opacity:.88; transform:scale(1.03); }
+  .peca-copy-btn.copied { background:#10b981; }
+  .peca-textarea { display:block; width:100%; min-height:420px; padding:18px 20px; background:var(--bg); color:var(--text); border:none; border-top:1px solid var(--border); font-family:'Courier New',Courier,monospace; font-size:12.5px; line-height:1.75; resize:vertical; outline:none; box-sizing:border-box; }
+  .peca-textarea:focus { background:var(--card-hover); }
+  .peca-jump { display:inline-block; padding:7px 14px; background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.3); border-radius:8px; font-size:13px; font-weight:600; color:var(--primary); text-decoration:none; transition:.15s; }
+  .peca-jump:hover { background:rgba(245,158,11,.2); }
+  [data-theme="light"] .peca-textarea { background:#f8fafc; color:#1a202c; }
+  [data-theme="light"] .peca-textarea:focus { background:#fff; }
+  [data-theme="light"] .peca-badge { background:rgba(0,0,0,.05); }
+  /* ── ADMIN BUTTONS ── */
+  .adm-btn { border:none; border-radius:6px; padding:5px 12px; font-size:12px; font-weight:600; cursor:pointer; transition:.15s; }
+  .adm-btn-del  { background:rgba(239,68,68,.15);  color:#f87171; border:1px solid rgba(239,68,68,.3);  }
+  .adm-btn-del:hover  { background:rgba(239,68,68,.3);  }
+  .adm-btn-warn { background:rgba(245,158,11,.15); color:#fbbf24; border:1px solid rgba(245,158,11,.3); }
+  .adm-btn-warn:hover { background:rgba(245,158,11,.3); }
+  .adm-btn-ok   { background:rgba(16,185,129,.15); color:#6ee7b7; border:1px solid rgba(16,185,129,.3); }
+  .adm-btn-ok:hover   { background:rgba(16,185,129,.3); }
+  /* ── CONFIG LLM ── */
+  .llm-card { display:block; cursor:pointer; border:2px solid var(--border); border-radius:12px; padding:14px; transition:.18s; background:var(--card); }
+  .llm-card:hover { border-color:var(--primary); }
+  .llm-card.active { border-color:var(--primary); background:rgba(245,158,11,.07); }
+  .llm-card-inner { display:flex; align-items:center; gap:10px; }
+  .llm-logo { font-size:22px; flex-shrink:0; }
+  .llm-card strong { display:block; font-size:14px; font-weight:700; color:var(--text); }
+  .llm-card small { font-size:11px; color:#9ca3af; }
+  .llm-check { margin-left:auto; color:var(--primary); font-size:18px; opacity:0; transition:.15s; }
+  .llm-card.active .llm-check { opacity:1; }
+  .cfg-block { background:var(--bg); border-radius:10px; padding:16px; }
+  .cfg-label { display:block; font-size:12px; font-weight:600; color:#6b7280; margin-bottom:6px; text-transform:uppercase; letter-spacing:.04em; }
+  .cfg-input { width:100%; padding:9px 12px; border:1px solid var(--border); border-radius:8px; font-size:14px; background:var(--card); color:var(--text); box-sizing:border-box; }
+  .cfg-input:focus { outline:none; border-color:var(--primary); }
+  .cfg-key-row { display:flex; gap:8px; align-items:center; }
+  .cfg-key-row .cfg-input { flex:1; }
+  .cfg-eye { background:none; border:1px solid var(--border); border-radius:8px; padding:8px 10px; cursor:pointer; font-size:16px; color:var(--text); }
+  .llm-badge { font-size:11px; font-weight:700; padding:2px 8px; border-radius:99px; background:rgba(245,158,11,.18); color:#b45309; margin-left:6px; vertical-align:middle; }
+  /* ── CHAT ── */
+  #chat-fab {
+    position: fixed; bottom: calc(24px + var(--safe-b)); right: 24px;
+    width: 56px; height: 56px; border-radius: 50%; background: var(--accent);
+    border: none; cursor: pointer; z-index: 500;
+    box-shadow: 0 4px 20px rgba(245,158,11,.45);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; transition: transform .2s, box-shadow .2s;
+  }
+  #chat-fab:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(245,158,11,.6); }
+  #chat-fab .badge-dot {
+    position: absolute; top: 6px; right: 6px; width: 10px; height: 10px;
+    background: #10b981; border-radius: 50%; border: 2px solid var(--bg);
+  }
+
+  #chat-panel {
+    position: fixed; bottom: 0; right: 0; width: 400px; height: 100vh;
+    max-height: 100vh; background: #11151e; border-left: 1px solid var(--border);
+    display: flex; flex-direction: column; z-index: 600;
+    transform: translateX(110%); transition: transform .3s cubic-bezier(.4,0,.2,1);
+    box-shadow: -8px 0 40px rgba(0,0,0,.5);
+  }
+  #chat-panel.open { transform: translateX(0); }
+
+  #chat-head {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px; border-bottom: 1px solid var(--border);
+    background: #0d1117; flex-shrink: 0;
+  }
+  #chat-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg,#f59e0b,#d97706);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(245,158,11,.3);
+  }
+  #chat-head-info { flex: 1; min-width: 0; }
+  #chat-head-info strong { display: block; font-size: 14px; color: var(--text); }
+  #chat-head-info span { font-size: 11px; color: #10b981; }
+  #chat-close {
+    background: none; border: none; color: var(--muted); cursor: pointer;
+    font-size: 20px; padding: 4px 8px; border-radius: 6px;
+    transition: background .15s, color .15s;
+  }
+  #chat-close:hover { background: var(--border); color: var(--text); }
+
+  #chat-messages {
+    flex: 1; overflow-y: auto; padding: 16px;
+    display: flex; flex-direction: column; gap: 12px;
+    scroll-behavior: smooth;
+  }
+  #chat-messages::-webkit-scrollbar { width: 4px; }
+  #chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  .chat-msg { display: flex; gap: 10px; align-items: flex-start; }
+  .chat-msg.user { flex-direction: row-reverse; }
+  .chat-msg-avatar {
+    width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 14px;
+  }
+  .chat-msg.bot .chat-msg-avatar { background: linear-gradient(135deg,#f59e0b,#d97706); }
+  .chat-msg.user .chat-msg-avatar { background: var(--accent2); }
+  .chat-bubble {
+    max-width: 82%; padding: 10px 14px; border-radius: 14px;
+    font-size: 13px; line-height: 1.6; position: relative;
+  }
+  .chat-msg.bot .chat-bubble {
+    background: var(--card); border: 1px solid var(--border);
+    border-top-left-radius: 4px; color: var(--text);
+  }
+  .chat-msg.user .chat-bubble {
+    background: rgba(245,158,11,.15); border: 1px solid rgba(245,158,11,.25);
+    border-top-right-radius: 4px; color: var(--text);
+  }
+  .chat-bubble pre {
+    background: #0d1117; border: 1px solid var(--border);
+    border-radius: 6px; padding: 10px; margin: 8px 0;
+    overflow-x: auto; font-size: 12px; line-height: 1.5;
+    white-space: pre-wrap; word-break: break-word;
+  }
+  .chat-bubble strong { color: var(--accent); }
+  .chat-bubble em { color: var(--muted); font-style: normal; }
+  .chat-actions {
+    display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap;
+  }
+  .chat-copy-btn {
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--muted); font-size: 11px; padding: 3px 10px;
+    border-radius: 20px; cursor: pointer; transition: all .15s;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .chat-copy-btn:hover { background: var(--border); color: var(--text); }
+  .chat-copy-btn.copied { color: #10b981; border-color: rgba(16,185,129,.3); }
+
+  .chat-thinking {
+    display: flex; align-items: center; gap: 6px;
+    color: var(--muted); font-size: 12px; padding: 6px 0;
+  }
+  .chat-thinking .dots { display: flex; gap: 3px; }
+  .chat-thinking .dots span {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); animation: dotPulse 1.2s infinite;
+  }
+  .chat-thinking .dots span:nth-child(2) { animation-delay: .2s; }
+  .chat-thinking .dots span:nth-child(3) { animation-delay: .4s; }
+  @keyframes dotPulse {
+    0%,80%,100% { opacity: .2; transform: scale(.8); }
+    40% { opacity: 1; transform: scale(1); }
+  }
+
+  #chat-quick { padding: 8px 12px; border-top: 1px solid var(--border); flex-shrink: 0; }
+  .chat-quick-label { font-size: 10px; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+  .chat-quick-list { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chat-quick-btn {
+    background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.2);
+    color: var(--text); font-size: 11px; padding: 4px 10px;
+    border-radius: 20px; cursor: pointer; transition: all .15s; white-space: nowrap;
+  }
+  .chat-quick-btn:hover { background: rgba(245,158,11,.2); }
+
+  #chat-form {
+    display: flex; gap: 8px; padding: 12px 16px;
+    border-top: 1px solid var(--border); background: #0d1117; flex-shrink: 0;
+    padding-bottom: calc(12px + var(--safe-b));
+  }
+  #chat-input {
+    flex: 1; background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 14px; color: var(--text);
+    font-size: 13px; resize: none; outline: none;
+    font-family: inherit; line-height: 1.4; max-height: 120px;
+    transition: border-color .15s;
+  }
+  #chat-input:focus { border-color: rgba(245,158,11,.5); }
+  #chat-input::placeholder { color: var(--muted); }
+  #chat-send {
+    background: var(--accent); border: none; border-radius: 10px;
+    width: 42px; height: 42px; cursor: pointer; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; transition: opacity .15s, transform .15s;
+    align-self: flex-end;
+  }
+  #chat-send:hover { opacity: .85; transform: scale(1.05); }
+  #chat-send:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+
+  #chat-clear {
+    background: none; border: none; color: var(--muted);
+    font-size: 11px; cursor: pointer; padding: 2px 8px;
+    border-radius: 4px; transition: color .15s;
+  }
+  #chat-clear:hover { color: var(--accent4); }
+
+  @media (max-width: 768px) {
+    #chat-panel { width: 100%; border-left: none; }
+    #chat-fab { bottom: calc(80px + var(--safe-b)); right: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── TELA DE LOGIN ── -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">⛏️</div>
+    <div class="login-brand">
+      <h1>Plataforma Jurídico-Mineral</h1>
+      <p>Dashboard Jurídico Minerário — Acesso Restrito</p>
+    </div>
+    <form id="login-form" onsubmit="doLogin(event)" novalidate>
+      <div class="login-field">
+        <label for="l-email">E-mail</label>
+        <input type="email" id="l-email" placeholder="seu@email.com" autocomplete="email" required>
+      </div>
+      <div class="login-field">
+        <label for="l-pass">Senha</label>
+        <div class="login-eye-row">
+          <input type="password" id="l-pass" placeholder="••••••••" autocomplete="current-password" required>
+          <button type="button" class="login-eye-btn" onclick="toggleLoginEye()" id="l-eye">👁</button>
+        </div>
+      </div>
+      <div id="login-err"></div>
+      <button type="submit" class="login-btn" id="login-btn">Entrar</button>
+    </form>
+    <div class="login-footer">Plataforma Jurídico-Mineral © 2025 — Direito Minerário ANM</div>
+  </div>
+</div>
+
+<!-- OFFLINE INDICATOR -->
+<div id="offline-bar">⚡ Sem conexão — modo offline</div>
+
+<!-- MOBILE TOPBAR -->
+<header id="mobile-topbar">
+  <button id="burger" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+  <img src="/icons/icon-96.png" alt="" width="28" height="28" style="border-radius:7px;flex-shrink:0;" loading="lazy">
+  <span id="mob-title" style="font-size:13px">Jur. Mineral</span>
+  <button id="mob-theme-btn" onclick="toggleTheme()" aria-label="Tema">☀️</button>
+  <button id="mob-search-btn" onclick="toggleMobSearch()" aria-label="Buscar">🔍</button>
+</header>
+<!-- MOBILE SEARCH BAR (slide down) -->
+<div id="mob-search-bar">
+  <input type="search" id="search-mobile" placeholder="Buscar norma, súmula, conceito..." oninput="doSearch(this.value)" autocomplete="off">
+  <button id="mob-search-close" onclick="closeMobSearch()">✕</button>
+</div>
+<div id="mob-overlay" onclick="closeSidebar()"></div>
+
+<!-- BOTTOM NAV -->
+<nav id="bottom-nav" aria-label="Navegação principal">
+  <button class="bn-item active" data-sec="home"        onclick="show('home')">        <span class="bn-icon">🏠</span><span class="bn-label">Início</span></button>
+  <button class="bn-item"        data-sec="cfem"        onclick="show('cfem')">        <span class="bn-icon">💰</span><span class="bn-label">CFEM</span></button>
+  <button class="bn-item"        data-sec="jurisprudencia" onclick="show('jurisprudencia')"><span class="bn-icon">🏛️</span><span class="bn-label">Jurisp.</span></button>
+  <button class="bn-item"        data-sec="pecas"       onclick="show('pecas')">       <span class="bn-icon">📄</span><span class="bn-label">Peças</span></button>
+  <button class="bn-item"        id="bn-menu"           onclick="toggleSidebar()">     <span class="bn-icon">☰</span><span class="bn-label">Menu</span></button>
+</nav>
+
+<!-- PWA INSTALL BANNER -->
+<div id="pwa-banner">
+  <div class="pwa-banner-top">
+    <img src="/icons/icon-96.png" alt="Logo" class="pwa-banner-icon" style="width:44px;height:44px;border-radius:10px;">
+    <div class="pwa-banner-info">
+      <strong>Plataforma Jurídico-Mineral</strong>
+      <small>Instale no seu dispositivo — acesso offline</small>
+    </div>
+    <button class="pwa-banner-close" id="pwa-close-btn" aria-label="Fechar">✕</button>
+  </div>
+  <button id="pwa-install-btn">📲 Instalar Aplicativo</button>
+  <div class="pwa-hints">Funciona offline · Acesso rápido · Sem anúncios</div>
+</div>
+
+<div id="sidebar">
+  <div class="logo">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="/icons/icon-96.png" alt="Logo" width="40" height="40" style="border-radius:10px;flex-shrink:0;">
+      <div>
+        <h1 style="font-size:12px;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.08em;line-height:1.2">Jurídico<br>Mineral</h1>
+        <p style="font-size:10px;color:var(--muted);margin-top:2px">Dashboard ANM</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="sidebar-nav">
+  <div class="nav-group">
+    <div class="nav-label">Visão Geral</div>
+    <div class="nav-item active" onclick="show('home')">
+      <span class="nav-icon">🏠</span> Início
+    </div>
+    <div class="nav-item" onclick="show('principios')">
+      <span class="nav-icon">⚖️</span> Princípios Jurídicos
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-label">Receitas ANM</div>
+    <div class="nav-item" onclick="show('cfem')">
+      <span class="nav-icon">💰</span> CFEM
+    </div>
+    <div class="nav-item" onclick="show('tah')">
+      <span class="nav-icon">📐</span> TAH
+    </div>
+    <div class="nav-item" onclick="show('multas')">
+      <span class="nav-icon">🚫</span> Multas ANM
+    </div>
+    <div class="nav-item" onclick="show('vistoria')">
+      <span class="nav-icon">🔍</span> Taxa de Vistoria
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-label">Normas</div>
+    <div class="nav-item" onclick="show('sumulas')">
+      <span class="nav-icon">📋</span> Súmulas ANM
+    </div>
+    <div class="nav-item" onclick="show('legislacao')">
+      <span class="nav-icon">📜</span> Legislação
+    </div>
+    <div class="nav-item" onclick="show('jurisprudencia')">
+      <span class="nav-icon">🏛️</span> Jurisprudência
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-label">Operacional</div>
+    <div class="nav-item" onclick="show('calculos')">
+      <span class="nav-icon">🧮</span> Cálculos
+    </div>
+    <div class="nav-item" onclick="show('estrategia')">
+      <span class="nav-icon">🎯</span> Estratégia Processual
+    </div>
+    <div class="nav-item" onclick="show('checklist')">
+      <span class="nav-icon">✅</span> Checklist
+    </div>
+    <div class="nav-item" onclick="show('antipadroes')">
+      <span class="nav-icon">⛔</span> Anti-Padrões
+    </div>
+    <div class="nav-item" onclick="show('pecas')">
+      <span class="nav-icon">📄</span> Peças Processuais
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-label">Sistema</div>
+    <div class="nav-item" onclick="show('config')">
+      <span class="nav-icon">⚙️</span> Configurações LLM
+    </div>
+  </div>
+
+  <div id="admin-nav-group" class="nav-group" style="display:none">
+    <div class="nav-label">Administração</div>
+    <div class="nav-item" onclick="show('admin');adminLoadUsers()">
+      <span class="nav-icon">👥</span> Gestão de Usuários
+    </div>
+  </div>
+
+  </div><!-- /#sidebar-nav -->
+
+  <div id="sidebar-user" style="padding:12px 12px 4px;border-top:1px solid var(--border);margin-top:auto">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:4px;padding:0 2px">Conectado como</div>
+    <div id="sidebar-name" style="font-size:13px;font-weight:700;color:var(--text);padding:0 2px"></div>
+    <div id="sidebar-email" style="font-size:11px;font-weight:400;color:var(--muted);padding:0 2px;margin-bottom:10px;word-break:break-all"></div>
+    <button class="logout-item" onclick="doLogout()">
+      <span>🚪</span> Sair
+    </button>
+  </div>
+</div>
+
+<div id="main">
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <h2 id="page-title">Início</h2>
+    <input type="text" id="search" placeholder="🔍 Buscar norma, súmula, conceito..." oninput="doSearch(this.value)">
+    <button id="theme-btn" onclick="toggleTheme()" title="Alternar tema claro/escuro" style="background:none;border:none;cursor:pointer;font-size:20px;padding:4px 8px;border-radius:8px;line-height:1;color:var(--text)">🌙</button>
+  </div>
+
+  <!-- SEARCH RESULTS -->
+  <div id="search-results" class="section active">
+    <div id="search-output"></div>
+  </div>
+
+  <!-- HOME -->
+  <div id="sec-home" class="section active">
+    <div class="hero">
+      <h2>Direito Minerário — CFEM / TAH / Multas / Taxa de Vistoria</h2>
+      <p>Dashboard de consulta jurídica para todas as receitas da Agência Nacional de Mineração (ANM). Abrange legislação, Súmulas ANM 2025/2026, jurisprudência, cálculos e estratégias processuais.</p>
+      <div class="tags">
+        <span class="pill">CFEM</span>
+        <span class="pill">TAH</span>
+        <span class="pill">Multas ANM</span>
+        <span class="pill">Taxa de Vistoria</span>
+        <span class="pill">PAF</span>
+        <span class="pill">Execução Fiscal</span>
+        <span class="pill">Prescrição</span>
+        <span class="pill">Decadência</span>
+        <span class="pill">Súmulas 2025/2026</span>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px">
+      <div class="stat"><div class="num">4</div><div class="lbl">Tipos de Receita</div></div>
+      <div class="stat"><div class="num">16</div><div class="lbl">Súmulas ANM</div></div>
+      <div class="stat"><div class="num">10 anos</div><div class="lbl">Prazo Decadencial</div></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">⚠️ Princípio Fundamental</div>
+        <div class="card-body">
+          <div class="alert alert-yellow"><strong>CFEM, TAH e Taxa de Vistoria são receitas patrimoniais — NÃO são tributos.</strong><br>CTN é inaplicável. (STF, RE 228.800/DF, 2001)</div>
+          <div class="alert alert-red"><strong>Multas ANM são penalidades administrativas.</strong><br>Prescrição punitiva: 5 anos (Lei 9.873/99).</div>
+        </div>
+        <button class="copy-btn" onclick="copyText('CFEM, TAH e Taxa de Vistoria são receitas patrimoniais — NÃO são tributos. CTN é inaplicável (STF, RE 228.800/DF, 2001). Multas ANM são penalidades administrativas — prescrição punitiva 5 anos (Lei 9.873/99).', this)">Copiar</button>
+      </div>
+      <div class="card">
+        <div class="card-title">⏳ Prazos-Chave</div>
+        <div class="card-body">
+          <table>
+            <tr><th>Receita</th><th>Decadência</th><th>Prescrição</th></tr>
+            <tr><td>CFEM</td><td>10 anos</td><td>5 anos do lançamento</td></tr>
+            <tr><td>TAH</td><td>10 anos</td><td>5 anos do lançamento</td></tr>
+            <tr><td>Taxa de Vistoria</td><td>10 anos</td><td>5 anos do lançamento</td></tr>
+            <tr><td>Multas ANM</td><td>—</td><td>5 anos punitiva (Lei 9.873/99)</td></tr>
+          </table>
+        </div>
+        <button class="copy-btn" onclick="copyText('Prazos ANM:\nCFEM/TAH/Taxa de Vistoria: Decadência 10 anos (Lei 9.636/98 + Lei 10.852/2004); Prescrição 5 anos do lançamento.\nMultas ANM: Prescrição punitiva 5 anos (Lei 9.873/99).', this)">Copiar</button>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">🔗 Fontes de Consulta</div>
+      <div class="card-body">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>Portal</th><th>URL</th><th>Conteúdo</th></tr>
+            <tr><td>ANMlegis — Receitas</td><td><a href="https://anmlegis.datalegis.net/action/ActionDatalegis.php?acao=recuperarTematicasCollapse&cod_modulo=434&cod_menu=7601" target="_blank" style="color:var(--accent2)">anmlegis.datalegis.net</a></td><td>Legislação CFEM/TAH/Multas/Vistoria</td></tr>
+            <tr><td>ANMlegis — Súmulas</td><td><a href="https://anmlegis.datalegis.net/action/ActionDatalegis.php?acao=apresentacao&cod_menu=8303&cod_modulo=566" target="_blank" style="color:var(--accent2)">anmlegis.datalegis.net</a></td><td>Súmulas CONSUP/ANM</td></tr>
+            <tr><td>DNPM-PE Legislação</td><td><a href="https://www.dnpm-pe.gov.br/Legisla/Ind_Cro.php" target="_blank" style="color:var(--accent2)">dnpm-pe.gov.br</a></td><td>Índice Cronológico Completo</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINCÍPIOS -->
+  <div id="sec-principios" class="section">
+    <div class="card">
+      <div class="card-title">⚖️ Princípios Jurídicos Fundamentais</div>
+      <button class="copy-btn" onclick="copySection('principios-text', this)">Copiar Tudo</button>
+      <div class="card-body" id="principios-text">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>#</th><th>Princípio</th><th>Fundamento</th><th></th></tr>
+            <tr>
+              <td>1</td>
+              <td><strong>CFEM, TAH e Taxa de Vistoria = receitas patrimoniais</strong> — NÃO são tributos — CTN é inaplicável</td>
+              <td>STF, RE 228.800/DF, 2001</td>
+              <td class="td-copy" onclick="copyText('CFEM, TAH e Taxa de Vistoria são receitas patrimoniais — NÃO são tributos — CTN é inaplicável. (STF, RE 228.800/DF, 2001)', this)">📋</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><strong>Multas ANM = penalidades administrativas</strong> — prescrição punitiva de 5 anos</td>
+              <td>Lei 9.873/99, art. 1º</td>
+              <td class="td-copy" onclick="copyText('Multas ANM são penalidades administrativas — prescrição punitiva de 5 anos (Lei 9.873/99, art. 1º)', this)">📋</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><strong>Prazo decadencial CFEM/TAH/Vistoria: 10 anos</strong></td>
+              <td>Lei 9.636/98, art. 47 + Lei 10.852/2004</td>
+              <td class="td-copy" onclick="copyText('Prazo decadencial para CFEM/TAH/Taxa de Vistoria: 10 anos (Lei 9.636/98, art. 47 + Lei 10.852/2004)', this)">📋</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><strong>Prazo prescricional CFEM/TAH/Vistoria: 5 anos</strong> do lançamento</td>
+              <td>Lei 9.636/98 + aplicação analógica</td>
+              <td class="td-copy" onclick="copyText('Prazo prescricional para CFEM/TAH/Taxa de Vistoria: 5 anos do lançamento', this)">📋</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><strong>Prescrição intercorrente em execução fiscal</strong> — vinculante</td>
+              <td>REsp 1.340.553/RS — Tema 566 STJ</td>
+              <td class="td-copy" onclick="copyText('Prescrição intercorrente em execução fiscal: REsp 1.340.553/RS (Tema 566 STJ — vinculante): 1 ano suspensão + 5 anos prescrição = 6 anos total', this)">📋</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td><strong>NÃO há prescrição intercorrente na fase administrativa</strong></td>
+              <td>Súmula ANM 03/25</td>
+              <td class="td-copy" onclick="copyText('Não há prescrição intercorrente durante a fase administrativa. A prescrição intercorrente só começa na fase judicial (Súmula ANM 03/25)', this)">📋</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td><strong>Correção monetária CFEM:</strong> BTN → INPC → UFIR → IPCA-15 → SELIC</td>
+              <td>Portaria ANM 389/2010 — Súmula ANM 08/25 confirma validade</td>
+              <td class="td-copy" onclick="copyText('Correção monetária CFEM: BTN (jan-fev/1991) → INPC (mar-dez/1991) → UFIR (jan/1992-dez/2000) → IPCA-15 (jan/2001-03/dez/2008) → SELIC (a partir 04/dez/2008). Portaria ANM 389/2010, Súmula ANM 08/25', this)">📋</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td><strong>Frete pré-venda NÃO é dedutível</strong> da base de cálculo da CFEM</td>
+              <td>Súmula ANM 09/25</td>
+              <td class="td-copy" onclick="copyText('Frete pré-venda NÃO é dedutível da base de cálculo da CFEM (Súmula ANM 09/25)', this)">📋</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td><strong>Pelotização = beneficiamento</strong> (não transformação industrial) — CFEM incide sobre o pellet</td>
+              <td>Súmula ANM 14/26</td>
+              <td class="td-copy" onclick="copyText('Pelotização é beneficiamento (não transformação industrial) — CFEM incide sobre o pellet (Súmula ANM 14/26)', this)">📋</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CFEM -->
+  <div id="sec-cfem" class="section">
+    <div class="hero">
+      <h2>💰 CFEM — Compensação Financeira pela Exploração de Recursos Minerais</h2>
+      <p>Receita patrimonial devida ao Estado pelo uso econômico dos recursos minerais. Natureza jurídica: preço público (não tributo). Regime específico de decadência, prescrição e indexação.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">📖 Conceito e Natureza Jurídica</div>
+        <button class="copy-btn" onclick="copyText('CFEM — Compensação Financeira pela Exploração de Recursos Minerais: receita patrimonial (preço público), não tributo. Fundamento: CF/88 art. 20 § 1º + Lei 7.990/89 + Lei 8.001/90. Natureza confirmada pelo STF (RE 228.800/DF, 2001). CTN é inaplicável.', this)">Copiar</button>
+        <div class="card-body">
+          <p><span class="badge badge-yellow">Natureza:</span> Receita patrimonial (preço público)</p>
+          <p><span class="badge badge-red">CTN:</span> Inaplicável — STF, RE 228.800/DF</p>
+          <p><strong>Fundamento constitucional:</strong> CF/88, art. 20, § 1º</p>
+          <p style="margin-top:8px"><strong>Legislação principal:</strong></p>
+          <p>• Lei 7.990/1989 — institui a CFEM<br>• Lei 8.001/1990 — define percentuais e distribuição<br>• Lei 13.540/2017 — nova disciplina (alíquotas atualizadas)<br>• Dec. 01/1991 — regulamenta a CFEM</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 Alíquotas CFEM (Lei 13.540/2017)</div>
+        <button class="copy-btn" onclick="copyText('Alíquotas CFEM (Lei 13.540/2017):\nMinério de Ferro: 3,5% (exceção: 2% se ROM < 40% Fe)\nOuro: 1,5%\nDiamante: 2%\nMinerais p/ fertilizantes: 2%\nÁgua mineral: 2%\nAreia/cascalho: 2%\nDemais: 3%\nBase de cálculo: receita bruta da venda (deduzidos ICMS, PIS, COFINS — não deduz frete pré-venda — Súmula ANM 09/25)', this)">Copiar</button>
+        <div class="card-body">
+          <div class="tbl-wrap">
+            <table>
+              <tr><th>Substância</th><th>Alíquota</th></tr>
+              <tr><td>Minério de Ferro</td><td>3,5% (2% se ROM &lt; 40% Fe)</td></tr>
+              <tr><td>Ouro</td><td>1,5%</td></tr>
+              <tr><td>Diamante</td><td>2%</td></tr>
+              <tr><td>Min. p/ fertilizantes</td><td>2%</td></tr>
+              <tr><td>Água mineral</td><td>2%</td></tr>
+              <tr><td>Areia / cascalho</td><td>2%</td></tr>
+              <tr><td>Demais</td><td>3%</td></tr>
+            </table>
+          </div>
+          <p style="margin-top:8px; font-size:12px; color:var(--muted)">Base: receita bruta de venda (deduz ICMS, PIS, COFINS — NÃO deduz frete pré-venda)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⏳ Análise de Prazos — CFEM</div>
+      <button class="copy-btn" onclick="copyText('Prazos CFEM:\nDecadência (lançamento): FG < 24/08/1999 → 10 anos a contar de 30/03/2004; FG ≥ 24/08/1999 → 10 anos do próprio FG\nPrescrição: 5 anos do lançamento\nPrescrição intercorrente (execução fiscal parada): 1 ano suspensão + 5 anos = 6 anos total (Tema 566 STJ)', this)">Copiar</button>
+      <div class="card-body">
+        <pre><code>PASSO 1: Data do fato gerador (competência da receita não paga)
+
+PASSO 2: Prazo decadencial do lançamento:
+  FG < 24/08/1999 → 10 anos a contar de 30/03/2004
+  FG ≥ 24/08/1999 → 10 anos do próprio FG
+
+PASSO 3: Lançamento no prazo decadencial?
+  NÃO → DECADÊNCIA → CDA nula → extinção da execução
+
+PASSO 4: Ajuizamento em até 5 anos do lançamento?
+  NÃO → PRESCRIÇÃO → título nulo
+
+PASSO 5: Execução parada > 1 ano sem bens/devedor?
+  SIM → PRESCRIÇÃO INTERCORRENTE (Tema 566 STJ)
+       → 1 ano suspensão + 5 anos prescrição = 6 anos total</code></pre>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">💡 Incidências Confirmadas (Súmulas)</div>
+        <button class="copy-btn" onclick="copyText('Incidências confirmadas pelas Súmulas ANM:\n- Consumo próprio da substância mineral: CFEM incide (Súmula ANM 10/25)\n- Pelotização: CFEM incide sobre o pellet (beneficiamento, não transformação) (Súmula ANM 14/26)\n- Envase de água mineral: CFEM incide (Súmulas ANM 07/25 e 12/25)', this)">Copiar</button>
+        <div class="card-body">
+          <p>• <span class="badge badge-red">Consumo próprio:</span> CFEM incide (Súmula ANM 10/25)</p>
+          <p>• <span class="badge badge-red">Pelotização:</span> CFEM incide — beneficiamento, não transformação (Súmula ANM 14/26)</p>
+          <p>• <span class="badge badge-red">Envase de água mineral:</span> CFEM incide (Súmulas ANM 07/25 e 12/25)</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">🚫 Vedações (Súmulas)</div>
+        <button class="copy-btn" onclick="copyText('Vedações aplicáveis à CFEM pelas Súmulas ANM:\n- Frete pré-venda NÃO é dedutível da base de cálculo (Súmula ANM 09/25)\n- NÃO alegar prescrição intercorrente administrativa (Súmula ANM 03/25)\n- Não aplicar CTN arts. 173 e 174 (RE 228.800/DF)', this)">Copiar</button>
+        <div class="card-body">
+          <p>• <span class="badge badge-green">Frete pré-venda:</span> NÃO dedutível (Súmula ANM 09/25)</p>
+          <p>• <span class="badge badge-green">Prescrição intercorrente:</span> NÃO corre na fase administrativa (Súmula ANM 03/25)</p>
+          <p>• <span class="badge badge-green">CTN arts. 173/174:</span> Inaplicáveis (RE 228.800/DF)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAH -->
+  <div id="sec-tah" class="section">
+    <div class="hero">
+      <h2>📐 TAH — Taxa Anual por Hectare</h2>
+      <p>Receita patrimonial anual devida pelo titular de direitos minerários, proporcional à área do título em hectares e à fase do processo de mineração. Regime idêntico ao da CFEM quanto à decadência e prescrição.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">📖 Conceito e Fundamento</div>
+        <button class="copy-btn" onclick="copyText('TAH — Taxa Anual por Hectare: receita patrimonial (não tributo). Fundamento: Lei 9.827/1999 + Dec. 3.358/2000. Incide por hectare da área do título minerário, por ano de competência. CTN é inaplicável. Decadência 10 anos. Prescrição 5 anos do lançamento.', this)">Copiar</button>
+        <div class="card-body">
+          <p><span class="badge badge-blue">Natureza:</span> Receita patrimonial (não tributo)</p>
+          <p><strong>Base legal:</strong> Lei 9.827/1999 + Decreto 3.358/2000</p>
+          <p style="margin-top:8px">Incide por hectare da área do título × ano de competência</p>
+          <p style="margin-top:8px"><strong>Verificar sempre:</strong></p>
+          <p>• Fase do título (pesquisa, lavra, concessão de lavra)<br>• Área conferida no SIGMINE<br>• Título ativo no período de apuração</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">⏳ Prazos e Atualização — TAH</div>
+        <button class="copy-btn" onclick="copyText('Prazos TAH:\nDecadência: 10 anos (Lei 9.636/98, art. 47 + Lei 10.852/2004)\nPrescrição: 5 anos do lançamento\nPrescrição intercorrente execução: Tema 566 STJ (6 anos total)\nAtualização: mesmos indexadores da CFEM (Portaria ANM 389/2010)\nMulta moratória: 2% em parcelamento', this)">Copiar</button>
+        <div class="card-body">
+          <p><strong>Decadência:</strong> 10 anos (Lei 9.636/98 + Lei 10.852/2004)</p>
+          <p><strong>Prescrição:</strong> 5 anos do lançamento</p>
+          <p><strong>P. intercorrente:</strong> Tema 566 STJ (6 anos)</p>
+          <p style="margin-top:8px"><strong>Atualização:</strong> Mesmos indexadores da CFEM</p>
+          <p><strong>Multa moratória:</strong> 2% (parcelamento)</p>
+          <p><strong>Encargos legais:</strong> 20% (DA) / 10% (antes do ajuizamento)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">✅ Checklist de Análise — TAH</div>
+      <button class="copy-btn" onclick="copyText('Checklist TAH:\n[ ] Fase do título e ano de competência corretos\n[ ] Área conferida no SIGMINE\n[ ] Título ativo no período de apuração\n[ ] Decadência 10 anos (Lei 9.636/98 + Lei 10.852/2004)\n[ ] Prescrição 5 anos do lançamento\n[ ] Prescrição intercorrente se execução > 6 anos parada (Tema 566 STJ)\n[ ] Indexadores corretos por período (Portaria ANM 389/2010)\n[ ] Encargos legais (20% / 10%)\n[ ] Requisitos CDA: LEF art. 2º, § 5º', this)">Copiar Checklist</button>
+      <div class="card-body">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>Item</th><th>Verificação</th></tr>
+            <tr><td>Fase do título</td><td>Confirmar fase (pesquisa/lavra) e ano de competência</td></tr>
+            <tr><td>Área SIGMINE</td><td>Verificar área exata em hectares no sistema ANM</td></tr>
+            <tr><td>Título ativo</td><td>Confirmar que o título estava ativo no período de apuração</td></tr>
+            <tr><td>Decadência</td><td>10 anos (Lei 9.636/98 + Lei 10.852/2004)</td></tr>
+            <tr><td>Prescrição</td><td>5 anos do lançamento</td></tr>
+            <tr><td>P. intercorrente</td><td>Execução parada > 6 anos? (Tema 566 STJ)</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MULTAS -->
+  <div id="sec-multas" class="section">
+    <div class="hero">
+      <h2>🚫 Multas ANM — Penalidades Administrativas</h2>
+      <p>Sanção administrativa aplicada no PAF (Procedimento Administrativo de Fiscalização) — Resolução ANM 48/2020. Regime distinto: prescrição punitiva de 5 anos, sem multa moratória adicional, recurso ao CONSUP.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">📖 Regime Jurídico</div>
+        <button class="copy-btn" onclick="copyText('Multas ANM — regime jurídico:\n- Penalidade administrativa (não receita patrimonial)\n- PAF: Resolução ANM 48/2020\n- Prescrição punitiva: 5 anos da data do fato (Lei 9.873/99, art. 1º)\n- Recurso administrativo ao CONSUP: 30 dias — efeito suspensivo\n- Não tem multa moratória adicional\n- Prescrição intercorrente execução: Tema 566 STJ (6 anos)', this)">Copiar</button>
+        <div class="card-body">
+          <p><span class="badge badge-purple">Natureza:</span> Penalidade administrativa</p>
+          <p><strong>Rito:</strong> Res. ANM 48/2020 (PAF)</p>
+          <p><strong>Prescrição punitiva:</strong> 5 anos do fato (Lei 9.873/99)</p>
+          <p><strong>Recurso:</strong> CONSUP/ANM (30 dias) — com efeito suspensivo</p>
+          <p><strong>Multa moratória adicional:</strong> Não há</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">⏳ Análise de Prazos — Multas ANM</div>
+        <button class="copy-btn" onclick="copyText('Análise de prazos — Multas ANM:\nPASSO A: AI notificado > 5 anos após o fato?\n  SIM → PRESCRIÇÃO PUNITIVA (Lei 9.873/99, art. 1º)\nPASSO B: Execução parada > 1 ano?\n  SIM → PRESCRIÇÃO INTERCORRENTE (LEF art. 40 + Tema 566 STJ)\nATENÇÃO: NÃO há prescrição intercorrente durante a fase administrativa (Súmula ANM 03/25)', this)">Copiar</button>
+        <div class="card-body">
+          <pre><code>PASSO A: AI notificado > 5 anos após o fato?
+  SIM → PRESCRIÇÃO PUNITIVA (Lei 9.873/99, art. 1º)
+
+PASSO B: Execução parada > 1 ano?
+  SIM → PRESCRIÇÃO INTERCORRENTE
+       (LEF art. 40 + Tema 566 STJ)
+
+ATENÇÃO — Súmula ANM 03/25:
+  NÃO há prescrição intercorrente
+  durante a fase administrativa!</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Fluxo PAF — Resolução ANM 48/2020</div>
+      <button class="copy-btn" onclick="copyText('Fluxo PAF (Res. ANM 48/2020):\n1. Auto de Infração (AI) — notificação ao infrator\n2. Impugnação Administrativa: prazo 30 dias da notificação\n3. Decisão de 1ª instância\n4. Recurso ao CONSUP: 30 dias — com efeito suspensivo\n5. Decisão do CONSUP (definitiva na esfera administrativa)\n6. Inscrição em Dívida Ativa se mantida a multa\n7. Execução Fiscal (LEF 6.830/80)', this)">Copiar Fluxo</button>
+      <div class="card-body">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>Fase</th><th>Ato</th><th>Prazo</th></tr>
+            <tr><td>1</td><td>Auto de Infração (AI)</td><td>—</td></tr>
+            <tr><td>2</td><td>Impugnação Administrativa</td><td>30 dias da notificação</td></tr>
+            <tr><td>3</td><td>Decisão de 1ª instância</td><td>—</td></tr>
+            <tr><td>4</td><td>Recurso ao CONSUP</td><td>30 dias (efeito suspensivo)</td></tr>
+            <tr><td>5</td><td>Decisão final CONSUP</td><td>Definitiva administrativamente</td></tr>
+            <tr><td>6</td><td>Inscrição em Dívida Ativa</td><td>—</td></tr>
+            <tr><td>7</td><td>Execução Fiscal (LEF)</td><td>—</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAXA DE VISTORIA -->
+  <div id="sec-vistoria" class="section">
+    <div class="hero">
+      <h2>🔍 Taxa de Ressarcimento de Vistoria</h2>
+      <p>Ressarcimento de despesas de fiscalização técnica presencial. Natureza: receita patrimonial. Exige que a vistoria tenha sido efetivamente realizada. Calculada com base nas diárias dos servidores (Decreto 7.655/2011).</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">📖 Conceito e Requisitos</div>
+        <button class="copy-btn" onclick="copyText('Taxa de Ressarcimento de Vistoria ANM:\n- Natureza: receita patrimonial (não tributo)\n- Fundamento: Lei 9.036/98 + Res. ANM vigente\n- Requisito: vistoria efetivamente realizada\n- Cálculo: diárias dos servidores (Decreto 7.655/2011)\n- Decadência: 10 anos (Lei 9.636/98 + Lei 10.852/2004)\n- Prescrição: 5 anos do lançamento\n- Vedação: não há duplicidade com PAF', this)">Copiar</button>
+        <div class="card-body">
+          <p><span class="badge badge-blue">Natureza:</span> Receita patrimonial</p>
+          <p><strong>Requisito essencial:</strong> Vistoria efetivamente realizada</p>
+          <p><strong>Base de cálculo:</strong> Diárias dos servidores (Decreto 7.655/2011)</p>
+          <p><strong>Decadência:</strong> 10 anos</p>
+          <p><strong>Prescrição:</strong> 5 anos do lançamento</p>
+          <p><strong>Vedação:</strong> Não há duplicidade com o PAF</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">✅ Checklist — Taxa de Vistoria</div>
+        <button class="copy-btn" onclick="copyText('Checklist Taxa de Vistoria:\n[ ] Vistoria efetivamente realizada (exigir prova documental)\n[ ] Valores conferidos com tabela de diárias (Decreto 7.655/2011)\n[ ] Não há duplicidade com o PAF\n[ ] Decadência 10 anos (Lei 9.636/98 + Lei 10.852/2004)\n[ ] Prescrição 5 anos do lançamento\n[ ] Prescrição intercorrente se execução > 6 anos parada (Tema 566 STJ)\n[ ] Requisitos CDA: LEF art. 2º, § 5º', this)">Copiar Checklist</button>
+        <div class="card-body">
+          <p>☐ Vistoria efetivamente realizada (provar documentalmente)</p>
+          <p>☐ Valores × tabela de diárias (Decreto 7.655/2011)</p>
+          <p>☐ Não há duplicidade com PAF</p>
+          <p>☐ Decadência 10 anos</p>
+          <p>☐ Prescrição 5 anos do lançamento</p>
+          <p>☐ P. intercorrente se execução > 6 anos (Tema 566 STJ)</p>
+          <p>☐ CDA: requisitos LEF art. 2º, § 5º</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SÚMULAS ANM -->
+  <div id="sec-sumulas" class="section">
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">📋 Súmulas ANM 2025 — CONSUP/ANM</div>
+      <button class="copy-btn" onclick="copySection('sumulas-2025', this)">Copiar Todas 2025</button>
+      <div class="card-body" id="sumulas-2025">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>Nº</th><th>Enunciado</th><th>Impacto</th><th></th></tr>
+            <tr>
+              <td><span class="badge badge-yellow">01/25</span></td>
+              <td>A incidência da CFEM pressupõe a efetiva saída da substância mineral da área de lavra, não se aplicando às perdas ocorridas no processo de beneficiamento.</td>
+              <td><span class="badge badge-green">Pro-minerador</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 01/25: A incidência da CFEM pressupõe a efetiva saída da substância mineral da área de lavra, não se aplicando às perdas ocorridas no processo de beneficiamento.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-yellow">02/25</span></td>
+              <td>A base de cálculo da CFEM é o valor da receita bruta resultante da venda do produto mineral, excluídos os tributos incidentes sobre a comercialização.</td>
+              <td><span class="badge badge-blue">Neutro</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 02/25: A base de cálculo da CFEM é o valor da receita bruta resultante da venda do produto mineral, excluídos os tributos incidentes sobre a comercialização.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-yellow">03/25</span></td>
+              <td>Não corre prescrição intercorrente durante a fase administrativa do procedimento de cobrança de receitas da ANM.</td>
+              <td><span class="badge badge-red">Pro-ANM</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 03/25: Não corre prescrição intercorrente durante a fase administrativa do procedimento de cobrança de receitas da ANM.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-yellow">04/25</span></td>
+              <td>O prazo decadencial para constituição do crédito de CFEM é de 10 anos, contado do fato gerador, nos termos do art. 47 da Lei 9.636/98.</td>
+              <td><span class="badge badge-blue">Neutro</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 04/25: O prazo decadencial para constituição do crédito de CFEM é de 10 anos, contado do fato gerador, nos termos do art. 47 da Lei 9.636/98.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-yellow">05/25</span></td>
+              <td>O parcelamento de débitos de CFEM suspende a exigibilidade do crédito e interrompe o prazo prescricional.</td>
+              <td><span class="badge badge-blue">Neutro</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 05/25: O parcelamento de débitos de CFEM suspende a exigibilidade do crédito e interrompe o prazo prescricional.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-yellow">06/25</span></td>
+              <td>A cessão ou transferência do título minerário não desonera o cedente das obrigações de CFEM relativas ao período anterior à cessão.</td>
+              <td><span class="badge badge-red">Pro-ANM</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 06/25: A cessão ou transferência do título minerário não desonera o cedente das obrigações de CFEM relativas ao período anterior à cessão.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-yellow">07/25</span></td>
+              <td>Incide CFEM sobre a exploração de água mineral envasada, sendo o fato gerador a saída do produto do estabelecimento para comercialização.</td>
+              <td><span class="badge badge-red">Pro-ANM</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 07/25: Incide CFEM sobre a exploração de água mineral envasada, sendo o fato gerador a saída do produto do estabelecimento para comercialização.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-yellow">08/25</span></td>
+              <td>A atualização monetária dos débitos de CFEM observa os indexadores definidos na Portaria ANM 389/2010, sendo vedada a aplicação de outros critérios.</td>
+              <td><span class="badge badge-red">Pro-ANM</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 08/25: A atualização monetária dos débitos de CFEM observa os indexadores definidos na Portaria ANM 389/2010, sendo vedada a aplicação de outros critérios.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-yellow">09/25</span></td>
+              <td>O frete do minério até o local de venda não é dedutível da base de cálculo da CFEM por não compor o valor da receita bruta da venda.</td>
+              <td><span class="badge badge-red">Pro-ANM</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 09/25: O frete do minério até o local de venda não é dedutível da base de cálculo da CFEM por não compor o valor da receita bruta da venda.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-yellow">10/25</span></td>
+              <td>A utilização do produto mineral no processo produtivo do próprio minerador (consumo próprio) configura fato gerador da CFEM.</td>
+              <td><span class="badge badge-red">Pro-ANM</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 10/25: A utilização do produto mineral no processo produtivo do próprio minerador (consumo próprio) configura fato gerador da CFEM.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-yellow">11/25</span></td>
+              <td>O valor da CFEM deve ser calculado com base no preço praticado na primeira venda do produto mineral, mesmo que realizada a terceiro interligado.</td>
+              <td><span class="badge badge-red">Pro-ANM</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 11/25: O valor da CFEM deve ser calculado com base no preço praticado na primeira venda do produto mineral, mesmo que realizada a terceiro interligado.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-yellow">12/25</span></td>
+              <td>A CFEM incide sobre o valor da venda da água mineral ao adquirente, independentemente da forma de embalagem utilizada.</td>
+              <td><span class="badge badge-red">Pro-ANM</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 12/25: A CFEM incide sobre o valor da venda da água mineral ao adquirente, independentemente da forma de embalagem utilizada.', this)">📋</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Súmulas ANM 2026 — CONSUP/ANM</div>
+      <button class="copy-btn" onclick="copySection('sumulas-2026', this)">Copiar Todas 2026</button>
+      <div class="card-body" id="sumulas-2026">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>Nº</th><th>Enunciado</th><th>Impacto</th><th></th></tr>
+            <tr>
+              <td><span class="badge badge-purple">13/26</span></td>
+              <td>A base de cálculo da CFEM incidente sobre a exportação de minério de ferro é o valor declarado para fins de câmbio ou, na sua ausência, o valor de mercado no momento do embarque.</td>
+              <td><span class="badge badge-red">Pro-ANM</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 13/26: A base de cálculo da CFEM incidente sobre a exportação de minério de ferro é o valor declarado para fins de câmbio ou, na sua ausência, o valor de mercado no momento do embarque.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-purple">14/26</span></td>
+              <td>A pelotização constitui processo de beneficiamento mineral, e não de transformação industrial, sujeitando o pellet à incidência da CFEM.</td>
+              <td><span class="badge badge-red">Pro-ANM</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 14/26: A pelotização constitui processo de beneficiamento mineral, e não de transformação industrial, sujeitando o pellet à incidência da CFEM.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-purple">15/26</span></td>
+              <td>O cancelamento do título minerário não extingue a obrigação de recolher a CFEM relativa ao período em que houve efetiva lavra.</td>
+              <td><span class="badge badge-red">Pro-ANM</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 15/26: O cancelamento do título minerário não extingue a obrigação de recolher a CFEM relativa ao período em que houve efetiva lavra.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-purple">16/26</span></td>
+              <td>A responsabilidade pelo pagamento da CFEM é solidária entre o titular do direito minerário e o responsável pela lavra, quando distintos.</td>
+              <td><span class="badge badge-red">Pro-ANM</span></td>
+              <td class="td-copy" onclick="copyText('Súmula ANM 16/26: A responsabilidade pelo pagamento da CFEM é solidária entre o titular do direito minerário e o responsável pela lavra, quando distintos.', this)">📋</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEGISLAÇÃO -->
+  <div id="sec-legislacao" class="section">
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">📜 Marco Normativo — Legislação Mineral Federal</div>
+      <button class="copy-btn" onclick="copySection('leg-tabela', this)">Copiar Tabela</button>
+      <div class="card-body" id="leg-tabela">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>Norma</th><th>Data</th><th>Ementa / Resumo</th><th>Receita</th><th></th></tr>
+            <tr>
+              <td><strong>Dec.-Lei 227/67</strong></td><td>1967</td>
+              <td>Código de Mineração — base do direito minerário brasileiro. Regula concessão de lavra, licenciamento, permissão de pesquisa.</td>
+              <td>—</td>
+              <td class="td-copy" onclick="copyText('Dec.-Lei 227/67 — Código de Mineração. Base do direito minerário brasileiro.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>CF/88 art. 20, § 1º</strong></td><td>1988</td>
+              <td>Institui a participação dos entes federativos no resultado da exploração de recursos minerais — base constitucional da CFEM.</td>
+              <td>CFEM</td>
+              <td class="td-copy" onclick="copyText('CF/88, art. 20, § 1º — Base constitucional da CFEM: participação dos entes federativos no resultado da exploração de recursos minerais.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Lei 7.990/89</strong></td><td>1989</td>
+              <td>Institui, para os Estados, DF e Municípios, compensação financeira pelo resultado da exploração de petróleo ou gás natural, de recursos hídricos e de recursos minerais (CFEM).</td>
+              <td>CFEM</td>
+              <td class="td-copy" onclick="copyText('Lei 7.990/89 — Institui a CFEM (compensação financeira pela exploração de recursos minerais). Art. 6º: alíquotas originais.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Lei 8.001/90</strong></td><td>1990</td>
+              <td>Define percentuais de distribuição da CFEM entre União, Estados, DF e Municípios. Base de cálculo: receita bruta da venda.</td>
+              <td>CFEM</td>
+              <td class="td-copy" onclick="copyText('Lei 8.001/90 — Define percentuais de distribuição da CFEM. Base de cálculo: receita bruta da venda do produto mineral.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Dec. 01/1991</strong></td><td>1991</td>
+              <td>Regulamenta a cobrança da CFEM. Estabelece forma de cálculo, prazos de recolhimento e obrigações acessórias.</td>
+              <td>CFEM</td>
+              <td class="td-copy" onclick="copyText('Decreto 01/1991 — Regulamenta a cobrança da CFEM. Forma de cálculo, prazos, obrigações acessórias.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Lei 9.636/98</strong></td><td>1998</td>
+              <td>Art. 47: prazo decadencial de 10 anos para constituição de créditos de receitas patrimoniais da União. Aplicável à CFEM, TAH e Taxa de Vistoria.</td>
+              <td>CFEM/TAH/Vistoria</td>
+              <td class="td-copy" onclick="copyText('Lei 9.636/98, art. 47 — Prazo decadencial de 10 anos para constituição de créditos de receitas patrimoniais da União (CFEM, TAH, Taxa de Vistoria).', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Lei 9.827/99</strong></td><td>1999</td>
+              <td>Institui a Taxa Anual por Hectare (TAH) — obrigação do titular de direitos minerários, proporcional à área do título.</td>
+              <td>TAH</td>
+              <td class="td-copy" onclick="copyText('Lei 9.827/99 — Institui a Taxa Anual por Hectare (TAH). Obrigação do titular de direitos minerários, proporcional à área em hectares.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Lei 9.873/99</strong></td><td>1999</td>
+              <td>Estabelece prazo de prescrição para o exercício de ação punitiva pela Administração Pública Federal. Art. 1º: prescrição em 5 anos para infrações administrativas (multas ANM).</td>
+              <td>Multas</td>
+              <td class="td-copy" onclick="copyText('Lei 9.873/99, art. 1º — Prescrição punitiva de 5 anos para o exercício de ação punitiva pela Administração Pública Federal (multas ANM).', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Dec. 3.358/2000</strong></td><td>2000</td>
+              <td>Regulamenta a Taxa Anual por Hectare (TAH), estabelecendo tabelas de valores por fase do título e categoria.</td>
+              <td>TAH</td>
+              <td class="td-copy" onclick="copyText('Decreto 3.358/2000 — Regulamenta a TAH (Taxa Anual por Hectare). Tabelas de valores por fase do título minerário.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Lei 10.852/2004</strong></td><td>2004</td>
+              <td>Altera a Lei 9.636/98: estende o prazo decadencial de 10 anos para créditos anteriores a 24/08/1999, contados de 30/03/2004.</td>
+              <td>CFEM/TAH/Vistoria</td>
+              <td class="td-copy" onclick="copyText('Lei 10.852/2004 — Estende prazo decadencial de 10 anos para créditos de CFEM/TAH anteriores a 24/08/1999, contados de 30/03/2004.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Lei 11.491/09</strong></td><td>2008</td>
+              <td>Cria a ANM (então DNPM). Institui encargos legais: 20% na inscrição em DA; 10% se pagar/parcelar antes do ajuizamento. Vigência dos encargos: a partir de 04/12/2008.</td>
+              <td>Todas</td>
+              <td class="td-copy" onclick="copyText('Lei 11.491/09 — Encargos legais: 20% na inscrição em Dívida Ativa; 10% se pagar/parcelar antes do ajuizamento. Vigência: a partir de 04/12/2008.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Dec. 7.655/2011</strong></td><td>2011</td>
+              <td>Tabela de diárias de servidores federais — base de cálculo da Taxa de Ressarcimento de Vistoria ANM.</td>
+              <td>Taxa de Vistoria</td>
+              <td class="td-copy" onclick="copyText('Decreto 7.655/2011 — Tabela de diárias de servidores federais. Base de cálculo da Taxa de Ressarcimento de Vistoria ANM.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Lei 13.540/2017</strong></td><td>2017</td>
+              <td>Reforma geral da CFEM: novas alíquotas, nova base de cálculo, regras de distribuição dos recursos entre entes federativos. Altera Lei 7.990/89 e Lei 8.001/90.</td>
+              <td>CFEM</td>
+              <td class="td-copy" onclick="copyText('Lei 13.540/2017 — Reforma geral da CFEM: novas alíquotas (minério de ferro 3,5%; ouro 1,5%; outros 3%), nova base de cálculo, regras de distribuição.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Lei 13.575/2017</strong></td><td>2017</td>
+              <td>Cria a Agência Nacional de Mineração (ANM) em substituição ao DNPM. Define competências, estrutura e atribuições da agência reguladora.</td>
+              <td>Todas</td>
+              <td class="td-copy" onclick="copyText('Lei 13.575/2017 — Cria a Agência Nacional de Mineração (ANM) em substituição ao DNPM. Define competências e estrutura da agência reguladora.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Res. ANM 48/2020</strong></td><td>2020</td>
+              <td>Regulamenta o Procedimento Administrativo de Fiscalização (PAF): rito do auto de infração, impugnação, recurso ao CONSUP e efeito suspensivo.</td>
+              <td>Multas</td>
+              <td class="td-copy" onclick="copyText('Resolução ANM 48/2020 — PAF (Procedimento Administrativo de Fiscalização): rito do auto de infração, impugnação (30 dias), recurso ao CONSUP (30 dias, efeito suspensivo).', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Port. ANM 155/2016</strong></td><td>2016</td>
+              <td>Consolidação Normativa do DNPM — compila todas as normas internas do DNPM em 10 Títulos (Pesquisa / Lavra / Registro / Garimpo / Beneficiamento / Direitos / Fiscalização / Arrecadação / Patrimônio / Disposições Finais).</td>
+              <td>Todas</td>
+              <td class="td-copy" onclick="copyText('Portaria ANM 155/2016 — Consolidação Normativa do DNPM. 10 Títulos: I Pesquisa / II Lavra / III Registro / IV Garimpo / V Beneficiamento / VI Direitos / VII Fiscalização / VIII Arrecadação / IX Patrimônio / X Disposições Finais.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Port. ANM 389/2010</strong></td><td>2010</td>
+              <td>Define os indexadores históricos de correção monetária da CFEM por período: BTN (jan-fev/1991) → INPC (mar-dez/1991) → UFIR (1992-2000) → IPCA-15 (2001-2008) → SELIC (a partir dez/2008). Confirmada pela Súmula ANM 08/25.</td>
+              <td>CFEM/TAH/Vistoria</td>
+              <td class="td-copy" onclick="copyText('Portaria ANM 389/2010 — Indexadores de CM da CFEM: BTN (jan-fev/1991) → INPC (mar-dez/1991) → UFIR (jan/1992-dez/2000) → IPCA-15 (jan/2001-03/dez/2008) → SELIC (a partir 04/dez/2008). Confirmada pela Súmula ANM 08/25.', this)">📋</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏛️ Consolidação Normativa DNPM — Portaria 155/2016 (Estrutura)</div>
+      <button class="copy-btn" onclick="copyText('Portaria ANM 155/2016 — Consolidação Normativa DNPM:\nTítulo I — Pesquisa Mineral\nTítulo II — Concessão de Lavra\nTítulo III — Registro de Extração\nTítulo IV — Garimpo e Faiscação\nTítulo V — Beneficiamento e Comercialização\nTítulo VI — Direitos e Obrigações do Titular\nTítulo VII — Fiscalização\nTítulo VIII — Arrecadação (CFEM, TAH, Multas, Taxa de Vistoria)\nTítulo IX — Patrimônio Mineral\nTítulo X — Disposições Finais e Transitórias', this)">Copiar Estrutura</button>
+      <div class="card-body">
+        <div class="grid-2">
+          <div>
+            <p><strong>Título I</strong> — Pesquisa Mineral</p>
+            <p><strong>Título II</strong> — Concessão de Lavra</p>
+            <p><strong>Título III</strong> — Registro de Extração</p>
+            <p><strong>Título IV</strong> — Garimpo e Faiscação</p>
+            <p><strong>Título V</strong> — Beneficiamento e Comercialização</p>
+          </div>
+          <div>
+            <p><strong>Título VI</strong> — Direitos e Obrigações do Titular</p>
+            <p><strong>Título VII</strong> — Fiscalização</p>
+            <p><strong>Título VIII</strong> — <strong>Arrecadação</strong> (CFEM / TAH / Multas / Taxa de Vistoria)</p>
+            <p><strong>Título IX</strong> — Patrimônio Mineral</p>
+            <p><strong>Título X</strong> — Disposições Finais e Transitórias</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JURISPRUDÊNCIA -->
+  <div id="sec-jurisprudencia" class="section">
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">🏛️ Jurisprudência STF / STJ — Precedentes Vinculantes</div>
+      <button class="copy-btn" onclick="copySection('juris-tabela', this)">Copiar Tabela</button>
+      <div class="card-body" id="juris-tabela">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>Precedente</th><th>Tese</th><th>Efeito</th><th></th></tr>
+            <tr>
+              <td><strong>STF RE 228.800/DF</strong><br><small>2001</small></td>
+              <td>CFEM não tem natureza tributária. É receita patrimonial. CTN é inaplicável.</td>
+              <td><span class="badge badge-red">Vinculante</span></td>
+              <td class="td-copy" onclick="copyText('STF, RE 228.800/DF (2001): CFEM não tem natureza tributária. É receita patrimonial — CTN é inaplicável.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>STJ REsp 1.340.553/RS</strong><br><small>Tema 566 — Vinculante</small></td>
+              <td>Prescrição intercorrente em execução fiscal: 1 ano de suspensão + 5 anos de prescrição = 6 anos total. O prazo começa após 1 ano de paralisação por não localização de bens/devedor.</td>
+              <td><span class="badge badge-red">Vinculante CPC 927</span></td>
+              <td class="td-copy" onclick="copyText('STJ, REsp 1.340.553/RS — Tema 566 (vinculante): prescrição intercorrente em execução fiscal = 1 ano de suspensão + 5 anos de prescrição (6 anos total). Começa após 1 ano de paralisação por não localização de bens/devedor.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>STF RE 417.408/SC</strong><br><small>Rep. Geral</small></td>
+              <td>TAH não é taxa tributária — é preço público pela outorga do direito de uso do bem mineral. CTN inaplicável.</td>
+              <td><span class="badge badge-blue">Persuasivo</span></td>
+              <td class="td-copy" onclick="copyText('STF, RE 417.408/SC: TAH não é taxa tributária — é preço público pela outorga do direito de uso do bem mineral. CTN inaplicável.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>STJ — Tema 566</strong><br><small>LEF art. 40</small></td>
+              <td>Na execução fiscal, após 1 ano de suspensão sem localização de bens/devedor, inicia-se o prazo de 5 anos de prescrição intercorrente (6 anos total). O juiz deve intimar o exequente antes de declarar a prescrição.</td>
+              <td><span class="badge badge-red">Vinculante</span></td>
+              <td class="td-copy" onclick="copyText('STJ Tema 566: Na execução fiscal, após 1 ano de suspensão (LEF art. 40 § 2º) sem localização de bens/devedor, inicia prazo de 5 anos de prescrição intercorrente — total: 6 anos. Juiz deve intimar exequente antes de declarar. REsp 1.340.553/RS.', this)">📋</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📌 Teses STJ — Receitas ANM</div>
+      <button class="copy-btn" onclick="copyText('Teses STJ aplicáveis às receitas ANM:\n1. Prescrição intercorrente (Tema 566): 1 ano + 5 anos = 6 anos total em execução fiscal parada\n2. Súmula STJ 393: não é excepcional a prescrição intercorrente em execução fiscal\n3. CPC 927: precedentes do STJ em recursos repetitivos são vinculantes\n4. LEF art. 40: suspensão e reinício do prazo prescricional em execução fiscal', this)">Copiar</button>
+      <div class="card-body">
+        <p><strong>Súmula STJ 393:</strong> A exceção de pré-executividade é admissível na execução fiscal relativamente às matérias conhecíveis de ofício que não demandem dilação probatória.</p>
+        <p style="margin-top:8px"><strong>LEF art. 40:</strong> Suspensão da execução fiscal por 1 ano na ausência de bens → início do prazo de prescrição intercorrente de 5 anos.</p>
+        <p style="margin-top:8px"><strong>CPC 927:</strong> Precedentes do STJ em recursos repetitivos têm caráter vinculante.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CÁLCULOS -->
+  <div id="sec-calculos" class="section">
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">🧮 Indexadores de Correção Monetária (Portaria ANM 389/2010)</div>
+      <button class="copy-btn" onclick="copySection('calc-indexadores', this)">Copiar</button>
+      <div class="card-body" id="calc-indexadores">
+        <div class="alert alert-yellow">Confirmado pela <strong>Súmula ANM 08/25</strong> — vedada a aplicação de outros critérios.</div>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>Período</th><th>Indexador</th><th>Observação</th></tr>
+            <tr><td>Jan/1991 – Fev/1991</td><td><span class="badge badge-yellow">BTN</span></td><td>CR$ 126,8621</td></tr>
+            <tr><td>Mar/1991 – Dez/1991</td><td><span class="badge badge-blue">INPC</span></td><td>—</td></tr>
+            <tr><td>Jan/1992 – Dez/2000</td><td><span class="badge badge-green">UFIR</span></td><td>—</td></tr>
+            <tr><td>Jan/2001 – 03/Dez/2008</td><td><span class="badge badge-purple">IPCA-15</span></td><td>Jan/2001 = 6,01434263% acumulado jan-dez/2000</td></tr>
+            <tr><td>A partir de 04/Dez/2008</td><td><span class="badge badge-red">SELIC</span></td><td>Absorve CM + juros após 60 dias do vencimento</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">💵 Juros Moratórios</div>
+      <button class="copy-btn" onclick="copyText('Juros moratórios CFEM/TAH/Vistoria:\n- Até 10/01/2003: 0,5% ao mês\n- 11/01/2003 a 03/12/2008: 1,0% ao mês\n- A partir de 04/12/2008: SELIC (absorve CM + juros)', this)">Copiar</button>
+      <div class="card-body">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>Período</th><th>Juros</th></tr>
+            <tr><td>Até 10/01/2003</td><td>0,5% ao mês</td></tr>
+            <tr><td>11/01/2003 a 03/12/2008</td><td>1,0% ao mês</td></tr>
+            <tr><td>A partir de 04/12/2008</td><td>SELIC (absorve CM + juros)</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">📊 Multa Moratória</div>
+        <button class="copy-btn" onclick="copyText('Multa moratória:\n- CFEM: 10% (regra geral) / 2% (parcela vencida em parcelamento)\n- TAH: 2% (parcela vencida em parcelamento)\n- Taxa de Vistoria: 2% (parcela vencida em parcelamento)\n- Multas ANM: não há multa moratória adicional', this)">Copiar</button>
+        <div class="card-body">
+          <p><strong>CFEM:</strong> 10% (geral) / 2% (parcela em parcelamento)</p>
+          <p><strong>TAH:</strong> 2% (parcela em parcelamento)</p>
+          <p><strong>Taxa de Vistoria:</strong> 2% (parcela em parcelamento)</p>
+          <p><strong>Multas ANM:</strong> Não há multa moratória adicional</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">⚖️ Encargos Legais (Lei 11.491/09)</div>
+        <button class="copy-btn" onclick="copyText('Encargos legais (Lei 11.491/09 — vigência: a partir 04/12/2008):\n- Regra geral: 20% na inscrição em Dívida Ativa\n- Se pagar/parcelar ANTES do ajuizamento: 10%\nFórmula: Valor Final = Principal + CM + Juros + Multa Moratória + Encargos Legais', this)">Copiar</button>
+        <div class="card-body">
+          <p><strong>Vigência:</strong> A partir de 04/12/2008</p>
+          <p><strong>Regra geral:</strong> <span class="badge badge-red">20%</span> na inscrição em DA</p>
+          <p><strong>Se pagar/parcelar antes do ajuizamento:</strong> <span class="badge badge-green">10%</span></p>
+          <hr class="divider">
+          <p><strong>Fórmula:</strong></p>
+          <p><code>Valor = Principal + CM + Juros + Multa + Encargos</code></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🐍 Script Python — Cálculo de Atualização CFEM</div>
+      <button class="copy-btn" onclick="copySection('script-python', this)">Copiar Script</button>
+      <div class="card-body" id="script-python">
+        <pre><code># Cálculo simplificado — ajuste conforme os dados do caso
+from datetime import date
+
+# DADOS DO CASO
+principal = 10000.00        # valor histórico da CFEM
+data_vencimento = date(2010, 6, 1)
+data_calculo    = date.today()
+
+# ENCARGOS
+multa_moratoria = principal * 0.10   # 10% (CFEM geral)
+encargos_legais = principal * 0.20   # 20% (inscrição em DA)
+
+# CORREÇÃO MONETÁRIA + JUROS:
+# A partir de 04/12/2008: SELIC acumulada absorve CM + juros
+# Consultar taxa SELIC acumulada no período em:
+# https://www.bcb.gov.br/controleinflacao/historicotaxasjuros
+
+# Aplique o fator SELIC acumulado ao principal:
+# fator_selic = 1 + taxa_acumulada_decimal
+# cm_juros = principal * (fator_selic - 1)
+
+print(f"Principal:       R$ {principal:,.2f}")
+print(f"Multa moratória: R$ {multa_moratoria:,.2f}")
+print(f"Encargos legais: R$ {encargos_legais:,.2f}")
+print(f"Subtotal (sem CM+J): R$ {principal + multa_moratoria + encargos_legais:,.2f}")
+print("* Acrescentar CM + Juros (SELIC acumulada) ao principal.")</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESTRATÉGIA -->
+  <div id="sec-estrategia" class="section">
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">🎯 Matriz de Estratégia Processual</div>
+      <button class="copy-btn" onclick="copySection('estrategia-tabela', this)">Copiar</button>
+      <div class="card-body" id="estrategia-tabela">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>Situação</th><th>Estratégia</th><th>Fundamento</th><th></th></tr>
+            <tr>
+              <td>Execução sem garantia, tese documental clara</td>
+              <td><span class="badge badge-yellow">Exceção de Pré-Executividade</span></td>
+              <td>Súmula STJ 393</td>
+              <td class="td-copy" onclick="copyText('Situação: Execução sem garantia, tese documental clara → Estratégia: Exceção de Pré-Executividade (Súmula STJ 393)', this)">📋</td>
+            </tr>
+            <tr>
+              <td>Execução com garantia do juízo</td>
+              <td><span class="badge badge-yellow">Embargos à Execução</span></td>
+              <td>LEF art. 16 — prazo 30 dias da penhora</td>
+              <td class="td-copy" onclick="copyText('Situação: Execução com garantia → Estratégia: Embargos à Execução (LEF art. 16, prazo 30 dias da intimação da penhora)', this)">📋</td>
+            </tr>
+            <tr>
+              <td>Vício no lançamento, antes da execução</td>
+              <td><span class="badge badge-blue">Ação Anulatória + Tutela de Urgência</span></td>
+              <td>CPC 300</td>
+              <td class="td-copy" onclick="copyText('Situação: Vício no lançamento (antes da execução) → Estratégia: Ação Anulatória + Tutela de Urgência (CPC 300)', this)">📋</td>
+            </tr>
+            <tr>
+              <td>Negativa de certidão / exigência ilegal</td>
+              <td><span class="badge badge-blue">Mandado de Segurança</span></td>
+              <td>Lei 12.016/2009 — prazo 120 dias</td>
+              <td class="td-copy" onclick="copyText('Situação: Negativa de certidão/exigência ilegal → Estratégia: Mandado de Segurança (Lei 12.016/2009, prazo 120 dias)', this)">📋</td>
+            </tr>
+            <tr>
+              <td>Auto de Infração no PAF (prazo 30 dias)</td>
+              <td><span class="badge badge-green">Impugnação Administrativa</span></td>
+              <td>Res. ANM 48/2020</td>
+              <td class="td-copy" onclick="copyText('Situação: AI no PAF → Estratégia: Impugnação Administrativa no prazo de 30 dias (Res. ANM 48/2020)', this)">📋</td>
+            </tr>
+            <tr>
+              <td>Decisão PAF desfavorável</td>
+              <td><span class="badge badge-green">Recurso ao CONSUP/ANM</span></td>
+              <td>Res. ANM 48/2020 — 30 dias — efeito suspensivo</td>
+              <td class="td-copy" onclick="copyText('Situação: Decisão PAF desfavorável → Estratégia: Recurso ao CONSUP/ANM (30 dias, efeito suspensivo — Res. ANM 48/2020)', this)">📋</td>
+            </tr>
+            <tr>
+              <td>Sentença desfavorável</td>
+              <td><span class="badge badge-purple">Apelação</span></td>
+              <td>CPC art. 1.009 — 15 dias úteis</td>
+              <td class="td-copy" onclick="copyText('Situação: Sentença desfavorável → Estratégia: Apelação (CPC art. 1.009, prazo 15 dias úteis)', this)">📋</td>
+            </tr>
+            <tr>
+              <td>Acórdão contrário ao Tema 566 STJ</td>
+              <td><span class="badge badge-purple">Recurso Especial</span></td>
+              <td>CPC art. 1.029 — prequestionamento</td>
+              <td class="td-copy" onclick="copyText('Situação: Acórdão contrário ao Tema 566 STJ → Estratégia: Recurso Especial prequestionado (CPC art. 1.029)', this)">📋</td>
+            </tr>
+            <tr>
+              <td>Cancelamento indevido de título minerário</td>
+              <td><span class="badge badge-blue">Mandado de Segurança com Liminar</span></td>
+              <td>Lei 12.016/2009 — urgência</td>
+              <td class="td-copy" onclick="copyText('Situação: Cancelamento indevido de título minerário → Estratégia: Mandado de Segurança com Liminar (Lei 12.016/2009)', this)">📋</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Requisitos da CDA — LEF art. 2º, § 5º</div>
+      <button class="copy-btn" onclick="copyText('Requisitos da CDA (LEF art. 2º, § 5º):\n1. Nome do devedor e dos co-responsáveis\n2. Domicílio ou residência dos devedores\n3. Valor originário da dívida, forma de cálculo e fundamento legal\n4. Data e origem da dívida\n5. Indicação de livros e folhas do registro (se for o caso)\n6. CNPJ/CPF do devedor\n7. Fundamento legal da dívida\nVício em qualquer desses requisitos = nulidade da CDA → extinção da execução fiscal', this)">Copiar</button>
+      <div class="card-body">
+        <p>☐ Nome do devedor e co-responsáveis</p>
+        <p>☐ Domicílio/residência do devedor</p>
+        <p>☐ Valor originário + forma de cálculo + fundamento legal</p>
+        <p>☐ Data e origem da dívida</p>
+        <p>☐ CNPJ/CPF do devedor</p>
+        <p>☐ Fundamento legal da dívida</p>
+        <div class="alert alert-red" style="margin-top:10px">Vício em qualquer requisito = nulidade da CDA → extinção da execução fiscal!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div id="sec-checklist" class="section">
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">✅ Checklist CFEM</div>
+        <button class="copy-btn" onclick="copyText('Checklist CFEM:\n[ ] Natureza = preço público (RE 228.800/DF — não tributo, CTN inaplicável)\n[ ] Decadência 10 anos (Lei 9.636/98 + Lei 10.852/2004)\n[ ] Prescrição 5 anos do lançamento\n[ ] Prescrição intercorrente se execução > 6 anos parada (Tema 566 STJ)\n[ ] Indexadores CM por período (Portaria ANM 389/2010 — Súmula ANM 08/25)\n[ ] Encargos legais (20% DA / 10% antes do ajuizamento)\n[ ] CDA: requisitos LEF art. 2º, § 5º\n[ ] Frete pré-venda: não deduzido (Súmula ANM 09/25)\n[ ] Consumo próprio: CFEM incide (Súmula ANM 10/25)\n[ ] Pelotização: CFEM incide (Súmula ANM 14/26)', this)">Copiar</button>
+        <div class="card-body">
+          <p>☐ Natureza = preço público (RE 228.800/DF)</p>
+          <p>☐ Decadência 10 anos (Lei 9.636/98 + Lei 10.852/2004)</p>
+          <p>☐ Prescrição 5 anos do lançamento</p>
+          <p>☐ P. intercorrente se execução > 6 anos (Tema 566 STJ)</p>
+          <p>☐ Indexadores CM por período (Portaria ANM 389/2010)</p>
+          <p>☐ Encargos legais (20% / 10%)</p>
+          <p>☐ CDA: requisitos LEF art. 2º, § 5º</p>
+          <p>☐ Frete pré-venda: NÃO deduzir (Súmula ANM 09/25)</p>
+          <p>☐ Consumo próprio: CFEM incide (Súmula ANM 10/25)</p>
+          <p>☐ Pelotização: CFEM incide (Súmula ANM 14/26)</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">✅ Checklist TAH</div>
+        <button class="copy-btn" onclick="copyText('Checklist TAH:\n[ ] Fase do título e ano de competência corretos\n[ ] Área conferida no SIGMINE\n[ ] Título ativo no período de apuração\n[ ] Decadência 10 anos (Lei 9.636/98 + Lei 10.852/2004)\n[ ] Prescrição 5 anos do lançamento\n[ ] P. intercorrente se execução > 6 anos (Tema 566 STJ)\n[ ] Indexadores CM por período (Portaria ANM 389/2010)\n[ ] Encargos legais (20% / 10%)\n[ ] CDA: requisitos LEF art. 2º, § 5º', this)">Copiar</button>
+        <div class="card-body">
+          <p>☐ Fase do título e ano de competência corretos</p>
+          <p>☐ Área conferida no SIGMINE</p>
+          <p>☐ Título ativo no período de apuração</p>
+          <p>☐ Decadência 10 anos</p>
+          <p>☐ Prescrição 5 anos do lançamento</p>
+          <p>☐ P. intercorrente se execução > 6 anos</p>
+          <p>☐ Indexadores CM por período</p>
+          <p>☐ Encargos legais (20% / 10%)</p>
+          <p>☐ CDA: requisitos LEF art. 2º, § 5º</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">✅ Checklist Multas ANM</div>
+        <button class="copy-btn" onclick="copyText('Checklist Multas ANM:\n[ ] PAF: rito da Res. ANM 48/2020 foi observado\n[ ] AI notificado dentro do prazo de 5 anos do fato (Lei 9.873/99)\n[ ] Impugnação administrativa: 30 dias\n[ ] Recurso ao CONSUP no prazo (30 dias — efeito suspensivo)\n[ ] Proporcionalidade da multa (Lei 9.784/99, art. 2º)\n[ ] P. intercorrente se execução > 6 anos (Tema 566 STJ)\n[ ] CDA: requisitos LEF art. 2º, § 5º', this)">Copiar</button>
+        <div class="card-body">
+          <p>☐ PAF: rito da Res. ANM 48/2020 observado</p>
+          <p>☐ Prescrição punitiva 5 anos (Lei 9.873/99)</p>
+          <p>☐ Impugnação administrativa: 30 dias</p>
+          <p>☐ Recurso ao CONSUP no prazo (30 dias)</p>
+          <p>☐ Efeito suspensivo do recurso garantido</p>
+          <p>☐ Proporcionalidade da multa (Lei 9.784/99, art. 2º)</p>
+          <p>☐ P. intercorrente se execução > 6 anos</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">✅ Checklist Taxa de Vistoria</div>
+        <button class="copy-btn" onclick="copyText('Checklist Taxa de Vistoria:\n[ ] Vistoria efetivamente realizada (prova documental)\n[ ] Valores × tabela de diárias (Decreto 7.655/2011)\n[ ] Não há duplicidade com o PAF\n[ ] Decadência 10 anos (Lei 9.636/98 + Lei 10.852/2004)\n[ ] Prescrição 5 anos do lançamento\n[ ] P. intercorrente se execução > 6 anos (Tema 566 STJ)\n[ ] CDA: requisitos LEF art. 2º, § 5º', this)">Copiar</button>
+        <div class="card-body">
+          <p>☐ Vistoria efetivamente realizada</p>
+          <p>☐ Valores × tabela de diárias (Decreto 7.655/2011)</p>
+          <p>☐ Não há duplicidade com PAF</p>
+          <p>☐ Decadência 10 anos</p>
+          <p>☐ Prescrição 5 anos do lançamento</p>
+          <p>☐ P. intercorrente se execução > 6 anos</p>
+          <p>☐ CDA: requisitos LEF art. 2º, § 5º</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANTI-PADRÕES -->
+  <div id="sec-antipadroes" class="section">
+    <div class="card">
+      <div class="card-title">⛔ Anti-Padrões — NUNCA faça isso</div>
+      <button class="copy-btn" onclick="copySection('antipadroes-list', this)">Copiar Lista</button>
+      <div class="card-body" id="antipadroes-list">
+        <div class="alert alert-red" style="margin-bottom:12px">Erros que comprometem a peça e a estratégia processual.</div>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>Anti-Padrão</th><th>Fundamento</th></tr>
+            <tr><td>❌ Chamar CFEM, TAH ou Taxa de Vistoria de <strong>tributo</strong></td><td>RE 228.800/DF — CTN é inaplicável</td></tr>
+            <tr><td>❌ Aplicar <strong>CTN arts. 173 e 174</strong> para qualquer receita da ANM</td><td>RE 228.800/DF — regime é o da Lei 9.636/98</td></tr>
+            <tr><td>❌ Aplicar <strong>Decreto 20.910/32</strong> contra a ANM</td><td>Aplica-se apenas quando a Fazenda é devedora</td></tr>
+            <tr><td>❌ Alegar <strong>prescrição intercorrente administrativa</strong></td><td>Súmula ANM 03/25 — não corre na fase administrativa</td></tr>
+            <tr><td>❌ <strong>Deduzir frete pré-venda</strong> da base da CFEM</td><td>Súmula ANM 09/25 — vedado</td></tr>
+            <tr><td>❌ Afastar CFEM sobre <strong>pelotização</strong></td><td>Súmula ANM 14/26 — é beneficiamento, não transformação industrial</td></tr>
+            <tr><td>❌ Afastar CFEM sobre <strong>consumo próprio</strong></td><td>Súmula ANM 10/25 — incide sobre consumo próprio</td></tr>
+            <tr><td>❌ Afastar CFEM sobre <strong>envase de água mineral</strong></td><td>Súmulas ANM 07/25 e 12/25 — CFEM incide</td></tr>
+            <tr><td>❌ Propor <strong>embargos sem garantia do juízo</strong></td><td>LEF art. 16, § 1º — inadmissível</td></tr>
+            <tr><td>❌ <strong>Omitir análise de prescrição intercorrente</strong> em execuções paradas > 6 anos</td><td>Tema 566 STJ — tese vinculante favorável ao devedor</td></tr>
+            <tr><td>❌ Confundir <strong>prescrição punitiva</strong> (5 anos multas) com <strong>decadência</strong> (10 anos CFEM/TAH/Vistoria)</td><td>Regimes jurídicos distintos</td></tr>
+            <tr><td>❌ Usar <strong>indexador errado</strong> por período histórico no cálculo</td><td>Portaria ANM 389/2010 — Súmula ANM 08/25</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PEÇAS PROCESSUAIS -->
+  <div id="sec-pecas" class="section">
+
+    <!-- índice rápido -->
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">📄 Peças Processuais — Execução Fiscal ANM</div>
+      <div class="card-body">
+        <div class="alert alert-blue" style="margin-bottom:16px">Modelos anonimizados. Substitua os campos <strong>[___]</strong> com os dados do caso concreto antes de usar. Clique em <strong>📋 Copiar</strong> para copiar o texto completo.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <a href="#peca-card-embargos" class="peca-jump">⚖️ Embargos à Execução Fiscal</a>
+          <a href="#peca-card-excecao"  class="peca-jump">🛡️ Exceção de Pré-Executividade</a>
+          <a href="#peca-card-cadin"    class="peca-jump">🔒 Suspensão CADIN</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ① EMBARGOS À EXECUÇÃO FISCAL -->
+    <div class="peca-card" id="peca-card-embargos">
+      <div class="peca-header">
+        <div>
+          <span class="peca-badge">LEF art. 16</span>
+          <span class="peca-badge peca-badge-green">Requer garantia do juízo</span>
+          <span class="peca-badge peca-badge-amber">Prazo: 30 dias úteis</span>
+          <div class="peca-title">⚖️ Embargos à Execução Fiscal</div>
+          <div class="peca-sub">CFEM / TAH / Taxa de Vistoria / Multa ANM</div>
+        </div>
+        <button class="peca-copy-btn" onclick="pecaCopy('ta-embargos', this)">📋 Copiar peça</button>
+      </div>
+      <textarea id="ta-embargos" class="peca-textarea" spellcheck="false" onclick="this.select()">EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA ___ VARA DA SEÇÃO JUDICIÁRIA DE [COMARCA/UF]
+
+[NOME DO EMBARGANTE], pessoa jurídica de direito privado, inscrita no CNPJ sob nº ___, com sede em ___, neste ato representada na forma de seu contrato/estatuto social, por seus advogados subscritos (procuração anexa — doc. ___), com endereço para intimações em ___, vem, respeitosamente, à presença de Vossa Excelência, nos autos da Execução Fiscal nº ___, promovida pela AGÊNCIA NACIONAL DE MINERAÇÃO — ANM, com fundamento no art. 16 da Lei nº 6.830/80 (LEF), apresentar
+
+EMBARGOS À EXECUÇÃO FISCAL
+
+com os fundamentos a seguir expostos.
+
+I — DA ADMISSIBILIDADE — GARANTIA DO JUÍZO E TEMPESTIVIDADE
+
+O juízo encontra-se integralmente garantido por [penhora / seguro-garantia / fiança bancária], conforme [doc. ___], aceito por decisão de fl. ___. A intimação da garantia ocorreu em ___; os presentes embargos são apresentados dentro do prazo legal de 30 (trinta) dias úteis (LEF, art. 16, §1º, c/c CPC, art. 219).
+
+II — DO EFEITO SUSPENSIVO
+
+Requer-se a suspensão da execução nos termos dos arts. 18 e 19 da LEF, porquanto os embargos são relevantes e a garantia encontra-se integralizada, evitando-se lesão grave e de difícil reparação ao Embargante.
+
+III — DA NULIDADE DA CERTIDÃO DE DÍVIDA ATIVA (se aplicável)
+
+A CDA nº ___ padece de vício de nulidade por ausência/incorreção dos seguintes requisitos obrigatórios (LEF, art. 2º, §5º): [indicar o vício — ex.: ausência de indicação da forma de cálculo / período de referência / fundamento legal específico / indexador aplicado].
+
+IV — DA PRESCRIÇÃO / DECADÊNCIA (se aplicável)
+
+O fato gerador da CFEM/TAH objeto da CDA é datado de ___. O lançamento definitivo ocorreu em ___. O prazo prescricional é de 5 (cinco) anos do lançamento definitivo (Lei 9.636/98, art. 47). A presente execução foi ajuizada em ___, quando já consumada a prescrição. Alternativamente, o prazo decadencial de 10 (dez) anos do fato gerador (Lei 9.636/98, art. 47) findou em ___, antes da constituição do crédito.
+
+V — DA PRESCRIÇÃO INTERCORRENTE (LEF art. 40 + Tema 566 STJ)
+
+Subsidiariamente, verifica-se que a presente execução permanece sem movimentação útil desde ___. Nos termos do art. 40 da LEF e do Tema 566 do STJ (REsp 1.340.553/RS, rel. Min. Mauro Campbell Marques — recurso repetitivo vinculante), o prazo de suspensão automática de 1 (um) ano findou em ___, iniciando-se imediatamente o prazo prescricional intercorrente de 5 (cinco) anos, que expirou em ___. Em nenhum momento houve efetiva constrição de bens. A mera expedição de ofícios a órgãos de localização patrimonial não interrompe a prescrição intercorrente (Tema 566 STJ, tese 4). Requer-se o reconhecimento da prescrição intercorrente e a extinção da execução com base no art. 40, §4º, da LEF.
+
+VI — DO EXCESSO DE EXECUÇÃO / ILEGALIDADE DA BASE DE CÁLCULO
+
+A CDA indica valor de R$ ___. Contudo, o valor correto, calculado com os indexadores da Portaria ANM nº 389/2010 (BTN/INPC/UFIR/IPCA-15/SELIC) e com os encargos legais da Lei nº 11.491/2009 (10% pré-ajuizamento / 20% pós-ajuizamento), é de R$ ___ (memória de cálculo — doc. ___).
+
+Ademais, a base de cálculo da CFEM foi apurada em desconformidade com a lei: a IN DNPM nº 06/2000 pretendeu restringir a dedução de ICMS, PIS e COFINS apenas aos valores efetivamente recolhidos, o que é ilegal, pois a Lei nº 7.990/89 e a Lei nº 13.540/2017 autorizam a dedução dos tributos incidentes sobre a operação, independentemente do efetivo recolhimento. O TRF da 1ª Região reconheceu expressamente a ilegalidade da IN DNPM nº 06/2000 (Apelação nº 0043545-38.2003.4.01.3400). Requer-se a realização de perícia contábil para apuração do excesso de execução.
+
+VII — DOS PEDIDOS
+
+Ante o exposto, requer-se:
+a) O recebimento dos presentes embargos com efeito suspensivo (LEF, arts. 18 e 19);
+b) A decretação da nulidade da CDA nº ___ por vício formal (LEF, art. 2º, §5º);
+c) O reconhecimento da prescrição / decadência / prescrição intercorrente, com extinção da execução (LEF, art. 40, §4º);
+d) Alternativamente, o reconhecimento do excesso de execução, com redução do valor exequendo para R$ ___;
+e) A produção de prova pericial contábil para apuração do valor correto do débito;
+f) A condenação da Embargada nas custas processuais e honorários advocatícios.
+
+Dá-se à causa o valor de R$ ___.
+
+[Local], ___ de ___________ de ___.
+
+___________________________
+[Nome do Advogado(a)]
+OAB/__ nº ___</textarea>
+    </div>
+
+    <!-- ② EXCEÇÃO DE PRÉ-EXECUTIVIDADE -->
+    <div class="peca-card" id="peca-card-excecao">
+      <div class="peca-header">
+        <div>
+          <span class="peca-badge">Súmula STJ 393</span>
+          <span class="peca-badge peca-badge-green">Sem garantia do juízo</span>
+          <span class="peca-badge peca-badge-amber">Sem prazo</span>
+          <div class="peca-title">🛡️ Exceção de Pré-Executividade</div>
+          <div class="peca-sub">Prescrição intercorrente — matéria de ordem pública</div>
+        </div>
+        <button class="peca-copy-btn" onclick="pecaCopy('ta-excecao', this)">📋 Copiar peça</button>
+      </div>
+      <textarea id="ta-excecao" class="peca-textarea" spellcheck="false" onclick="this.select()">EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA ___ VARA DA SEÇÃO JUDICIÁRIA DE [COMARCA/UF]
+
+[NOME DO EXECUTADO], pessoa jurídica de direito privado, inscrita no CNPJ sob nº ___, nos autos da Execução Fiscal nº ___, promovida pela AGÊNCIA NACIONAL DE MINERAÇÃO — ANM, por seus advogados subscritos, sem necessidade de garantia do juízo, vem apresentar
+
+EXCEÇÃO DE PRÉ-EXECUTIVIDADE
+
+com fundamento na Súmula nº 393 do STJ e no art. 40 da Lei nº 6.830/80 (LEF), requerendo a extinção da presente execução por prescrição intercorrente.
+
+I — CABIMENTO
+
+A Exceção de Pré-Executividade é instrumento de defesa admitido pela jurisprudência consolidada quando a matéria arguida for conhecível de ofício e não exigir dilação probatória (Súmula STJ 393). A prescrição intercorrente é matéria de ordem pública, reconhecível de ofício, que pode ser demonstrada por simples certidão de andamento processual — dispensando garantia do juízo.
+
+II — DA NATUREZA DO CRÉDITO EXEQUENDO
+
+O crédito objeto da CDA nº ___ é a CFEM [ou TAH / Taxa de Vistoria], de natureza patrimonial (não tributária), conforme assentado pelo STF no RE 228.800/DF (2001). O prazo prescricional aplicável é de 5 (cinco) anos do lançamento definitivo (Lei nº 9.636/98, art. 47), e não o prazo tributário do CTN — que é inaplicável a receitas patrimoniais.
+
+III — DA PRESCRIÇÃO INTERCORRENTE — TEMA 566 STJ (VINCULANTE)
+
+3.1. O crédito objeto da CDA nº ___ foi lançado em ___ e inscrito em dívida ativa em ___. A execução foi ajuizada em ___.
+
+3.2. Desde ___ (data do último ato processual útil), a execução encontra-se paralisada, sem localização de bens penhoráveis e sem efetiva constrição patrimonial (conforme certidão de andamento — doc. ___).
+
+3.3. Nos termos do art. 40 da LEF e do Tema 566 do STJ (REsp 1.340.553/RS, rel. Min. Mauro Campbell Marques — recurso repetitivo), as teses vinculantes estabelecem:
+— Tese 1: O prazo de suspensão de 1 (um) ano (LEF, art. 40, §§ 1º e 2º) é automático, independendo de decisão judicial expressa.
+— Tese 2: Após o ano de suspensão, inicia-se automaticamente o prazo prescricional intercorrente de 5 (cinco) anos.
+— Tese 4: A mera expedição de ofícios a órgãos para localização de bens NÃO interrompe a prescrição intercorrente.
+— Tese 5: Somente a efetiva constrição de bens (penhora real, depósito) interrompe o prazo.
+
+3.4. No presente caso, a suspensão automática iniciou-se em ___ e findou em ___. O prazo prescricional de 5 anos findou em ___. Não houve qualquer constrição efetiva de bens. Logo, a prescrição intercorrente consumou-se em ___.
+
+3.5. A jurisprudência aplica o Tema 566 STJ ao crédito de CFEM: TRF 1ª Região, Subseção Judiciária de Irecê/BA, Execução Fiscal de CFEM — sentença reconhecendo a prescrição intercorrente via exceção de pré-executividade (doc. ___).
+
+Súmula STJ 314: "Em execução fiscal, não localizados bens penhoráveis, suspende-se o processo por um ano, findo o qual se inicia o prazo da prescrição quinquenal intercorrente."
+
+IV — DO PEDIDO
+
+Ante o exposto, requer:
+a) O recebimento da presente Exceção de Pré-Executividade, com determinação de suspensão dos atos executivos até o julgamento;
+b) Após ouvida a Exequente (LEF, art. 40, §4º), a decretação da prescrição intercorrente, com extinção da Execução Fiscal nº ___, nos termos do art. 40, §4º, da LEF c/c Tema 566 do STJ;
+c) A condenação da Exequente nas custas e honorários advocatícios.
+
+[Local], ___ de ___________ de ___.
+
+___________________________
+[Nome do Advogado(a)]
+OAB/__ nº ___</textarea>
+    </div>
+
+    <!-- ③ PETIÇÃO SUSPENSÃO CADIN -->
+    <div class="peca-card" id="peca-card-cadin">
+      <div class="peca-header">
+        <div>
+          <span class="peca-badge">Lei 10.522/02 art. 7º</span>
+          <span class="peca-badge peca-badge-green">Execução garantida/suspensa</span>
+          <span class="peca-badge peca-badge-amber">Astreinte 24h</span>
+          <div class="peca-title">🔒 Petição de Suspensão de Inscrição no CADIN</div>
+          <div class="peca-sub">Garantia do juízo aceita — inscrição indevida</div>
+        </div>
+        <button class="peca-copy-btn" onclick="pecaCopy('ta-cadin', this)">📋 Copiar peça</button>
+      </div>
+      <textarea id="ta-cadin" class="peca-textarea" spellcheck="false" onclick="this.select()">EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA ___ VARA DA SEÇÃO JUDICIÁRIA DE [COMARCA/UF]
+
+[NOME DO EXECUTADO], pessoa jurídica de direito privado, inscrita no CNPJ sob nº ___, nos autos da Execução Fiscal nº ___, promovida pela AGÊNCIA NACIONAL DE MINERAÇÃO — ANM, por seus advogados subscritos, vem respeitosamente requerer a
+
+SUSPENSÃO DA INSCRIÇÃO NO CADIN
+
+com fundamento no art. 7º da Lei nº 10.522/2002 e nos arts. 9º, 18 e 19 da LEF, pelos motivos a seguir expostos.
+
+I — DOS FATOS
+
+A presente execução encontra-se integralmente garantida por [seguro-garantia, apólice nº ___ / penhora de bens, doc. ___], aceito(a) por Vossa Excelência por decisão proferida em ___ (fl. ___). Nos termos do art. 9º da LEF, a garantia integral do juízo importa na suspensão da exequibilidade do crédito.
+
+Não obstante, a ANM/PGFN mantém o Executado inscrito no Cadastro Informativo de Créditos não Quitados do Setor Público Federal — CADIN, referente à CDA nº ___ (certidão CADIN — doc. ___), causando graves prejuízos, impedindo o Executado de [participar de licitações públicas / obter financiamentos bancários / celebrar contratos com o Poder Público / renovar certidões negativas].
+
+II — DO DIREITO
+
+O art. 7º da Lei nº 10.522/2002 é expresso ao vedar a inscrição ou manutenção no CADIN durante o período em que a exigibilidade do crédito estiver suspensa:
+
+"Art. 7º Somente serão incluídos no CADIN os responsáveis por créditos [...] cuja exigibilidade não esteja suspensa."
+
+A garantia do juízo, aceita por este MM. Juízo, importa na suspensão da execução (LEF, arts. 9º e 18), razão pela qual a manutenção da inscrição no CADIN é manifestamente ilegal e causa dano concreto e imediato ao Executado.
+
+III — DO PEDIDO
+
+Ante o exposto, requer:
+a) A determinação, em prazo de 24 (vinte e quatro) horas, à ANM e à PGFN, para que suspendam/cancelem a inscrição do Executado no CADIN referente à CDA nº ___, sob pena de multa diária (astreinte) de R$ ___ por dia de descumprimento;
+b) A intimação eletrônica da ANM/PGFN para comprovação do cumprimento da determinação em 48 horas;
+c) A expedição de ofício à instituição financeira [se aplicável] informando a suspensão, para desbloqueio de acesso a crédito.
+
+[Local], ___ de ___________ de ___.
+
+___________________________
+[Nome do Advogado(a)]
+OAB/__ nº ___</textarea>
+    </div>
+
+  </div>
+
+  <!-- CONFIGURAÇÕES LLM -->
+  <div id="sec-config" class="section">
+    <div class="card">
+      <div class="card-title">⚙️ Configurações — Assistente de IA</div>
+      <div class="card-body">
+        <p style="color:#6b7280;margin-bottom:20px">Escolha o modelo de linguagem que o chat usará. As chaves de API são salvas somente neste navegador (localStorage) e enviadas de forma segura ao servidor via HTTPS.</p>
+
+        <!-- PROVIDER CARDS -->
+        <div id="llm-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+
+          <label class="llm-card" data-provider="claude">
+            <input type="radio" name="llm-provider" value="claude" style="display:none">
+            <div class="llm-card-inner">
+              <div class="llm-logo">🟠</div>
+              <div>
+                <strong>Claude</strong>
+                <small>Anthropic — já configurado</small>
+              </div>
+              <div class="llm-check">✓</div>
+            </div>
+          </label>
+
+          <label class="llm-card" data-provider="chatgpt">
+            <input type="radio" name="llm-provider" value="chatgpt" style="display:none">
+            <div class="llm-card-inner">
+              <div class="llm-logo">🟢</div>
+              <div>
+                <strong>ChatGPT</strong>
+                <small>OpenAI</small>
+              </div>
+              <div class="llm-check">✓</div>
+            </div>
+          </label>
+
+          <label class="llm-card" data-provider="gemini">
+            <input type="radio" name="llm-provider" value="gemini" style="display:none">
+            <div class="llm-card-inner">
+              <div class="llm-logo">🔵</div>
+              <div>
+                <strong>Gemini</strong>
+                <small>Google AI</small>
+              </div>
+              <div class="llm-check">✓</div>
+            </div>
+          </label>
+
+          <label class="llm-card" data-provider="grok">
+            <input type="radio" name="llm-provider" value="grok" style="display:none">
+            <div class="llm-card-inner">
+              <div class="llm-logo">⚫</div>
+              <div>
+                <strong>Grok</strong>
+                <small>xAI</small>
+              </div>
+              <div class="llm-check">✓</div>
+            </div>
+          </label>
+
+        </div>
+
+        <!-- FIELDS PER PROVIDER -->
+        <div id="cfg-claude" class="cfg-block">
+          <div class="alert alert-blue">Claude está pré-configurado no servidor. Nenhuma chave necessária.</div>
+          <label class="cfg-label">Modelo</label>
+          <select id="cfg-claude-model" class="cfg-input">
+            <option value="claude-haiku-4-5-20251001">Claude Haiku 4.5 (rápido)</option>
+            <option value="claude-sonnet-4-6">Claude Sonnet 4.6 (recomendado)</option>
+            <option value="claude-opus-4-7">Claude Opus 4.7 (mais capaz)</option>
+          </select>
+        </div>
+
+        <div id="cfg-chatgpt" class="cfg-block" style="display:none">
+          <label class="cfg-label">Chave API OpenAI</label>
+          <div class="cfg-key-row">
+            <input type="password" id="cfg-chatgpt-key" class="cfg-input" placeholder="sk-..." autocomplete="off">
+            <button class="cfg-eye" onclick="toggleKey('cfg-chatgpt-key', this)">👁</button>
+          </div>
+          <label class="cfg-label" style="margin-top:10px">Modelo</label>
+          <select id="cfg-chatgpt-model" class="cfg-input">
+            <option value="gpt-4o-mini">GPT-4o mini (rápido)</option>
+            <option value="gpt-4o">GPT-4o (recomendado)</option>
+            <option value="gpt-4-turbo">GPT-4 Turbo</option>
+            <option value="o3-mini">o3-mini (raciocínio)</option>
+          </select>
+        </div>
+
+        <div id="cfg-gemini" class="cfg-block" style="display:none">
+          <label class="cfg-label">Chave API Google AI</label>
+          <div class="cfg-key-row">
+            <input type="password" id="cfg-gemini-key" class="cfg-input" placeholder="AIza..." autocomplete="off">
+            <button class="cfg-eye" onclick="toggleKey('cfg-gemini-key', this)">👁</button>
+          </div>
+          <label class="cfg-label" style="margin-top:10px">Modelo</label>
+          <select id="cfg-gemini-model" class="cfg-input">
+            <option value="gemini-2.0-flash">Gemini 2.0 Flash (rápido)</option>
+            <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
+            <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+          </select>
+        </div>
+
+        <div id="cfg-grok" class="cfg-block" style="display:none">
+          <label class="cfg-label">Chave API xAI</label>
+          <div class="cfg-key-row">
+            <input type="password" id="cfg-grok-key" class="cfg-input" placeholder="xai-..." autocomplete="off">
+            <button class="cfg-eye" onclick="toggleKey('cfg-grok-key', this)">👁</button>
+          </div>
+          <label class="cfg-label" style="margin-top:10px">Modelo</label>
+          <select id="cfg-grok-model" class="cfg-input">
+            <option value="grok-3-mini">Grok 3 Mini (rápido)</option>
+            <option value="grok-3">Grok 3</option>
+          </select>
+        </div>
+
+        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="copy-btn" style="background:var(--primary);color:#fff;padding:10px 24px;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600" onclick="cfgSave()">💾 Salvar Configuração</button>
+          <button class="copy-btn" style="background:#3b82f6;color:#fff;padding:10px 24px;border:none;border-radius:8px;cursor:pointer;font-size:14px" onclick="cfgTest()">🔌 Testar Conexão</button>
+          <button class="copy-btn" style="background:#6b7280;color:#fff;padding:10px 24px;border:none;border-radius:8px;cursor:pointer;font-size:14px" onclick="cfgReset()">↩ Restaurar Padrão</button>
+        </div>
+
+        <div id="cfg-status" style="margin-top:14px;font-size:13px;color:#059669;display:none"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GESTÃO DE USUÁRIOS (Admin) -->
+  <div id="sec-admin" class="section">
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-title">👥 Gestão de Usuários</div>
+      <div class="card-body">
+        <p style="color:var(--muted);margin-bottom:0;font-size:13px">Apenas o administrador tem acesso a este painel. Adicione ou remova usuários que podem fazer login na plataforma.</p>
+      </div>
+    </div>
+
+    <!-- ADD USER FORM -->
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-title">➕ Adicionar Novo Usuário</div>
+      <div class="card-body">
+        <form onsubmit="adminAddUser(event)" style="display:flex;flex-direction:column;gap:14px">
+          <div class="grid-2">
+            <div>
+              <label class="cfg-label">Nome completo</label>
+              <input type="text" id="adm-new-name" class="cfg-input" placeholder="João Silva" required>
+            </div>
+            <div>
+              <label class="cfg-label">E-mail de acesso</label>
+              <input type="email" id="adm-new-email" class="cfg-input" placeholder="joao@email.com" required>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div>
+              <label class="cfg-label">Senha de acesso</label>
+              <div class="cfg-key-row">
+                <input type="password" id="adm-new-pass" class="cfg-input" placeholder="Mínimo 6 caracteres" required minlength="6" autocomplete="new-password">
+                <button type="button" class="cfg-eye" onclick="toggleKey('adm-new-pass',this)">👁</button>
+              </div>
+            </div>
+            <div>
+              <label class="cfg-label">Confirmar senha</label>
+              <div class="cfg-key-row">
+                <input type="password" id="adm-new-pass2" class="cfg-input" placeholder="Repita a senha" required minlength="6" autocomplete="new-password">
+                <button type="button" class="cfg-eye" onclick="toggleKey('adm-new-pass2',this)">👁</button>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <input type="checkbox" id="adm-send-email" checked style="width:16px;height:16px;accent-color:var(--accent)">
+            <label for="adm-send-email" style="font-size:13px;color:var(--text);cursor:pointer">Enviar e-mail de convite com acesso ao usuário</label>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+            <button type="submit" id="adm-add-btn" style="background:var(--accent);color:#0a0e1a;border:none;border-radius:8px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer">+ Adicionar Usuário</button>
+            <div id="adm-add-status" style="font-size:13px"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- USER LIST -->
+    <div class="card">
+      <div class="card-title" style="display:flex;align-items:center;justify-content:space-between">
+        <span>📋 Usuários Cadastrados</span>
+        <button onclick="adminLoadUsers()" style="background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:12px;color:var(--muted);cursor:pointer">↻ Atualizar</button>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Perfil</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="admin-user-tbody">
+            <tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Clique em "Gestão de Usuários" para carregar.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div id="toast">✓ Copiado!</div>
+
+<!-- CHAT FAB -->
+<button id="chat-fab" onclick="chatToggle()" aria-label="Abrir assistente jurídico">
+  ⚖️
+  <span class="badge-dot"></span>
+</button>
+
+<!-- CHAT PANEL -->
+<div id="chat-panel" role="dialog" aria-label="Assistente Jurídico-Mineral">
+  <div id="chat-head">
+    <div id="chat-avatar">⚖️</div>
+    <div id="chat-head-info">
+      <strong>⛏️ Assistente Jurídico-Mineral <span id="chat-provider-badge" class="llm-badge">Claude</span></strong>
+      <span>● Online — Especialista em Direito Minerário</span>
+    </div>
+    <button id="chat-clear" onclick="chatClear()" title="Limpar conversa">🗑</button>
+    <button id="chat-close" onclick="chatToggle()" aria-label="Fechar">✕</button>
+  </div>
+
+  <div id="chat-messages"></div>
+
+  <div id="chat-quick">
+    <div class="chat-quick-label">Perguntas frequentes</div>
+    <div class="chat-quick-list">
+      <button class="chat-quick-btn" onclick="chatSend('Qual a alíquota de CFEM para minério de ferro?')">Alíquota CFEM ferro</button>
+      <button class="chat-quick-btn" onclick="chatSend('Qual o prazo decadencial da CFEM?')">Prazo decadencial</button>
+      <button class="chat-quick-btn" onclick="chatSend('O frete é dedutível da base de cálculo da CFEM?')">Frete dedutível?</button>
+      <button class="chat-quick-btn" onclick="chatSend('O que diz a Súmula ANM 03/25?')">Súmula 03/25</button>
+      <button class="chat-quick-btn" onclick="chatSend('Explique a prescrição intercorrente na execução fiscal')">Prescrição intercorrente</button>
+      <button class="chat-quick-btn" onclick="chatSend('Pelotização incide CFEM?')">Pelotização</button>
+    </div>
+  </div>
+
+  <form id="chat-form" onsubmit="return false;">
+    <textarea id="chat-input" placeholder="Pergunte sobre CFEM, TAH, Multas ANM, prazos, súmulas..." rows="1"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();chatSend()}"></textarea>
+    <button id="chat-send" onclick="chatSend()" type="button" aria-label="Enviar">➤</button>
+  </form>
+</div>
+
+<script>
+// ── NAVEGAÇÃO ──
+const sections = ['home','principios','cfem','tah','multas','vistoria','sumulas','legislacao','jurisprudencia','calculos','estrategia','checklist','antipadroes','pecas','config','admin'];
+const titles = {
+  home: 'Início', principios: 'Princípios Jurídicos', cfem: 'CFEM',
+  tah: 'TAH', multas: 'Multas ANM', vistoria: 'Taxa de Vistoria',
+  sumulas: 'Súmulas ANM', legislacao: 'Legislação', jurisprudencia: 'Jurisprudência',
+  calculos: 'Cálculos', estrategia: 'Estratégia Processual',
+  checklist: 'Checklist', antipadroes: 'Anti-Padrões', pecas: 'Peças Processuais',
+  config: 'Configurações LLM', admin: 'Gestão de Usuários'
+};
+
+function show(id) {
+  // Clear search
+  const srch = document.getElementById('search');
+  if (srch) srch.value = '';
+  document.getElementById('search-results').classList.remove('active');
+
+  // Toggle sections
+  sections.forEach(s => {
+    document.getElementById('sec-' + s).classList.toggle('active', s === id);
+  });
+
+  // Sidebar nav active
+  document.querySelectorAll('.nav-item').forEach(el => {
+    el.classList.toggle('active',
+      !!(el.getAttribute('onclick') && el.getAttribute('onclick').includes("'" + id + "'")));
+  });
+
+  // Bottom nav active
+  document.querySelectorAll('.bn-item[data-sec]').forEach(el => {
+    el.classList.toggle('active', el.dataset.sec === id);
+  });
+
+  // Page title
+  document.getElementById('page-title').textContent = titles[id] || id;
+  document.getElementById('mob-title').textContent = '⛏️ ' + (titles[id] || 'Jur. Mineral');
+
+  // Close sidebar on mobile after nav
+  closeSidebar();
+}
+
+// ── MOBILE SEARCH ─────────────────────────────────────────────────────────────
+function toggleMobSearch() {
+  const bar = document.getElementById('mob-search-bar');
+  bar.classList.toggle('open');
+  if (bar.classList.contains('open')) {
+    setTimeout(() => document.getElementById('search-mobile').focus(), 80);
+  }
+}
+function closeMobSearch() {
+  document.getElementById('mob-search-bar').classList.remove('open');
+  document.getElementById('search-mobile').value = '';
+  doSearch('');
+}
+
+// ── SIDEBAR TOGGLE ────────────────────────────────────────────────────────────
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('mob-open');
+  document.getElementById('mob-overlay').classList.toggle('mob-open');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('mob-open');
+  document.getElementById('mob-overlay').classList.remove('mob-open');
+}
+
+// ── SWIPE TO CLOSE SIDEBAR ────────────────────────────────────────────────────
+(function() {
+  let startX = 0, startY = 0;
+  document.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  }, { passive: true });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = Math.abs(e.changedTouches[0].clientY - startY);
+    // Swipe left ≥ 60px, mostly horizontal → close sidebar
+    if (dx < -60 && dy < 60 && document.getElementById('sidebar').classList.contains('mob-open')) {
+      closeSidebar();
+    }
+    // Swipe right from left edge → open sidebar
+    if (dx > 60 && dy < 60 && startX < 24 && !document.getElementById('sidebar').classList.contains('mob-open')) {
+      toggleSidebar();
+    }
+  }, { passive: true });
+})();
+
+// ── OFFLINE / ONLINE ─────────────────────────────────────────────────────────
+function updateOnlineStatus() {
+  const bar  = document.getElementById('offline-bar');
+  const body = document.body;
+  if (!navigator.onLine) {
+    bar.classList.add('show');
+    body.classList.add('offline');
+  } else {
+    bar.classList.remove('show');
+    body.classList.remove('offline');
+  }
+}
+window.addEventListener('online',  updateOnlineStatus);
+window.addEventListener('offline', updateOnlineStatus);
+updateOnlineStatus();
+
+// ── COPY ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  if (msg) t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => { t.classList.remove('show'); t.textContent = '✓ Copiado!'; }, 2200);
+}
+
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    if (btn) {
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copiado';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+    }
+    showToast();
+  });
+}
+
+function copySection(id, btn) {
+  const el = document.getElementById(id);
+  const text = el ? el.innerText : '';
+  copyText(text, btn);
+}
+
+// ── SEARCH ──
+const searchData = [
+  { section: 'cfem', title: 'CFEM', keywords: 'cfem compensação financeira royalties aliquota base calculo' },
+  { section: 'tah', title: 'TAH', keywords: 'tah taxa anual hectare título minerário área sigmine' },
+  { section: 'multas', title: 'Multas ANM', keywords: 'multa paf auto infração consup res 48 prescrição punitiva 9873' },
+  { section: 'vistoria', title: 'Taxa de Vistoria', keywords: 'vistoria ressarcimento diárias decreto 7655 fiscalização' },
+  { section: 'sumulas', title: 'Súmulas ANM', keywords: 'sumula anm consup 2025 2026 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 enunciado' },
+  { section: 'legislacao', title: 'Legislação', keywords: 'lei decreto portaria resolução código mineração 7990 8001 9636 9827 9873 10852 11491 13540 13575 48 155 389 7655 3358' },
+  { section: 'jurisprudencia', title: 'Jurisprudência', keywords: 'stf stj re 228800 resp 1340553 tema 566 precedente vinculante' },
+  { section: 'calculos', title: 'Cálculos', keywords: 'indexador btn inpc ufir ipca selic juros moratórios encargos legais calculo atualização' },
+  { section: 'estrategia', title: 'Estratégia', keywords: 'pre-executividade embargos anulatória mandado segurança impugnação recurso consup apelação resp cda' },
+  { section: 'checklist', title: 'Checklist', keywords: 'checklist verificar conferir' },
+  { section: 'antipadroes', title: 'Anti-Padrões', keywords: 'nunca erro tributo ctn decreto 20910 prescrição intercorrente frete pré-venda pelotização consumo proprio agua mineral embargos sem garantia' },
+  { section: 'pecas', title: 'Peças Processuais', keywords: 'embargos execução fiscal exceção pre-executividade cadin suspensão prescrição intercorrente modelo peça petição lef cfem tah multa' },
+  { section: 'principios', title: 'Princípios', keywords: 'principio fundamental decadência prescrição intercorrente patrimonial penalidade' },
+];
+
+function doSearch(q) {
+  q = q.trim().toLowerCase();
+  const sr = document.getElementById('search-results');
+  const so = document.getElementById('search-output');
+
+  if (!q) {
+    sr.classList.remove('active');
+    sections.forEach(s => {
+      if (document.getElementById('sec-' + s).classList.contains('active'))
+        document.getElementById('sec-' + s).classList.add('active');
+    });
+    return;
+  }
+
+  sr.classList.add('active');
+  sections.forEach(s => document.getElementById('sec-' + s).classList.remove('active'));
+  document.getElementById('page-title').textContent = 'Resultados: ' + q;
+
+  const matches = searchData.filter(d =>
+    d.title.toLowerCase().includes(q) || d.keywords.toLowerCase().includes(q)
+  );
+
+  if (!matches.length) {
+    so.innerHTML = '<div class="card"><div class="card-body">Nenhum resultado encontrado para "<strong>' + q + '</strong>".</div></div>';
+    return;
+  }
+
+  so.innerHTML = matches.map(m =>
+    `<div class="card" style="cursor:pointer" onclick="show('${m.section}')">
+      <div class="card-title">🔍 ${m.title}</div>
+      <div class="card-body">Clique para abrir a seção <strong>${m.title}</strong>.</div>
+    </div>`
+  ).join('');
+}
+
+// Duplo clique em linhas da tabela = copiar
+document.querySelectorAll('td').forEach(td => {
+  td.addEventListener('dblclick', function() {
+    const text = this.innerText;
+    if (text && text !== '📋') copyText(text, null);
+  });
+});
+
+// Fechar sidebar ao clicar em item de menu no mobile — já tratado em show()
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    /* noop — show() calls closeSidebar() */
+  });
+});
+
+// Sincronizar busca mobile
+const searchMobile = document.getElementById('search-mobile');
+if (searchMobile) {
+  searchMobile.addEventListener('input', function() {
+    const mainSearch = document.getElementById('search');
+    if (mainSearch) mainSearch.value = this.value;
+    doSearch(this.value);
+  });
+}
+
+// Service Worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () =>
+    navigator.serviceWorker.register('/sw.js').catch(() => {})
+  );
+}
+
+// ── PWA INSTALL ──────────────────────────────────────────────────────────────
+(function() {
+  let deferredPrompt = null;
+  const KEY = 'pwa_dismissed_v2';
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+                    || window.navigator.standalone === true;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+  // Already installed as PWA — never show banner
+  if (isStandalone) return;
+
+  const banner     = document.getElementById('pwa-banner');
+  const installBtn = document.getElementById('pwa-install-btn');
+  const closeBtn   = document.getElementById('pwa-close-btn');
+
+  function show() {
+    if (!banner || localStorage.getItem(KEY)) return;
+    banner.style.display = 'flex';
+  }
+  function hide(dismiss) {
+    if (banner) banner.style.display = 'none';
+    if (dismiss) localStorage.setItem(KEY, '1');
+  }
+
+  // Chrome / Edge / Samsung Browser — beforeinstallprompt
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredPrompt = e;
+    setTimeout(show, 4000);
+  });
+
+  if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        hide(outcome === 'accepted');
+      } else if (isIOS) {
+        // iOS Safari modal
+        const modal = document.createElement('div');
+        modal.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:flex-end;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)';
+        modal.innerHTML = `
+          <div style="width:100%;background:#1c2230;border-radius:20px 20px 0 0;padding:28px 24px 36px;box-shadow:0 -8px 40px rgba(0,0,0,.5)">
+            <img src="/icons/icon-96.png" style="width:56px;height:56px;border-radius:14px;display:block;margin:0 auto 12px" alt="">
+            <h3 style="text-align:center;color:#f59e0b;font-size:17px;margin-bottom:6px">Instalar no iPhone/iPad</h3>
+            <p style="text-align:center;color:#94a3b8;font-size:14px;line-height:1.6;margin-bottom:20px">
+              Toque em <strong style="color:#3b82f6">Compartilhar</strong> <span style="font-size:18px">⬆️</span><br>
+              depois em <strong style="color:#f59e0b">Adicionar à Tela de Início</strong> <span style="font-size:16px">➕</span>
+            </p>
+            <button onclick="this.closest('div[style]').remove();localStorage.setItem('${KEY}','1')"
+              style="width:100%;padding:14px;background:#f59e0b;color:#0a0e1a;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer">
+              Entendido!
+            </button>
+          </div>`;
+        document.body.appendChild(modal);
+        modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
+        hide(false);
+      }
+    });
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', () => hide(true));
+  window.addEventListener('appinstalled', () => hide(true));
+
+  // iOS — show banner after delay (no beforeinstallprompt on Safari)
+  if (isIOS && !localStorage.getItem(KEY)) {
+    if (installBtn) installBtn.textContent = '📲 Como instalar no iPhone/iPad';
+    setTimeout(show, 5000);
+  }
+})();
+
+// Double-tap to copy on mobile
+let lastTap = 0;
+document.addEventListener('touchend', e => {
+  const now = Date.now();
+  if (now - lastTap < 300) {
+    const td = e.target.closest('td:not(.td-copy)');
+    if (td && td.innerText.trim()) copyText(td.innerText.trim(), null);
+  }
+  lastTap = now;
+});
+
+// ── CHAT ──
+const chatHistory = [];
+let chatOpen = false;
+let chatStreaming = false;
+
+function chatToggle() {
+  chatOpen = !chatOpen;
+  const panel = document.getElementById('chat-panel');
+  panel.classList.toggle('open', chatOpen);
+  if (chatOpen) {
+    if (!document.querySelector('.chat-msg')) chatWelcome();
+    setTimeout(() => document.getElementById('chat-input').focus(), 300);
+  }
+}
+
+function chatWelcome() {
+  chatAppendBot(`**Olá! Sou o Assistente da Plataforma Jurídico-Mineral** ⚖️
+
+Estou aqui para responder suas dúvidas sobre **Direito Minerário**, com foco nas receitas da ANM:
+
+• **CFEM** — Compensação Financeira pela Exploração de Recursos Minerais
+• **TAH** — Taxa Anual por Hectare
+• **Multas ANM** — Penalidades administrativas (PAF)
+• **Taxa de Vistoria** — Ressarcimento de fiscalização
+
+Conheço todas as **16 Súmulas ANM 2025/2026**, a legislação aplicável, os prazos de decadência e prescrição, e a jurisprudência vinculante do STF e STJ.
+
+Como posso ajudar?`);
+}
+
+// ── AUTENTICAÇÃO (JWT via /api/login) ────────────────────────────────────────
+
+const AUTH_KEY = 'plat_jwt';
+let _currentUser = null;
+
+function jwtPayload(token) {
+  try {
+    const b = token.split('.')[1];
+    return JSON.parse(atob(b.replace(/-/g,'+').replace(/_/g,'/')));
+  } catch { return null; }
+}
+
+function authGetToken() {
+  return localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY);
+}
+
+function authCheck() {
+  const token = authGetToken();
+  if (!token) return false;
+  const p = jwtPayload(token);
+  if (!p || (p.exp && Date.now()/1000 > p.exp)) {
+    localStorage.removeItem(AUTH_KEY);
+    sessionStorage.removeItem(AUTH_KEY);
+    return false;
+  }
+  _currentUser = p;
+  authShow(p.email || p.sub, p.name, p.is_admin);
+  return true;
+}
+
+function authShow(email, name, isAdmin) {
+  document.getElementById('login-screen').classList.add('hidden');
+  const elEmail = document.getElementById('sidebar-email');
+  const elName  = document.getElementById('sidebar-name');
+  if (elEmail) elEmail.textContent = email || '';
+  if (elName)  elName.textContent  = name  || '';
+  // show/hide admin nav
+  const adminNav = document.getElementById('admin-nav-group');
+  if (adminNav) adminNav.style.display = isAdmin ? '' : 'none';
+}
+
+async function doLogin(e) {
+  e.preventDefault();
+  const email = document.getElementById('l-email').value.trim().toLowerCase();
+  const pass  = document.getElementById('l-pass').value;
+  const errEl = document.getElementById('login-err');
+  const btn   = document.getElementById('login-btn');
+
+  errEl.textContent = '';
+  btn.disabled = true;
+  btn.textContent = 'Verificando...';
+
+  try {
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: pass }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      errEl.textContent = '⚠️ ' + (data.error || 'Erro ao autenticar.');
+      document.getElementById('l-pass').value = '';
+    } else {
+      localStorage.setItem(AUTH_KEY, data.token);
+      _currentUser = jwtPayload(data.token);
+      authShow(data.email, data.name, data.is_admin);
+    }
+  } catch {
+    errEl.textContent = '⚠️ Falha de conexão. Tente novamente.';
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Entrar';
+}
+
+function doLogout() {
+  localStorage.removeItem(AUTH_KEY);
+  sessionStorage.removeItem(AUTH_KEY);
+  _currentUser = null;
+  document.getElementById('login-screen').classList.remove('hidden');
+  document.getElementById('l-email').value = '';
+  document.getElementById('l-pass').value = '';
+  document.getElementById('login-err').textContent = '';
+}
+
+function toggleLoginEye() {
+  const inp = document.getElementById('l-pass');
+  const btn = document.getElementById('l-eye');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+  btn.textContent = inp.type === 'password' ? '👁' : '🙈';
+}
+
+// Verificar autenticação ao carregar
+(function() { authCheck(); })();
+
+// ── PAINEL ADMIN — GESTÃO DE USUÁRIOS ────────────────────────────────────────
+
+async function adminLoadUsers() {
+  const token = authGetToken();
+  const tbody = document.getElementById('admin-user-tbody');
+  if (!tbody) return;
+  tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Carregando...</td></tr>';
+  try {
+    const res  = await fetch('/api/users', { headers: { Authorization: `Bearer ${token}` } });
+    const data = await res.json();
+    if (!res.ok) { tbody.innerHTML = `<tr><td colspan="5" style="color:#f87171;padding:20px">${data.error}</td></tr>`; return; }
+    const users = data.users || [];
+    if (!users.length) {
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">Nenhum usuário cadastrado.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = users.map(u => `
+      <tr>
+        <td style="font-size:13px">${u.name}</td>
+        <td style="font-size:12px;color:var(--muted)">${u.email}</td>
+        <td>${u.is_admin ? '<span class="badge badge-yellow">Admin</span>' : '<span class="badge badge-blue">Usuário</span>'}</td>
+        <td>${u.active ? '<span class="badge badge-green">Ativo</span>' : '<span class="badge badge-red">Inativo</span>'}</td>
+        <td style="white-space:nowrap">
+          ${!u.is_admin ? `
+            ${u.active
+              ? `<button onclick="adminToggleUser('${u.email}',false)" style="margin-right:4px" class="adm-btn adm-btn-warn">Desativar</button>`
+              : `<button onclick="adminToggleUser('${u.email}',true)"  style="margin-right:4px" class="adm-btn adm-btn-ok">Reativar</button>`}
+            <button onclick="adminDeleteUser('${u.email}')" class="adm-btn adm-btn-del">Excluir</button>
+          ` : '<span style="color:var(--muted);font-size:12px">—</span>'}
+        </td>
+      </tr>`).join('');
+  } catch {
+    tbody.innerHTML = '<tr><td colspan="5" style="color:#f87171;padding:20px">Erro ao carregar usuários.</td></tr>';
+  }
+}
+
+async function adminAddUser(e) {
+  e.preventDefault();
+  const token    = authGetToken();
+  const email    = document.getElementById('adm-new-email').value.trim();
+  const name     = document.getElementById('adm-new-name').value.trim();
+  const pass     = document.getElementById('adm-new-pass').value;
+  const pass2    = document.getElementById('adm-new-pass2').value;
+  const doEmail  = document.getElementById('adm-send-email').checked;
+  const statusEl = document.getElementById('adm-add-status');
+  const btn      = document.getElementById('adm-add-btn');
+
+  statusEl.textContent = '';
+
+  if (pass !== pass2) {
+    statusEl.style.color = '#f87171';
+    statusEl.textContent = '⚠️ As senhas não coincidem.';
+    return;
+  }
+  if (pass.length < 6) {
+    statusEl.style.color = '#f87171';
+    statusEl.textContent = '⚠️ A senha deve ter pelo menos 6 caracteres.';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Cadastrando...';
+
+  try {
+    const res  = await fetch('/api/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ email, name, password: pass, sendEmail: doEmail }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      statusEl.style.color = '#f87171';
+      statusEl.textContent = '⚠️ ' + (data.error || 'Erro ao cadastrar.');
+    } else {
+      statusEl.style.color = '#6ee7b7';
+      statusEl.textContent = `✓ Usuário cadastrado com sucesso!${data.emailSent ? ' E-mail de convite enviado.' : ''}`;
+      document.getElementById('adm-new-email').value = '';
+      document.getElementById('adm-new-name').value  = '';
+      document.getElementById('adm-new-pass').value  = '';
+      document.getElementById('adm-new-pass2').value = '';
+      adminLoadUsers();
+    }
+  } catch {
+    statusEl.style.color = '#f87171';
+    statusEl.textContent = '⚠️ Falha de conexão.';
+  }
+
+  btn.disabled = false;
+  btn.textContent = '+ Adicionar Usuário';
+}
+
+async function adminDeleteUser(email) {
+  if (!confirm(`Excluir permanentemente o usuário ${email}?`)) return;
+  const token = authGetToken();
+  const res   = await fetch('/api/users', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ email }),
+  });
+  const data = await res.json();
+  showToast(res.ok ? '✓ ' + data.message : '⚠️ ' + data.error);
+  if (res.ok) adminLoadUsers();
+}
+
+async function adminToggleUser(email, activate) {
+  const token = authGetToken();
+  const method = activate ? 'PATCH' : 'DELETE';
+  const body   = activate ? { email } : { email, deactivate: true };
+  const res    = await fetch('/api/users', {
+    method,
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  showToast(res.ok ? '✓ ' + data.message : '⚠️ ' + data.error);
+  if (res.ok) adminLoadUsers();
+}
+
+// ── PEÇAS PROCESSUAIS ────────────────────────────────────────────────────────
+
+function pecaCopy(textareaId, btn) {
+  const ta = document.getElementById(textareaId);
+  if (!ta) return;
+  const text = ta.value;
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copiado!';
+    btn.classList.add('copied');
+    showToast();
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2500);
+  }).catch(() => {
+    ta.select();
+    document.execCommand('copy');
+    showToast();
+  });
+}
+
+// ── TEMA CLARO / ESCURO ──────────────────────────────────────────────────────
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const icon = theme === 'light' ? '🌙' : '☀️';
+  const btn  = document.getElementById('theme-btn');
+  const mBtn = document.getElementById('mob-theme-btn');
+  if (btn)  btn.textContent  = icon;
+  if (mBtn) mBtn.textContent = icon;
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'light' ? 'dark' : 'light';
+  localStorage.setItem('anmlegis_theme', next);
+  applyTheme(next);
+}
+
+// Aplica tema salvo ao carregar
+(function() {
+  const saved = localStorage.getItem('anmlegis_theme') || 'dark';
+  applyTheme(saved);
+})();
+
+// ── LLM CONFIG ──────────────────────────────────────────────────────────────
+
+const LLM_PROVIDERS = {
+  claude:  { label: 'Claude',  icon: '🟠' },
+  chatgpt: { label: 'ChatGPT', icon: '🟢' },
+  gemini:  { label: 'Gemini',  icon: '🔵' },
+  grok:    { label: 'Grok',    icon: '⚫' },
+};
+
+function cfgLoad() {
+  return JSON.parse(localStorage.getItem('anmlegis_llm') || '{}');
+}
+
+function cfgSave() {
+  const provider = document.querySelector('input[name="llm-provider"]:checked')?.value || 'claude';
+  const data = {
+    provider,
+    chatgpt_key:   document.getElementById('cfg-chatgpt-key')?.value.trim(),
+    chatgpt_model: document.getElementById('cfg-chatgpt-model')?.value,
+    gemini_key:    document.getElementById('cfg-gemini-key')?.value.trim(),
+    gemini_model:  document.getElementById('cfg-gemini-model')?.value,
+    grok_key:      document.getElementById('cfg-grok-key')?.value.trim(),
+    grok_model:    document.getElementById('cfg-grok-model')?.value,
+    claude_model:  document.getElementById('cfg-claude-model')?.value,
+  };
+  localStorage.setItem('anmlegis_llm', JSON.stringify(data));
+  chatUpdateProviderBadge(provider);
+  const st = document.getElementById('cfg-status');
+  st.textContent = `✓ Configuração salva — usando ${LLM_PROVIDERS[provider]?.label || provider}`;
+  st.style.display = 'block';
+  setTimeout(() => { st.style.display = 'none'; }, 3000);
+}
+
+async function cfgTest() {
+  const provider = document.querySelector('input[name="llm-provider"]:checked')?.value || 'claude';
+  const apiKey = document.getElementById(`cfg-${provider}-key`)?.value.trim() || undefined;
+  const model  = document.getElementById(`cfg-${provider}-model`)?.value || undefined;
+  const st = document.getElementById('cfg-status');
+  st.style.color = '#6b7280';
+  st.textContent = `🔌 Testando conexão com ${LLM_PROVIDERS[provider]?.label}...`;
+  st.style.display = 'block';
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'Responda apenas: OK', history: [], provider, apiKey, model }),
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      st.style.color = '#ef4444';
+      st.textContent = `❌ Erro: ${err.error || res.status}`;
+      return;
+    }
+    // consume stream
+    const reader = res.body.getReader();
+    const dec = new TextDecoder();
+    let text = '';
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      const chunk = dec.decode(value, { stream: true });
+      for (const line of chunk.split('\n')) {
+        if (!line.startsWith('data:')) continue;
+        const raw = line.slice(5).trim();
+        if (raw === '[DONE]') continue;
+        try { const e = JSON.parse(raw); if (e.text) text += e.text; } catch {}
+      }
+    }
+    st.style.color = '#059669';
+    st.textContent = `✓ Conexão OK com ${LLM_PROVIDERS[provider]?.label} — resposta: "${text.trim().slice(0,60)}"`;
+  } catch(e) {
+    st.style.color = '#ef4444';
+    st.textContent = `❌ Falha: ${e.message}`;
+  }
+}
+
+function cfgReset() {
+  localStorage.removeItem('anmlegis_llm');
+  cfgApplyToUI({ provider: 'claude' });
+  chatUpdateProviderBadge('claude');
+  const st = document.getElementById('cfg-status');
+  st.textContent = '↩ Padrão restaurado — Claude ativo';
+  st.style.display = 'block';
+  setTimeout(() => { st.style.display = 'none'; }, 2500);
+}
+
+function cfgApplyToUI(data) {
+  const provider = data.provider || 'claude';
+  // radio
+  const radio = document.querySelector(`input[name="llm-provider"][value="${provider}"]`);
+  if (radio) radio.checked = true;
+  // active card
+  document.querySelectorAll('.llm-card').forEach(c => c.classList.toggle('active', c.dataset.provider === provider));
+  // show correct block
+  ['claude','chatgpt','gemini','grok'].forEach(p => {
+    const el = document.getElementById(`cfg-${p}`);
+    if (el) el.style.display = p === provider ? 'block' : 'none';
+  });
+  // fill saved values
+  if (data.chatgpt_key) document.getElementById('cfg-chatgpt-key').value = data.chatgpt_key;
+  if (data.chatgpt_model) document.getElementById('cfg-chatgpt-model').value = data.chatgpt_model;
+  if (data.gemini_key) document.getElementById('cfg-gemini-key').value = data.gemini_key;
+  if (data.gemini_model) document.getElementById('cfg-gemini-model').value = data.gemini_model;
+  if (data.grok_key) document.getElementById('cfg-grok-key').value = data.grok_key;
+  if (data.grok_model) document.getElementById('cfg-grok-model').value = data.grok_model;
+  if (data.claude_model) document.getElementById('cfg-claude-model').value = data.claude_model;
+}
+
+function cfgSelectProvider(provider) {
+  document.querySelectorAll('.llm-card').forEach(c => c.classList.toggle('active', c.dataset.provider === provider));
+  const radio = document.querySelector(`input[name="llm-provider"][value="${provider}"]`);
+  if (radio) radio.checked = true;
+  ['claude','chatgpt','gemini','grok'].forEach(p => {
+    const el = document.getElementById(`cfg-${p}`);
+    if (el) el.style.display = p === provider ? 'block' : 'none';
+  });
+}
+
+function toggleKey(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.type = el.type === 'password' ? 'text' : 'password';
+  btn.textContent = el.type === 'password' ? '👁' : '🙈';
+}
+
+function chatUpdateProviderBadge(provider) {
+  const badge = document.getElementById('chat-provider-badge');
+  if (badge) badge.textContent = LLM_PROVIDERS[provider]?.label || provider;
+}
+
+// init config UI on load
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = cfgLoad();
+  cfgApplyToUI(saved);
+  chatUpdateProviderBadge(saved.provider || 'claude');
+  // card click handlers
+  document.querySelectorAll('.llm-card').forEach(card => {
+    card.addEventListener('click', () => cfgSelectProvider(card.dataset.provider));
+  });
+});
+
+// ── CHAT SEND (multi-provider) ───────────────────────────────────────────────
+
+async function chatSend(overrideMsg) {
+  const input = document.getElementById('chat-input');
+  const msg = (overrideMsg || input.value).trim();
+  if (!msg || chatStreaming) return;
+  input.value = '';
+  input.style.height = 'auto';
+
+  chatAppendUser(msg);
+  chatHistory.push({ role: 'user', content: msg });
+
+  const thinkEl = chatAppendThinking();
+  chatStreaming = true;
+  document.getElementById('chat-send').disabled = true;
+
+  const cfg = cfgLoad();
+  const provider = cfg.provider || 'claude';
+  const apiKey = cfg[`${provider}_key`] || undefined;
+  const model  = cfg[`${provider}_model`] || undefined;
+
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg, history: chatHistory.slice(-10), provider, apiKey, model }),
+    });
+
+    thinkEl.remove();
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ error: 'Erro desconhecido.' }));
+      chatAppendBot(`⚠️ ${err.error || 'Erro na requisição.'}`);
+      chatStreaming = false;
+      document.getElementById('chat-send').disabled = false;
+      return;
+    }
+
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let fullText = '';
+    let buf = '';
+    const bubbleEl = chatAppendBot('', true);
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += decoder.decode(value, { stream: true });
+      const lines = buf.split('\n');
+      buf = lines.pop();
+      for (const line of lines) {
+        if (!line.startsWith('data:')) continue;
+        const raw = line.slice(5).trim();
+        if (raw === '[DONE]') continue;
+        try {
+          const evt = JSON.parse(raw);
+          if (evt.text) {
+            fullText += evt.text;
+            bubbleEl.innerHTML = chatMarkdown(fullText) + '<span class="cursor-blink">▌</span>';
+            chatScrollBottom();
+          }
+        } catch { /* skip */ }
+      }
+    }
+
+    bubbleEl.innerHTML = chatMarkdown(fullText);
+    chatAddCopyBtn(bubbleEl.parentElement, fullText);
+    chatHistory.push({ role: 'assistant', content: fullText });
+    chatScrollBottom();
+
+  } catch (err) {
+    thinkEl?.remove();
+    chatAppendBot(`⚠️ Falha de conexão: ${err.message}`);
+  }
+
+  chatStreaming = false;
+  document.getElementById('chat-send').disabled = false;
+}
+
+function chatAppendUser(text) {
+  const el = document.createElement('div');
+  el.className = 'chat-msg user';
+  el.innerHTML = `<div class="chat-msg-avatar">👤</div><div class="chat-bubble">${chatEscape(text)}</div>`;
+  document.getElementById('chat-messages').appendChild(el);
+  chatScrollBottom();
+}
+
+function chatAppendBot(text, streaming = false) {
+  const wrap = document.createElement('div');
+  wrap.className = 'chat-msg bot';
+  const bubble = document.createElement('div');
+  bubble.className = 'chat-bubble';
+  bubble.innerHTML = streaming ? '' : chatMarkdown(text);
+  wrap.appendChild(document.createElement('div')).className = 'chat-msg-avatar';
+  wrap.querySelector('.chat-msg-avatar').textContent = '⚖️';
+  wrap.appendChild(bubble);
+  if (!streaming && text) chatAddCopyBtn(wrap, text);
+  document.getElementById('chat-messages').appendChild(wrap);
+  chatScrollBottom();
+  return bubble;
+}
+
+function chatAddCopyBtn(wrap, text) {
+  const actions = document.createElement('div');
+  actions.className = 'chat-actions';
+  const btn = document.createElement('button');
+  btn.className = 'chat-copy-btn';
+  btn.innerHTML = '📋 Copiar resposta';
+  btn.onclick = () => {
+    navigator.clipboard.writeText(text).then(() => {
+      btn.innerHTML = '✓ Copiado!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.innerHTML = '📋 Copiar resposta'; btn.classList.remove('copied'); }, 2000);
+    });
+  };
+  actions.appendChild(btn);
+  wrap.appendChild(actions);
+}
+
+function chatAppendThinking() {
+  const el = document.createElement('div');
+  el.className = 'chat-msg bot';
+  el.innerHTML = `<div class="chat-msg-avatar">⚖️</div>
+    <div class="chat-thinking">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <span>Consultando base jurídica...</span>
+    </div>`;
+  document.getElementById('chat-messages').appendChild(el);
+  chatScrollBottom();
+  return el;
+}
+
+function chatClear() {
+  chatHistory.length = 0;
+  document.getElementById('chat-messages').innerHTML = '';
+  chatWelcome();
+}
+
+function chatScrollBottom() {
+  const el = document.getElementById('chat-messages');
+  el.scrollTop = el.scrollHeight;
+}
+
+function chatEscape(t) {
+  return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function chatMarkdown(text) {
+  return text
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g,'<em>$1</em>')
+    .replace(/`([^`]+)`/g,'<code style="background:#0d1117;padding:1px 5px;border-radius:3px;font-size:12px">$1</code>')
+    .replace(/^#{1,3}\s(.+)/gm,'<strong style="display:block;margin:8px 0 4px;color:var(--accent)">$1</strong>')
+    .replace(/^[-•]\s(.+)/gm,'<span style="display:block;padding-left:12px">• $1</span>')
+    .replace(/\n\n/g,'<br><br>')
+    .replace(/\n/g,'<br>');
+}
+
+// Auto-resize textarea
+document.getElementById('chat-input').addEventListener('input', function() {
+  this.style.height = 'auto';
+  this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+});
+</script>
+</body>
+</html>

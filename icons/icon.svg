@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" shape-rendering="geometricPrecision">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0f1117"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background rounded rect -->
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+
+  <!-- Subtle inner border -->
+  <rect x="2" y="2" width="508" height="508" rx="95" fill="none" stroke="#f59e0b" stroke-width="2" opacity="0.18"/>
+
+  <!-- ── PICKAXE body — centered at 256,220 ── -->
+  <!-- Handle: rotated rod -->
+  <rect x="117" y="212" width="278" height="32" rx="12"
+        fill="url(#steel)"
+        transform="rotate(-30 256 228)"/>
+
+  <!-- Pick head — two blades -->
+  <!-- Left blade (sharp point) -->
+  <polygon points="108,128 168,168 148,228 88,188"
+           fill="url(#gold)" filter="url(#glow)"/>
+  <!-- Right blade (blunt chisel) -->
+  <polygon points="404,128 344,168 324,228 384,188"
+           fill="url(#gold)" filter="url(#glow)"/>
+  <!-- Center head block -->
+  <rect x="220" y="155" width="72" height="76" rx="10" fill="url(#gold)" filter="url(#glow)"/>
+
+  <!-- Accent line under pick -->
+  <rect x="128" y="292" width="256" height="5" rx="2.5" fill="#f59e0b" opacity="0.5"/>
+
+  <!-- ── WORDMARK ── -->
+  <!-- "JM" monogram in amber -->
+  <text x="256" y="372"
+        font-family="'Arial Black','Arial',sans-serif"
+        font-size="68" font-weight="900"
+        text-anchor="middle" fill="url(#gold)"
+        letter-spacing="2">JM</text>
+
+  <!-- Subtitle -->
+  <text x="256" y="408"
+        font-family="Arial,sans-serif"
+        font-size="26" font-weight="400"
+        text-anchor="middle" fill="#94a3b8"
+        letter-spacing="4">JURÍDICO MINERAL</text>
+
+  <!-- Bottom accent dots -->
+  <circle cx="220" cy="440" r="4" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="256" cy="440" r="4" fill="#f59e0b" opacity="0.9"/>
+  <circle cx="292" cy="440" r="4" fill="#f59e0b" opacity="0.6"/>
+</svg>
