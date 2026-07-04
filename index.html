@@ -167,10 +167,17 @@
     background: rgba(245,158,11,.15); border-color: var(--accent); color: var(--accent);
   }
   @media(max-width:768px) {
-    .leg-layout { flex-direction: column; }
+    .leg-layout { flex-direction: column; gap: 0; }
     .leg-sidebar { display: none; }
     .leg-filters { display: flex; }
     .leg-content { width: 100%; }
+    .leg-card { padding: 14px 14px 14px; }
+    .leg-card-copy { position: static; display: block; margin-top: 10px; width: fit-content; }
+    .leg-card-header { flex-wrap: wrap; gap: 6px; }
+    .leg-card-num { min-width: unset; font-size: 13px; }
+    .leg-stat-row { gap: 8px; }
+    .leg-stat { padding: 10px 12px; min-width: 70px; }
+    .leg-stat .n { font-size: 18px; }
   }
   .leg-card {
     background: var(--card); border: 1px solid var(--border); border-radius: 12px;
@@ -797,11 +804,11 @@
 
 <!-- BOTTOM NAV -->
 <nav id="bottom-nav" aria-label="Navegação principal">
-  <button class="bn-item active" data-sec="home"        onclick="show('home')">        <span class="bn-icon">🏠</span><span class="bn-label">Início</span></button>
-  <button class="bn-item"        data-sec="cfem"        onclick="show('cfem')">        <span class="bn-icon">💰</span><span class="bn-label">CFEM</span></button>
-  <button class="bn-item"        data-sec="jurisprudencia" onclick="show('jurisprudencia')"><span class="bn-icon">🏛️</span><span class="bn-label">Jurisp.</span></button>
-  <button class="bn-item"        data-sec="pecas"       onclick="show('pecas')">       <span class="bn-icon">📄</span><span class="bn-label">Peças</span></button>
-  <button class="bn-item"        id="bn-menu"           onclick="toggleSidebar()">     <span class="bn-icon">☰</span><span class="bn-label">Menu</span></button>
+  <button class="bn-item active" data-sec="home"       onclick="show('home')">         <span class="bn-icon">🏠</span><span class="bn-label">Início</span></button>
+  <button class="bn-item"        data-sec="cfem"       onclick="show('cfem')">         <span class="bn-icon">💰</span><span class="bn-label">CFEM</span></button>
+  <button class="bn-item"        data-sec="legmineral" onclick="show('legmineral')">   <span class="bn-icon">📚</span><span class="bn-label">Legislação</span></button>
+  <button class="bn-item"        data-sec="pecas"      onclick="show('pecas')">        <span class="bn-icon">📄</span><span class="bn-label">Peças</span></button>
+  <button class="bn-item"        id="bn-menu"          onclick="toggleSidebar()">      <span class="bn-icon">☰</span><span class="bn-label">Menu</span></button>
 </nav>
 
 <!-- PWA INSTALL BANNER -->
