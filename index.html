@@ -2892,11 +2892,16 @@ OAB/__ nº ___</textarea>
 
         <!-- FIELDS PER PROVIDER -->
         <div id="cfg-claude" class="cfg-block">
-          <div class="alert alert-blue">Claude está pré-configurado no servidor. Nenhuma chave necessária.</div>
-          <label class="cfg-label">Modelo</label>
+          <div class="alert alert-blue" style="margin-bottom:12px">🔐 A chave abaixo é usada para autenticar diretamente na API Anthropic. Ela é salva apenas neste navegador (localStorage) e enviada de forma segura via HTTPS.</div>
+          <label class="cfg-label">Chave API Anthropic</label>
+          <div class="cfg-key-row">
+            <input type="password" id="cfg-claude-key" class="cfg-input" placeholder="sk-ant-... (opcional — deixe em branco para usar a chave do servidor)" autocomplete="off">
+            <button class="cfg-eye" onclick="toggleKey('cfg-claude-key', this)">👁</button>
+          </div>
+          <label class="cfg-label" style="margin-top:10px">Modelo</label>
           <select id="cfg-claude-model" class="cfg-input">
             <option value="claude-haiku-4-5-20251001">Claude Haiku 4.5 (rápido)</option>
-            <option value="claude-sonnet-4-6">Claude Sonnet 4.6 (recomendado)</option>
+            <option value="claude-sonnet-4-6" selected>Claude Sonnet 4.6 (recomendado)</option>
             <option value="claude-opus-4-7">Claude Opus 4.7 (mais capaz)</option>
           </select>
         </div>
@@ -4251,6 +4256,7 @@ function cfgSave() {
     gemini_model:  document.getElementById('cfg-gemini-model')?.value,
     grok_key:      document.getElementById('cfg-grok-key')?.value.trim(),
     grok_model:    document.getElementById('cfg-grok-model')?.value,
+    claude_key:    document.getElementById('cfg-claude-key')?.value.trim(),
     claude_model:  document.getElementById('cfg-claude-model')?.value,
   };
   localStorage.setItem('anmlegis_llm', JSON.stringify(data));
@@ -4333,6 +4339,7 @@ function cfgApplyToUI(data) {
   if (data.gemini_model) document.getElementById('cfg-gemini-model').value = data.gemini_model;
   if (data.grok_key) document.getElementById('cfg-grok-key').value = data.grok_key;
   if (data.grok_model) document.getElementById('cfg-grok-model').value = data.grok_model;
+  if (data.claude_key) document.getElementById('cfg-claude-key').value = data.claude_key;
   if (data.claude_model) document.getElementById('cfg-claude-model').value = data.claude_model;
 }
 
