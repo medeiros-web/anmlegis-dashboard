@@ -11,16 +11,19 @@ CONHECIMENTO BASE — DIREITO MINERÁRIO ANM
 - O CTN é INAPLICÁVEL a essas receitas. (STF, RE 228.800/DF, 2001)
 - Multas ANM são PENALIDADES ADMINISTRATIVAS — regime distinto.
 
-## PRAZOS
-| Receita | Decadência | Prescrição |
+## PRAZOS CFEM/TAH/VISTORIA — TABELA POR PERÍODO (REsp 1.122.696/PE + Nota PFE-ANM 00939/2023)
+| Vencimento | Decadência | Prescrição |
 |---|---|---|
-| CFEM | 10 anos | 5 anos do lançamento |
-| TAH | 10 anos | 5 anos do lançamento |
-| Taxa de Vistoria | 10 anos | 5 anos do lançamento |
+| Até 29/12/1998 | Sem prazo especial (CC/1916) | 5 anos do vencimento (Decreto 20.910/32) |
+| 30/12/1998–30/03/2004 | 5 anos (MP 1787/98) | 5 anos do lançamento definitivo |
+| A partir de 30/03/2004 | **10 anos** (Lei 10.852/2004) | **5 anos** do lançamento definitivo |
 | Multas ANM | — | 5 anos punitiva (Lei 9.873/99) |
 
-Prescrição intercorrente execução fiscal: 1 ano suspensão + 5 anos = 6 anos total (Tema 566 STJ).
+Inscrição em DA suspende prescrição por 180 dias ou até ajuizamento (LEF, art. 2º, §3º).
+Prescrição intercorrente execução fiscal: 1 ano suspensão (automático) + 5 anos prescrição (automático) = 6 anos total (Temas 566/567 STJ — vinculante).
 NÃO há prescrição intercorrente na fase administrativa (Súmula ANM 03/25).
+Expedição de ofícios a órgãos (SISBAJUD, RENAJUD) NÃO interrompe prescrição intercorrente (Tema 566, Tese 4).
+Somente constrição efetiva de bens (penhora real) interrompe (Tema 566, Tese 5).
 
 ## CFEM
 - Natureza: Receita patrimonial. CF/88 art. 20 §1º. Lei 7.990/89. Lei 8.001/90. Lei 13.540/2017.
@@ -96,23 +99,46 @@ NÃO há prescrição intercorrente na fase administrativa (Súmula ANM 03/25).
 
 ## JURISPRUDÊNCIA
 - STF RE 228.800/DF (2001): CFEM/TAH/Vistoria = receitas patrimoniais, CTN inaplicável.
-- STJ Tema 566 (REsp 1.340.553/RS): prescrição intercorrente execução fiscal = 6 anos total. VINCULANTE.
-- LEF 6.830/80 art. 40: suspensão 1 ano; depois prescrição intercorrente.
+- STF ADI 2.586/DF: constitucionalidade da CFEM confirmada — receita patrimonial.
+- STF Tema 1184: extinção execução fiscal de baixo valor por ausência de interesse de agir (eficiência). Pré-requisito: conciliação + protesto antes de ajuizar.
+- STJ Tema 566 (REsp 1.340.553/RS): prescrição intercorrente execução fiscal = 1 ano suspensão + 5 anos (automáticos) = 6 anos total. VINCULANTE. Expedição de ofícios NÃO interrompe.
+- STJ Tema 567 (REsp 1.340.553/RS): prazo intercorrente inicia automaticamente — independe de decisão de arquivamento. VINCULANTE.
+- STJ REsp 1.122.696/PE (repetitivo): receitas patrimoniais pré-30/12/1998 = 5 anos (Decreto 20.910/32); pós-30/12/1998 = prazo próprio; MP 1527/2003 ampliou para 10 anos.
+- STJ Súmula 314: suspensão 1 ano → prescrição intercorrente quinquenal.
+- STJ Súmula 393: exceção de pré-executividade admissível para matéria de ordem pública sem dilação probatória.
+- STJ Súmula 435: dissolução irregular legitima redirecionamento ao sócio-gerente.
+- Lei 9.469/97, art. 1º-C (Lei 11.941/2009): Procurador Federal deve reconhecer prescrição e NÃO recorrer.
+- Portaria PGF 377/2011, art. 5º, §único, II: autoriza não interpor recurso em crédito prescrito.
+- Portaria AGU 488/2016, art. 13: dispensa autorização da Coordenação para não recorrer (Tema 566).
+- LEF 6.830/80 art. 40: suspensão 1 ano; depois prescrição intercorrente (automática).
 
 ## ESTRATÉGIA DE DEFESA (ordem de prioridade)
-1. Prescrição punitiva (multas) ou decadência (CFEM/TAH/Vistoria)
-2. Prescrição do crédito (5 anos do lançamento)
-3. Prescrição intercorrente (Tema 566 STJ — 6 anos de execução parada)
-4. Nulidade da CDA (LEF art. 2º §5º — requisitos formais)
-5. Excesso de execução (indexadores incorretos, encargos indevidos)
-6. Ilegitimidade passiva
+1. Prescrição punitiva (multas — 5 anos Lei 9.873/99) ou decadência CFEM/TAH/Vistoria (5 ou 10 anos conforme período)
+2. Prescrição anterior ao lançamento (vencimento até 29/12/1998: 5 anos do vencimento)
+3. Prescrição executória: inscrito em DA mas não ajuizado em 5 anos (LEF art. 2º, §3º)
+4. Prescrição intercorrente (Tema 566/567 STJ — 6 anos de execução parada = 1+5)
+5. Nulidade da CDA (LEF art. 2º §5º — requisitos formais)
+6. Excesso de execução (indexadores incorretos, encargos indevidos — encargos 20%/10% somente a partir de 04/12/2008)
+7. Baixo valor: Tema 1184 STF — ausência de interesse de agir
+8. Ilegitimidade passiva (sócio vs. empresa, redirecionamento irregular)
+9. Bis in idem com auto de infração pelo mesmo fato
+
+## PARECERES PFE-ANM/PGF/AGU CONSOLIDADOS
+- PARECER DE FORÇA EXECUTÓRIA: reconhecimento de prescrição intercorrente → não recorrer (Portaria 377/2011 + Portaria 488/2016 + Lei 9.469/97 art. 1º-C).
+- PARECER n. 00108/2023/PFE-ANM: TAH inscrita há mais de 5 anos sem ajuizamento → prescrição executória.
+- NOTA JUR. 00939/2023 + Nota 00110/2024: tabela de prazos decadenciais/prescricionais CFEM/TAH por período.
+- NOTA JUR. 00088/2024: baixo valor → Tema 1184 STF → não ajuizar / reconhecer extinção.
+- DESPACHO 00295/2023: aprovação de reconhecimento de prescrição intercorrente + autorização para não recorrer.
 
 ## ANTI-PADRÕES (erros a evitar)
-- Aplicar CTN arts. 173/174 à CFEM/TAH/Vistoria (inaplicável)
+- Aplicar CTN arts. 173/174 à CFEM/TAH/Vistoria (inaplicável — receita patrimonial)
+- Aplicar Decreto 20.910/32 contra a ANM (aplica-se quando a Fazenda é DEVEDORA)
 - Alegar prescrição intercorrente administrativa (Súmula ANM 03/25 veda)
 - Deduzir frete pré-venda da base CFEM (Súmula ANM 09/25 veda)
-- Ignorar encargos legais 20%/10% (vigentes desde 04/12/2008)
-- Usar indexador diferente da Portaria ANM 389/2010
+- Ignorar encargos legais 20%/10% (vigentes desde 04/12/2008 — não se aplicam a créditos anteriores)
+- Usar indexador diferente da Portaria ANM 389/2010 (Súmula ANM 08/25)
+- Admitir exceção de pré-executividade quando há dilação probatória necessária (Súmula STJ 393)
+- Propor embargos sem garantia do juízo (LEF art. 16, §1º)
 
 ---
 

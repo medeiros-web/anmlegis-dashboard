@@ -903,6 +903,9 @@
     <div class="nav-item" onclick="show('pecas')">
       <span class="nav-icon">📄</span> Peças Processuais
     </div>
+    <div class="nav-item" onclick="show('pareceres')">
+      <span class="nav-icon">⚖️</span> Pareceres PFE
+    </div>
   </div>
 
   <div class="nav-group">
@@ -1578,16 +1581,40 @@ ATENÇÃO — Súmula ANM 03/25:
           <table>
             <tr><th>Precedente</th><th>Tese</th><th>Efeito</th><th></th></tr>
             <tr>
-              <td><strong>STF RE 228.800/DF</strong><br><small>2001</small></td>
-              <td>CFEM não tem natureza tributária. É receita patrimonial. CTN é inaplicável.</td>
+              <td><strong>STF RE 228.800/DF</strong><br><small>2001 — Pleno</small></td>
+              <td>CFEM não tem natureza tributária. É receita patrimonial originária da União. CTN é inaplicável.</td>
               <td><span class="badge badge-red">Vinculante</span></td>
               <td class="td-copy" onclick="copyText('STF, RE 228.800/DF (2001): CFEM não tem natureza tributária. É receita patrimonial — CTN é inaplicável.', this)">📋</td>
             </tr>
             <tr>
+              <td><strong>STF ADI 2.586/DF</strong><br><small>Constitucionalidade CFEM</small></td>
+              <td>Constitucionalidade da CFEM. Confirma natureza de receita patrimonial. Distinção de tributo mantida.</td>
+              <td><span class="badge badge-red">Vinculante</span></td>
+              <td class="td-copy" onclick="copyText('STF, ADI 2.586/DF: Constitucionalidade da CFEM confirmada. Natureza patrimonial — não tributária.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>STF — Tema 1184</strong><br><small>Execução de Baixo Valor</small></td>
+              <td>É legítima a extinção de execução fiscal de baixo valor por ausência de interesse de agir (eficiência administrativa). Pré-requisitos: tentativa de conciliação + protesto antes do ajuizamento.</td>
+              <td><span class="badge badge-red">Vinculante</span></td>
+              <td class="td-copy" onclick="copyText('STF, Tema 1184: É legítima a extinção de execução fiscal de baixo valor por ausência de interesse de agir. Pré-requisitos: conciliação + protesto antes do ajuizamento.', this)">📋</td>
+            </tr>
+            <tr>
               <td><strong>STJ REsp 1.340.553/RS</strong><br><small>Tema 566 — Vinculante</small></td>
-              <td>Prescrição intercorrente em execução fiscal: 1 ano de suspensão + 5 anos de prescrição = 6 anos total. O prazo começa após 1 ano de paralisação por não localização de bens/devedor.</td>
+              <td>Prescrição intercorrente em execução fiscal: suspensão de 1 ano (LEF art. 40) AUTOMÁTICA + 5 anos de prescrição AUTOMÁTICOS = 6 anos total. Expedição de ofícios NÃO interrompe. Somente constrição efetiva interrompe.</td>
               <td><span class="badge badge-red">Vinculante CPC 927</span></td>
-              <td class="td-copy" onclick="copyText('STJ, REsp 1.340.553/RS — Tema 566 (vinculante): prescrição intercorrente em execução fiscal = 1 ano de suspensão + 5 anos de prescrição (6 anos total). Começa após 1 ano de paralisação por não localização de bens/devedor.', this)">📋</td>
+              <td class="td-copy" onclick="copyText('STJ, REsp 1.340.553/RS — Tema 566 (vinculante): prescrição intercorrente = 1 ano suspensão + 5 anos prescrição (automáticos). Expedição de ofícios NÃO interrompe. Apenas constrição efetiva interrompe.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>STJ REsp 1.340.553/RS</strong><br><small>Tema 567 — Vinculante</small></td>
+              <td>Prazo intercorrente inicia automaticamente ao final do 1 ano de suspensão, independentemente de decisão judicial expressa de arquivamento.</td>
+              <td><span class="badge badge-red">Vinculante CPC 927</span></td>
+              <td class="td-copy" onclick="copyText('STJ Tema 567: Prazo prescricional intercorrente inicia automaticamente ao final do 1 ano de suspensão — independe de decisão de arquivamento.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>STJ REsp 1.122.696/PE</strong><br><small>Recurso Repetitivo</small></td>
+              <td>Receitas patrimoniais da União: vencidas até 30/12/1998 — 5 anos do Decreto 20.910/32; vencidas a partir de 30/12/1998 — prazos próprios das receitas patrimoniais (MP 1787/98). MP 1527/2003 ampliou decadência para 10 anos.</td>
+              <td><span class="badge badge-red">Vinculante — Repetitivo</span></td>
+              <td class="td-copy" onclick="copyText('STJ REsp 1.122.696/PE (repetitivo): receitas patrimoniais pré-30/12/1998 = 5 anos (Decreto 20.910/32). Pós-30/12/1998 = regime próprio: decadência 5 anos → 10 anos (MP 1527/2003). Aplicável à CFEM e TAH.', this)">📋</td>
             </tr>
             <tr>
               <td><strong>STF RE 417.408/SC</strong><br><small>Rep. Geral</small></td>
@@ -1595,11 +1622,37 @@ ATENÇÃO — Súmula ANM 03/25:
               <td><span class="badge badge-blue">Persuasivo</span></td>
               <td class="td-copy" onclick="copyText('STF, RE 417.408/SC: TAH não é taxa tributária — é preço público pela outorga do direito de uso do bem mineral. CTN inaplicável.', this)">📋</td>
             </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">📌 Súmulas STJ — Execução Fiscal e Receitas ANM</div>
+      <button class="copy-btn" onclick="copySection('juris-sumulas-stj', this)">Copiar</button>
+      <div class="card-body" id="juris-sumulas-stj">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>Súmula STJ</th><th>Enunciado</th><th></th></tr>
             <tr>
-              <td><strong>STJ — Tema 566</strong><br><small>LEF art. 40</small></td>
-              <td>Na execução fiscal, após 1 ano de suspensão sem localização de bens/devedor, inicia-se o prazo de 5 anos de prescrição intercorrente (6 anos total). O juiz deve intimar o exequente antes de declarar a prescrição.</td>
-              <td><span class="badge badge-red">Vinculante</span></td>
-              <td class="td-copy" onclick="copyText('STJ Tema 566: Na execução fiscal, após 1 ano de suspensão (LEF art. 40 § 2º) sem localização de bens/devedor, inicia prazo de 5 anos de prescrição intercorrente — total: 6 anos. Juiz deve intimar exequente antes de declarar. REsp 1.340.553/RS.', this)">📋</td>
+              <td><strong>Súmula 314</strong></td>
+              <td>"Em execução fiscal, não localizados bens penhoráveis, suspende-se o processo por um ano, findo o qual se inicia o prazo da prescrição quinquenal intercorrente."</td>
+              <td class="td-copy" onclick="copyText('Súmula STJ 314: Em execução fiscal, não localizados bens penhoráveis, suspende-se o processo por um ano, findo o qual se inicia o prazo da prescrição quinquenal intercorrente.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Súmula 393</strong></td>
+              <td>"A exceção de pré-executividade é admissível na execução fiscal relativamente às matérias conhecíveis de ofício que não demandem dilação probatória."</td>
+              <td class="td-copy" onclick="copyText('Súmula STJ 393: A exceção de pré-executividade é admissível na execução fiscal relativamente às matérias conhecíveis de ofício que não demandem dilação probatória.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Súmula 435</strong></td>
+              <td>"Presume-se dissolvida irregularmente a empresa que deixar de funcionar no seu domicílio fiscal, sem comunicação aos órgãos competentes, legitimando o redirecionamento da execução fiscal para o sócio-gerente."</td>
+              <td class="td-copy" onclick="copyText('Súmula STJ 435: Presume-se dissolvida irregularmente a empresa que deixar de funcionar no seu domicílio fiscal, sem comunicação aos órgãos competentes, legitimando redirecionamento para o sócio-gerente.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>Súmula 213</strong></td>
+              <td>"O mandado de segurança constitui ação adequada para a declaração do direito à compensação tributária." (aplicável por analogia à CFEM/TAH por prova pré-constituída)</td>
+              <td class="td-copy" onclick="copyText('Súmula STJ 213: O mandado de segurança é adequado para declaração de direito à compensação / extinção de crédito demonstrado por prova pré-constituída.', this)">📋</td>
             </tr>
           </table>
         </div>
@@ -1607,12 +1660,37 @@ ATENÇÃO — Súmula ANM 03/25:
     </div>
 
     <div class="card">
-      <div class="card-title">📌 Teses STJ — Receitas ANM</div>
-      <button class="copy-btn" onclick="copyText('Teses STJ aplicáveis às receitas ANM:\n1. Prescrição intercorrente (Tema 566): 1 ano + 5 anos = 6 anos total em execução fiscal parada\n2. Súmula STJ 393: não é excepcional a prescrição intercorrente em execução fiscal\n3. CPC 927: precedentes do STJ em recursos repetitivos são vinculantes\n4. LEF art. 40: suspensão e reinício do prazo prescricional em execução fiscal', this)">Copiar</button>
-      <div class="card-body">
-        <p><strong>Súmula STJ 393:</strong> A exceção de pré-executividade é admissível na execução fiscal relativamente às matérias conhecíveis de ofício que não demandem dilação probatória.</p>
-        <p style="margin-top:8px"><strong>LEF art. 40:</strong> Suspensão da execução fiscal por 1 ano na ausência de bens → início do prazo de prescrição intercorrente de 5 anos.</p>
-        <p style="margin-top:8px"><strong>CPC 927:</strong> Precedentes do STJ em recursos repetitivos têm caráter vinculante.</p>
+      <div class="card-title">📌 TRF — Acórdãos Relevantes CFEM/TAH</div>
+      <button class="copy-btn" onclick="copySection('juris-trf', this)">Copiar</button>
+      <div class="card-body" id="juris-trf">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>Tribunal/Processo</th><th>Tese</th><th></th></tr>
+            <tr>
+              <td><strong>TRF-1ª Região</strong><br><small>Ap. 0043545-38.2003.4.01.3400</small></td>
+              <td>Ilegalidade da IN DNPM 06/2000 ao restringir dedução de ICMS/PIS/COFINS apenas aos valores efetivamente recolhidos — a Lei 7.990/89 autoriza dedução dos tributos incidentes.</td>
+              <td class="td-copy" onclick="copyText('TRF-1ª Região, Ap. 0043545-38.2003.4.01.3400: Ilegalidade da IN DNPM 06/2000 ao restringir dedução de ICMS/PIS/COFINS à valores efetivamente recolhidos. Lei 7.990/89 autoriza dedução dos tributos incidentes.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>TRF-5ª Região</strong><br><small>0012346-68.2011.4.05.8100</small></td>
+              <td>CFEM — decadência de 10 anos (Lei 10.852/2004). CTN inaplicável. REsp 1.122.696/PE aplicado.</td>
+              <td class="td-copy" onclick="copyText('TRF-5ª Região, 0012346-68.2011.4.05.8100: CFEM — decadência de 10 anos (Lei 10.852/2004). CTN inaplicável. Aplica REsp 1.122.696/PE.', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>TRF-4ª Região</strong><br><small>Prescrição Intercorrente CFEM</small></td>
+              <td>Reconhecimento da prescrição intercorrente em execução fiscal de CFEM após 6 anos sem constrição efetiva — Tema 566 STJ aplicado ao crédito de CFEM.</td>
+              <td class="td-copy" onclick="copyText('TRF-4ª Região: Prescrição intercorrente em execução fiscal de CFEM após 6 anos sem constrição — Tema 566 STJ aplicável a crédito de CFEM (receita patrimonial).', this)">📋</td>
+            </tr>
+            <tr>
+              <td><strong>TRF-3ª Região</strong><br><small>5011358-84.2020.4.03.6100</small></td>
+              <td>MS sobre prescrição intercorrente de CFEM (NFLDPs 515-2010, 607-2013, 606-2013) — defesa administrativa protocolada em 2011/2014 sem julgamento por mais de 6 anos → prescrição intercorrente administrativa não aplicável (Súmula ANM 03/25); prescrição executória posterior ao ajuizamento sujeita ao Tema 566.</td>
+              <td class="td-copy" onclick="copyText('TRF-3ª, 5011358-84.2020.4.03.6100: Discussão sobre prescrição intercorrente de CFEM — fase administrativa não gera prescrição intercorrente (Súmula ANM 03/25). Prescrição só incide na fase de execução fiscal (Tema 566).', this)">📋</td>
+            </tr>
+          </table>
+        </div>
+        <div class="alert alert-blue" style="margin-top:12px">
+          <strong>Orientação PFE-ANM:</strong> A prescrição intercorrente <u>não corre na fase administrativa</u> (Súmula ANM 03/25). Corre apenas na fase de execução fiscal — 1 ano de suspensão + 5 anos (Tema 566/567 STJ). O procurador federal <u>deve reconhecer e não recorrer</u> quando configurada (Lei 9.469/97, art. 1º-C + Portaria PGF 488/2016, art. 13).
+        </div>
       </div>
     </div>
   </div>
@@ -2075,6 +2153,541 @@ OAB/__ nº ___</textarea>
     </div>
 
   </div>
+
+  <!-- PARECERES PFE -->
+  <div id="sec-pareceres" class="section">
+
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">⚖️ Pareceres PFE-ANM/PGF/AGU — Referências Consolidadas</div>
+      <div class="card-body">
+        <div class="alert alert-blue" style="margin-bottom:16px">Pareceres e Notas Jurídicas da Procuradoria Federal Especializada da ANM e da AGU — extraídos e consolidados para uso prático. Copie o texto e adapte ao caso concreto substituindo os campos <strong>[___]</strong>.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <a href="#par-intercorrente" class="peca-jump">⏱️ Prescrição Intercorrente</a>
+          <a href="#par-executoria"    class="peca-jump">📋 Prescrição Executória TAH</a>
+          <a href="#par-prazos"        class="peca-jump">📅 Tabela de Prazos CFEM/TAH</a>
+          <a href="#par-baixovalor"    class="peca-jump">💰 Baixo Valor (Tema 1184 STF)</a>
+          <a href="#par-apelacao"      class="peca-jump">📎 Apelação — Prescrição CFEM</a>
+          <a href="#par-anulatoria"    class="peca-jump">🗂️ Ação Anulatória CFEM</a>
+          <a href="#par-usurpacao"     class="peca-jump">⛏️ Defesa Usurpação Mineral</a>
+          <a href="#par-ms"            class="peca-jump">🔰 Mandado de Segurança</a>
+          <a href="#par-garantia"      class="peca-jump">🛡️ Petição de Garantia do Juízo</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ① PARECER FORÇA EXECUTÓRIA — PRESCRIÇÃO INTERCORRENTE -->
+    <div class="peca-card" id="par-intercorrente">
+      <div class="peca-header">
+        <div>
+          <span class="peca-badge">LEF art. 40 + Tema 566 STJ</span>
+          <span class="peca-badge peca-badge-green">Vinculante — REsp 1.340.553/RS</span>
+          <span class="peca-badge peca-badge-amber">PFE-ANM/PGF/AGU</span>
+          <div class="peca-title">⏱️ Parecer de Força Executória — Prescrição Intercorrente</div>
+          <div class="peca-sub">Padrão: execuções paradas > 6 anos — reconhecimento e não interposição de recurso</div>
+        </div>
+        <button class="peca-copy-btn" onclick="pecaCopy('ta-par-intercorrente', this)">📋 Copiar</button>
+      </div>
+      <textarea id="ta-par-intercorrente" class="peca-textarea" spellcheck="false" onclick="this.select()">PARECER DE FORÇA EXECUTÓRIA n. [NÚMERO]/[ANO]/NAEX-EATE/EDCJUD/PGF/AGU
+
+PROCESSO JUDICIAL: [NÚMERO DO PROCESSO]
+NUP: [NUP ADMINISTRATIVO]
+INTERESSADOS: AGÊNCIA NACIONAL DE MINERAÇÃO — ANM E OUTROS
+ASSUNTOS: DÍVIDA ATIVA (EXECUÇÃO FISCAL)
+
+EMENTA: Execução fiscal paralisada por mais de 6 (seis) anos sem efetiva constrição patrimonial ou citação válida do executado. Reconhecimento da prescrição intercorrente nos termos do art. 40 da LEF e do Tema 566/567 do STJ (REsp 1.340.553/RS — recurso repetitivo vinculante). Procurador Federal autorizado a não interpor recurso e desistir dos já manejados (Lei 9.469/97, art. 1º-C + Portaria PGF 377/2011 + Portaria AGU 488/2016, art. 13).
+
+I — RELATÓRIO
+
+Trata-se de cumprimento de sentença que extinguiu a execução fiscal em razão do reconhecimento da prescrição intercorrente, com base na decisão proferida pela 1ª Seção do Superior Tribunal de Justiça, REsp n. 1.340.553/RS, Relator Ministro Mauro Campbell Marques, submetido ao regime do art. 543-C do CPC/73 (Tema 566/567).
+
+O processo permaneceu paralisado desde [DATA], quando foi determinada a suspensão ante a não localização do devedor/bens penhoráveis, sem que qualquer constrição efetiva fosse realizada no prazo de 6 (seis) anos.
+
+II — FUNDAMENTAÇÃO
+
+2.1. Da Prescrição Intercorrente (Tema 566/567 STJ — vinculante)
+
+O Superior Tribunal de Justiça, no Tema 566, fixou as seguintes teses:
+— Tese 1: O prazo de suspensão de 1 (um) ano (LEF, art. 40, §§ 1º e 2º) é automático, independendo de decisão judicial expressa.
+— Tese 2: Após o ano de suspensão, inicia-se automaticamente o prazo prescricional intercorrente de 5 (cinco) anos.
+— Tese 4: A mera expedição de ofícios a órgãos para localização de bens (SISBAJUD, RENAJUD) NÃO interrompe a prescrição intercorrente.
+— Tese 5: Somente a efetiva constrição de bens (penhora real) interrompe o prazo.
+
+Súmula STJ 314: "Em execução fiscal, não localizados bens penhoráveis, suspende-se o processo por um ano, findo o qual se inicia o prazo da prescrição quinquenal intercorrente."
+
+2.2. Da autorização para não recorrer
+
+O art. 5º, parágrafo único, II, da Portaria PGF 377/2011 autoriza o Procurador Federal a não interpor recurso nas hipóteses em que o crédito estiver prescrito.
+
+O art. 1º-C da Lei n. 9.469/97 (inserido pela Lei n. 11.941/2009) estabelece: "Verificada a prescrição do crédito, o representante judicial da União, das autarquias e fundações públicas federais não efetuará a inscrição em dívida ativa dos créditos, não procederá ao ajuizamento, não recorrerá e desistirá dos recursos já interpostos."
+
+Com base no Parecer Referencial n. 00006/2019/DEPCONT/PGF/AGU e no art. 13 da Portaria AGU n. 488/2016, não é mais necessária a autorização da Coordenação para fins de não interposição de recurso ou desistência de recursos já manejados nos casos de prescrição intercorrente aplicando o Tema 566.
+
+III — CONCLUSÃO
+
+Reconhece-se a prescrição intercorrente. Não é o caso de interposição de recurso. Encerrar o feito.
+
+[Local], [data].
+[Nome do Procurador Federal]
+Matrícula: ___ — OAB/__ ___</textarea>
+    </div>
+
+    <!-- ② PARECER PRESCRIÇÃO EXECUTÓRIA TAH -->
+    <div class="peca-card" id="par-executoria">
+      <div class="peca-header">
+        <div>
+          <span class="peca-badge">LEF art. 2º, §3º</span>
+          <span class="peca-badge peca-badge-amber">TAH inscrita — não ajuizada</span>
+          <span class="peca-badge peca-badge-green">PFE-ANM n. 00108/2023</span>
+          <div class="peca-title">📋 Parecer — Prescrição Executória (TAH Não Ajuizada)</div>
+          <div class="peca-sub">Crédito inscrito em DA há mais de 5 anos sem ajuizamento da execução fiscal</div>
+        </div>
+        <button class="peca-copy-btn" onclick="pecaCopy('ta-par-executoria', this)">📋 Copiar</button>
+      </div>
+      <textarea id="ta-par-executoria" class="peca-textarea" spellcheck="false" onclick="this.select()">PARECER n. [NÚMERO]/[ANO]/PFE-ANM/PGF/AGU
+
+NUP: [NÚMERO DO PROCESSO ADMINISTRATIVO]
+INTERESSADOS: [NOME DO DEVEDOR]
+ASSUNTOS: COBRANÇA E RECUPERAÇÃO DE CRÉDITOS
+
+EMENTA: Não pagamento da Taxa Anual por Hectare — TAH vencida em [DATA]. Processo inscrito em Dívida Ativa em [DATA], mas não ajuizado. Reconhecimento da prescrição executória. Crédito prescrito — não ajuizar.
+
+I — RELATÓRIO
+
+Trata-se do Processo Administrativo de Cobrança instaurado em face de [DEVEDOR] por não ter efetuado o pagamento da TAH vencida em [DATA] (alvará/licença publicado em [DATA]).
+
+Houve inscrição em dívida ativa em [DATA]. Contudo, até a presente data — [DATA ATUAL] — o crédito não foi objeto de ajuizamento de execução fiscal.
+
+II — FUNDAMENTAÇÃO
+
+2.1. Do prazo prescricional
+
+Nos termos do art. 2º, §3º, da Lei n. 6.830/80 (LEF): "A inscrição, que se sub-roga nos direitos do credor, suspende a prescrição, para todos os efeitos de direito, por 180 (cento e oitenta) dias, ou até a distribuição da execução fiscal, se esta ocorrer antes de findo aquele prazo."
+
+Transcorrido o prazo de suspensão de 180 dias contados da inscrição ([DATA + 180 dias]), retomou-se o prazo prescricional de 5 (cinco) anos, contado do lançamento definitivo, nos termos da Lei n. 9.636/98, art. 47 c/c Lei n. 10.852/2004.
+
+2.2. Do cômputo do prazo
+
+Vencimento da TAH: [DATA]
+Inscrição em DA: [DATA]
+Suspensão: 180 dias (até [DATA])
+Prazo prescricional de 5 anos: iniciado em [DATA] — expirado em [DATA]
+
+Portanto, na data de [DATA ATUAL], o crédito encontra-se prescrito.
+
+2.3. Da autorização para não ajuizar
+
+O art. 1º-C da Lei n. 9.469/97 (Lei 11.941/2009): representante judicial não procederá ao ajuizamento quando verificada a prescrição do crédito.
+Portaria AGU n. 377/2011: limites mínimos de inscrição e ajuizamento.
+
+III — CONCLUSÃO
+
+Reconhece-se a prescrição executória do crédito. Não ajuizar. Encaminhar para extinção administrativa do crédito.
+
+[Local], [data].
+[Nome do Procurador Federal]
+Matrícula: ___ — OAB/__ ___</textarea>
+    </div>
+
+    <!-- ③ TABELA DE PRAZOS CFEM/TAH -->
+    <div class="peca-card" id="par-prazos">
+      <div class="peca-header">
+        <div>
+          <span class="peca-badge">Nota JUR. 00939/2023 + Nota 00110/2024</span>
+          <span class="peca-badge peca-badge-green">AGU/PFE-ANM Consolidado</span>
+          <div class="peca-title">📅 Tabela de Prazos — CFEM / TAH / Taxa de Vistoria</div>
+          <div class="peca-sub">Consolidação: MP 1787/98, Lei 10.852/04, REsp 1.122.696/PE (repetitivo)</div>
+        </div>
+        <button class="peca-copy-btn" onclick="pecaCopy('ta-par-prazos', this)">📋 Copiar</button>
+      </div>
+      <textarea id="ta-par-prazos" class="peca-textarea" spellcheck="false" onclick="this.select()">TABELA DE PRAZOS — CFEM / TAH / TAXA DE VISTORIA ANM
+(Fonte: NOTA JUR. n. 00939/2023 + Nota n. 00110/2024 — PFE-ANM/PGF/AGU + REsp 1.122.696/PE)
+
+┌─────────────────────────────────┬────────────────────┬─────────────────────────────────┐
+│ PERÍODO DO VENCIMENTO           │ DECADÊNCIA         │ PRESCRIÇÃO                      │
+├─────────────────────────────────┼────────────────────┼─────────────────────────────────┤
+│ Até 29/12/1998                  │ Sem prazo especial │ 5 anos do vencimento            │
+│                                 │ (CC/1916)          │ (Decreto 20.910/32 + MP 1527/97)│
+├─────────────────────────────────┼────────────────────┼─────────────────────────────────┤
+│ 30/12/1998 a 30/03/2004         │ 5 anos do vencto.  │ 5 anos do lançamento definitivo │
+│                                 │ (MP 1787/98)       │                                 │
+├─────────────────────────────────┼────────────────────┼─────────────────────────────────┤
+│ A partir de 30/03/2004          │ 10 anos do vencto. │ 5 anos do lançamento definitivo │
+│                                 │ (Lei 10.852/2004)  │                                 │
+└─────────────────────────────────┴────────────────────┴─────────────────────────────────┘
+
+EFEITO DA INSCRIÇÃO EM DÍVIDA ATIVA:
+Suspende a prescrição por 180 dias, ou até distribuição da execução fiscal (LEF, art. 2º, §3º).
+
+LANÇAMENTO DEFINITIVO:
+— TAH: data da intimação da notificação administrativa.
+— CFEM: decisão definitiva no PAF (ou data do esgotamento do prazo sem defesa).
+
+DIVISORES NORMATIVOS:
+— MP 1787/1998 (30/12/1998): criou prazo decadencial de 5 anos para receitas patrimoniais.
+— MP 1527/2003 / Lei 10.852/2004 (30/03/2004): ampliou decadência para 10 anos; alcança prazos em curso.
+
+PRESCRIÇÃO INTERCORRENTE (fase judicial):
+— Suspensão automática 1 ano (LEF, art. 40) → prescrição quinquenal intercorrente automática.
+— Tema 566/567 STJ (REsp 1.340.553/RS) — vinculante.
+— Súmula STJ 314.
+— NÃO existe prescrição intercorrente na fase administrativa (Súmula ANM 03/25).
+
+NOTA: CTN arts. 173 e 174 são INAPLICÁVEIS às receitas patrimoniais da ANM.
+Decreto 20.910/32 aplica-se somente quando a Fazenda é DEVEDORA, não credora.</textarea>
+    </div>
+
+    <!-- ④ BAIXO VALOR TEMA 1184 STF -->
+    <div class="peca-card" id="par-baixovalor">
+      <div class="peca-header">
+        <div>
+          <span class="peca-badge">Tema 1184 STF</span>
+          <span class="peca-badge peca-badge-amber">Execução de baixo valor</span>
+          <span class="peca-badge peca-badge-green">NOTA JUR. 00088/2024/PGF</span>
+          <div class="peca-title">💰 Baixo Valor — Extinção por Ausência de Interesse de Agir</div>
+          <div class="peca-sub">Tema 1184 STF: eficiência administrativa — pré-requisitos antes do ajuizamento</div>
+        </div>
+        <button class="peca-copy-btn" onclick="pecaCopy('ta-par-baixovalor', this)">📋 Copiar</button>
+      </div>
+      <textarea id="ta-par-baixovalor" class="peca-textarea" spellcheck="false" onclick="this.select()">NOTA JURÍDICA — EXTINÇÃO DE EXECUÇÃO FISCAL DE BAIXO VALOR
+(Tema 1184 STF — NOTA JUR. n. 00088/2024/NUCC-EXEC/EDCJUD/PGF/AGU)
+
+FUNDAMENTO: STF — Tema 1184
+
+Tese fixada pelo STF:
+"1. É legítima a extinção de execução fiscal de baixo valor pela ausência de interesse de agir tendo em vista o princípio constitucional da eficiência administrativa, respeitada a competência constitucional de cada ente federado.
+2. O ajuizamento da execução fiscal dependerá da prévia adoção das seguintes providências:
+   a) tentativa de conciliação ou adoção de solução administrativa; e
+   b) protesto do título, salvo por motivo de eficiência administrativa, comprovando-se a inadequação da medida.
+3. O trâmite de ações de execução fiscal não impede os entes federados de pedirem a suspensão do processo para a adoção das medidas previstas no item 2."
+
+APLICAÇÃO AO CRÉDITO ANM:
+— Portaria AGU n. 377/2011 fixa limites mínimos de inscrição e ajuizamento.
+— Para valor abaixo do mínimo: NÃO inscrever / NÃO ajuizar.
+— Para execuções já ajuizadas: verificar se houve tentativa de conciliação e protesto antes do ajuizamento; se não houve → reconhecer ausência de interesse de agir → não recorrer da extinção.
+
+PRÉ-REQUISITOS PARA AJUIZAMENTO (Tema 1184):
+✓ Tentativa de conciliação administrativa (parcelamento, acordo)
+✓ Protesto do título (salvo comprovada inadequação)
+✓ Valor superior ao mínimo estabelecido pela Portaria AGU 377/2011
+
+NOTAS TÉCNICAS STF: 06/2023 e 08/2023 do Núcleo de Processos Estruturais e Complexos.
+
+TESE DEFENSIVA (para o minerador):
+— Requerer extinção da execução fiscal de baixo valor por ausência de interesse de agir (Tema 1184 STF).
+— Comprovar que o crédito é inferior ao mínimo de ajuizamento.
+— Arguir que não houve protesto ou tentativa de conciliação antes do ajuizamento.</textarea>
+    </div>
+
+    <!-- ⑤ APELAÇÃO CFEM PRESCRIÇÃO -->
+    <div class="peca-card" id="par-apelacao">
+      <div class="peca-header">
+        <div>
+          <span class="peca-badge">CPC art. 1.009</span>
+          <span class="peca-badge peca-badge-amber">Prazo: 15 dias úteis</span>
+          <span class="peca-badge peca-badge-green">Modelo PFE-ANM</span>
+          <div class="peca-title">📎 Apelação — Prescrição / Decadência CFEM</div>
+          <div class="peca-sub">Recurso contra sentença que reconheceu prescrição/decadência indevida do crédito de CFEM</div>
+        </div>
+        <button class="peca-copy-btn" onclick="pecaCopy('ta-par-apelacao', this)">📋 Copiar</button>
+      </div>
+      <textarea id="ta-par-apelacao" class="peca-textarea" spellcheck="false" onclick="this.select()">EXCELENTÍSSIMO(A) SENHOR(A) JUIZ(A) FEDERAL DA ___ VARA FEDERAL DE [COMARCA/UF]
+
+NÚMERO: [NÚMERO DO PROCESSO]
+RECORRENTE: AGÊNCIA NACIONAL DE MINERAÇÃO — ANM
+RECORRIDO(S): [NOME DA EMPRESA/PESSOA]
+
+AGÊNCIA NACIONAL DE MINERAÇÃO — ANM, pessoa jurídica de direito público, representada pelo membro da Advocacia-Geral da União infra-assinado(a), vem, respeitosamente, à presença de Vossa Excelência, interpor
+
+APELAÇÃO
+
+com fundamento no art. 1.009 do CPC/2015, requerendo a remessa dos autos ao Egrégio Tribunal competente.
+
+[Local], [data].
+[Nome do Procurador Federal]
+Matrícula: ___ — OAB/__ ___
+
+RAZÕES DO RECURSO DE APELAÇÃO
+
+I — DA SÍNTESE FÁTICA E DA R. SENTENÇA RECORRIDA
+
+Trata-se de [mandado de segurança / ação anulatória / exceção de pré-executividade] por meio da qual [a impetrante / a autora / a executada] busca a extinção dos créditos referentes à CFEM [ou TAH], nos termos da(s) CDA(s) [nº(s) ___], em razão de alegada prescrição/decadência.
+
+A r. sentença recorrida [reconheceu a prescrição / acolheu a decadência] com fundamento em [___ — descrever].
+
+II — DA INAPLICABILIDADE DO CTN — NATUREZA PATRIMONIAL DA CFEM
+
+A CFEM tem natureza jurídica de receita patrimonial originária da União — NÃO é tributo. Assim reconheceu o STF no RE 228.800/DF (Pleno, 2001) e na ADI 2.586/DF. Por isso, o CTN (arts. 173 e 174) é absolutamente inaplicável.
+
+III — DOS PRAZOS CORRETOS (Lei 9.636/98 + Lei 10.852/2004)
+
+O prazo decadencial para constituição do crédito de CFEM/TAH é de:
+— 5 anos: para vencimentos entre 30/12/1998 e 30/03/2004 (MP 1787/98);
+— 10 anos: para vencimentos a partir de 30/03/2004 (Lei 10.852/2004);
+— REsp 1.122.696/PE (repetitivo): as receitas patrimoniais da União vencidas até 30/12/1998 sujeitam-se ao prazo de 5 anos do Decreto 20.910/32; vencidas a partir de 30/12/1998, aplicam-se os prazos próprios das receitas patrimoniais.
+
+Portanto, o crédito de [DATA DO VENCIMENTO] está sujeito ao prazo decadencial de [5 / 10] anos, contados de [DATA], expirando em [DATA FUTURA]. A sentença recorrida aplicou prazo prescricional equivocado.
+
+IV — DA PRESCRIÇÃO INTERCORRENTE (se aplicável)
+
+Alternativamente, para o caso de manutenção da sentença em relação aos créditos mais antigos, registra-se que [___ — informar se houve ou não inércia processual configurada].
+
+V — DOS PEDIDOS
+
+Ante o exposto, requer o provimento do presente recurso, para:
+a) Reformar a r. sentença, afastando a prescrição/decadência reconhecida;
+b) Determinar o prosseguimento da execução / cobrança do crédito;
+c) Condenar o recorrido nas custas e honorários.
+
+[Local], [data].
+[Nome do Procurador Federal]
+Matrícula: ___ — OAB/__ ___</textarea>
+    </div>
+
+    <!-- ⑥ AÇÃO ANULATÓRIA CFEM -->
+    <div class="peca-card" id="par-anulatoria">
+      <div class="peca-header">
+        <div>
+          <span class="peca-badge">CPC art. 319</span>
+          <span class="peca-badge peca-badge-green">Sem garantia obrigatória</span>
+          <span class="peca-badge peca-badge-amber">Tutela antecipada possível</span>
+          <div class="peca-title">🗂️ Ação Anulatória de Crédito CFEM/TAH</div>
+          <div class="peca-sub">Nulidade de lançamento administrativo — base de cálculo / prescrição / decadência / nulidade do AI</div>
+        </div>
+        <button class="peca-copy-btn" onclick="pecaCopy('ta-par-anulatoria', this)">📋 Copiar</button>
+      </div>
+      <textarea id="ta-par-anulatoria" class="peca-textarea" spellcheck="false" onclick="this.select()">EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA ___ VARA DA SEÇÃO JUDICIÁRIA DE [COMARCA/UF]
+
+[NOME DA EMPRESA], pessoa jurídica de direito privado, inscrita no CNPJ sob nº ___, com sede em ___, por seus advogados subscritos, vem, respeitosamente, à presença de Vossa Excelência, propor
+
+AÇÃO ANULATÓRIA DE LANÇAMENTO ADMINISTRATIVO
+
+em face da AGÊNCIA NACIONAL DE MINERAÇÃO — ANM, autarquia federal, pelos seguintes fundamentos de fato e de direito.
+
+I — SÍNTESE DOS FATOS
+
+A ANM, por meio da Notificação Fiscal de Lançamento de Débito — NFLDP nº ___, lavrada em ___, constituiu crédito de CFEM [ou TAH] em valor de R$ ___, referente ao período de ___ a ___.
+
+A Autora apresentou defesa administrativa em [DATA], que permaneceu sem julgamento por mais de [X] anos [ou: foi indeferida por decisão de ___, mantida em grau de recurso em ___].
+
+II — DA NULIDADE DO LANÇAMENTO
+
+2.1. PRESCRIÇÃO / DECADÊNCIA
+
+O fato gerador da CFEM objeto da NFLDP é datado de ___. O prazo decadencial aplicável é de [5 / 10] anos (Lei 9.636/98, art. 47 c/c Lei 10.852/2004), contado do vencimento em ___. Portanto, o prazo expiraria em ___. A NFLDP foi lavrada em ___, quando [já consumada / ainda vigente] a decadência.
+
+[OU: PRESCRIÇÃO INTERCORRENTE ADMINISTRATIVA — INAPLICÁVEL (Súmula ANM 03/25). Porém, eventuais créditos inscritos em DA e não ajuizados em 5 anos estão prescritos (LEF, art. 2º, §3º).]
+
+2.2. EXCESSO DE EXECUÇÃO / BASE DE CÁLCULO INCORRETA
+
+A base de cálculo da CFEM foi apurada em desacordo com a Lei nº 7.990/89 e a Lei nº 13.540/2017. Especificamente:
+— [Ex.: não foi considerada a dedução de ICMS/PIS/COFINS efetivamente incidentes]
+— [Ex.: o preço de referência utilizado não corresponde ao preço de venda real FOB]
+— [Ex.: a alíquota aplicada — ___% — não corresponde à substância explorada — alíquota correta: ___%]
+
+A memória de cálculo anexa (doc. ___) demonstra que o valor correto seria R$ ___, e não R$ ___ constante na NFLDP.
+
+2.3. NULIDADE FORMAL DO LANÇAMENTO
+
+A NFLDP nº ___ carece dos requisitos obrigatórios [indicar: ausência de período de apuração / forma de cálculo / indexadores utilizados / fundamentação legal específica], tornando-a nula nos termos do art. 2º, §5º, da LEF c/c art. 59 da Lei 9.784/99.
+
+III — DO PEDIDO DE TUTELA ANTECIPADA
+
+Requer-se a suspensão da exigibilidade do crédito ora impugnado, nos termos do art. 300 do CPC, vez que:
+— Fumus boni iuris: demonstrado pelos fundamentos acima.
+— Periculum in mora: risco iminente de inscrição em DA / protesto / restrição de certidões.
+
+IV — DOS PEDIDOS PRINCIPAIS
+
+Ante o exposto, requer:
+a) A declaração de nulidade / inexigibilidade do crédito constante da NFLDP nº ___, com cancelamento da inscrição em DA (se existente);
+b) A condenação da ANM a se abster de inscrever o crédito em DA, protestar ou negativar a Autora em razão do referido lançamento;
+c) Subsidiariamente, a declaração de excesso, com redução do crédito para R$ ___;
+d) A produção de prova pericial contábil;
+e) A condenação da Ré nas custas e honorários (CPC, art. 85).
+
+Dá-se à causa o valor de R$ ___.
+
+[Local], ___ de ___________ de ___.
+[Nome do Advogado(a)]
+OAB/__ nº ___</textarea>
+    </div>
+
+    <!-- ⑦ DEFESA USURPAÇÃO MINERAL -->
+    <div class="peca-card" id="par-usurpacao">
+      <div class="peca-header">
+        <div>
+          <span class="peca-badge">Lei 9.605/98 art. 55</span>
+          <span class="peca-badge peca-badge-amber">Cod. Mineração arts. 62-70</span>
+          <span class="peca-badge peca-badge-green">Defesa — Esfera Administrativa</span>
+          <div class="peca-title">⛏️ Defesa em Procedimento por Usurpação Mineral</div>
+          <div class="peca-sub">Exploração mineral sem título / fora dos limites — esferas administrativa e criminal</div>
+        </div>
+        <button class="peca-copy-btn" onclick="pecaCopy('ta-par-usurpacao', this)">📋 Copiar</button>
+      </div>
+      <textarea id="ta-par-usurpacao" class="peca-textarea" spellcheck="false" onclick="this.select()">AGÊNCIA NACIONAL DE MINERAÇÃO — ANM
+SUPERINTENDÊNCIA DE [UF]
+PROCESSO ADMINISTRATIVO N.º ___
+
+DEFESA ADMINISTRATIVA
+
+[NOME DO REQUERENTE / EMPRESA], inscrito no [CNPJ/CPF] nº ___, por seus advogados (procuração anexa), vem apresentar
+
+DEFESA ADMINISTRATIVA EM PROCESSO DE USURPAÇÃO MINERAL
+
+nos termos do art. 59 da Lei nº 9.784/99 e art. 2º da Resolução ANM nº 48/2020, pelos seguintes fundamentos.
+
+I — DA INADMISSIBILIDADE / NULIDADE DO AUTO DE INFRAÇÃO
+
+1.1. Nulidade formal: o Auto de Infração n. ___ não contém [indicar vício formal: identificação precisa da área / substância / período / coordenadas / fundamentação legal específica], contrariando o art. 2º, §5º, da LEF e o art. 50 da Lei 9.784/99.
+
+1.2. Prescrição punitiva: o fato imputado ocorreu em [DATA]. A notificação ao infrator ocorreu em [DATA]. Transcorridos mais de 5 (cinco) anos entre o fato e a notificação (Lei nº 9.873/99, art. 2º), impõe-se o reconhecimento da prescrição da pretensão punitiva.
+
+II — DA AUSÊNCIA DE USURPAÇÃO
+
+2.1. O Requerente é titular [do alvará de pesquisa / licença / concessão de lavra] n. ___, publicado no DOU de ___, que abrange a área indicada no AI (confrontar coordenadas — doc. ___). A extração foi realizada dentro dos limites do próprio título.
+
+2.2. Não há evidência de extração efetiva na área impugnada: os documentos de produção, nota fiscal de saída e CFEM recolhida (doc. ___) correspondem exclusivamente à área do título.
+
+2.3. [Alternativo] A área de sobreposição entre o título do Requerente e a área do suposto terceiro prejudicado é decorrente de erro no SIGMINE — conforme certidão do sistema (doc. ___) e processo de retificação em tramitação (NUP ___).
+
+III — DA AUSÊNCIA DE DOLO
+
+Mesmo que configurada extração além dos limites — o que não se admite —, não há elemento subjetivo de dolo. O Requerente adotou as cautelas exigíveis e a situação decorreu de [caso fortuito / imprecisão de demarcação / conflito de coordenadas no SIGMINE].
+
+IV — DO BIS IN IDEM
+
+O mesmo fato já é objeto do Auto de Infração n. ___, instaurado pelo IBAMA/[órgão ambiental estadual]. A aplicação de nova penalidade pela ANM, pelo mesmo fato, configura bis in idem, vedado pelo princípio da proporcionalidade (Lei 9.784/99, art. 2º).
+
+V — SUBSIDIÁRIO — ATENUANTES E PROPORCIONALIDADE
+
+Caso mantida a autuação, requer-se a redução da penalidade com base nos atenuantes do art. 9º da Resolução ANM 48/2020:
+— [Ex.: ausência de antecedentes infracionais]
+— [Ex.: regularização espontânea durante o processo]
+— [Ex.: reduzido impacto ambiental]
+
+VI — DOS PEDIDOS
+
+a) O arquivamento do processo / nulidade do AI;
+b) Subsidiariamente, o reconhecimento da prescrição punitiva;
+c) Em caráter eventual, a redução da penalidade pelos atenuantes indicados.
+
+[Local], ___ de ___________ de ___.
+[Nome do Advogado(a)]
+OAB/__ nº ___</textarea>
+    </div>
+
+    <!-- ⑧ MANDADO DE SEGURANÇA -->
+    <div class="peca-card" id="par-ms">
+      <div class="peca-header">
+        <div>
+          <span class="peca-badge">Lei 12.016/2009</span>
+          <span class="peca-badge peca-badge-amber">Prazo decadencial: 120 dias</span>
+          <span class="peca-badge peca-badge-green">Direito líquido e certo</span>
+          <div class="peca-title">🔰 Mandado de Segurança — Créditos ANM</div>
+          <div class="peca-sub">Extinção / suspensão de exigibilidade de CFEM/TAH por prescrição — direito líquido e certo</div>
+        </div>
+        <button class="peca-copy-btn" onclick="pecaCopy('ta-par-ms', this)">📋 Copiar</button>
+      </div>
+      <textarea id="ta-par-ms" class="peca-textarea" spellcheck="false" onclick="this.select()">EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA ___ VARA / DESEMBARGADOR(A) FEDERAL RELATOR(A)
+[TRIBUNAL / SEÇÃO JUDICIÁRIA]
+
+[NOME DA IMPETRANTE], pessoa jurídica de direito privado, inscrita no CNPJ sob nº ___, por seus advogados (procuração — doc. ___), com fundamento nos arts. 5º, LXIX, da CF/88 e 1º e seguintes da Lei nº 12.016/2009, vem impetrar
+
+MANDADO DE SEGURANÇA
+
+com pedido de liminar, em face do SUPERINTENDENTE DA AGÊNCIA NACIONAL DE MINERAÇÃO — ANM [ou: DIRETOR-GERAL DA ANM], pelos fundamentos a seguir.
+
+I — DO ATO COATOR E DA AUTORIDADE COATORA
+
+O ato coator consiste em [descrever o ato: manutenção da inscrição em dívida ativa da NFLDP nº ___ / indeferimento do pedido administrativo de extinção do crédito / recusa de expedição de certidão negativa / execução de crédito prescrito].
+
+A autoridade coatora é o [Superintendente da ANM em [UF] / Diretor-Geral da ANM], responsável pelo ato descrito.
+
+II — DO DIREITO LÍQUIDO E CERTO
+
+2.1. O crédito de CFEM [ou TAH] referente ao período ___ a ___ (NFLDP nº ___) venceu em ___. O prazo decadencial de [5 / 10] anos expirou em ___. A NFLDP foi lavrada em ___, quando já operada a decadência (Lei 9.636/98, art. 47 + Lei 10.852/2004).
+
+2.2. A prescrição/decadência é matéria de prova documental pré-constituída (certidões, DANFs, CDAs — docs. ___ a ___), prescindindo de dilação probatória — cabimento do mandado de segurança (Súmula STJ 213).
+
+2.3. O direito líquido e certo da Impetrante é a extinção do crédito prescrito/decadente e a expedição de certidão negativa de débitos.
+
+III — DA LIMINAR
+
+Requer-se a concessão de liminar inaudita altera parte (Lei 12.016/2009, art. 7º, III), para:
+a) Suspender a exigibilidade do crédito constante da NFLDP nº ___;
+b) Determinar à ANM que se abstenha de inscrever o crédito em DA, protestar o título ou negativar a Impetrante, sob pena de responsabilidade.
+
+Fumus: prescrição/decadência demonstrada por documentos. Periculum: risco de negativação, inscrição em DA e restrição a certidões que impedem a atividade empresarial.
+
+IV — DO PEDIDO FINAL
+
+a) A concessão definitiva da segurança, com extinção do crédito constante da NFLDP nº ___, declarando-se consumada a [decadência / prescrição];
+b) A determinação à ANM para expedição de certidão negativa ou positiva com efeito de negativa;
+c) A condenação da autoridade impetrada nas custas.
+
+Dá-se à causa o valor de R$ ___.
+
+[Local], ___ de ___________ de ___.
+[Nome do Advogado(a)]
+OAB/__ nº ___</textarea>
+    </div>
+
+    <!-- ⑨ PETIÇÃO DE GARANTIA DO JUÍZO -->
+    <div class="peca-card" id="par-garantia">
+      <div class="peca-header">
+        <div>
+          <span class="peca-badge">LEF arts. 9º e 15</span>
+          <span class="peca-badge peca-badge-green">Pré-requisito para Embargos</span>
+          <span class="peca-badge peca-badge-amber">Seguro / Fiança / Depósito / Bens</span>
+          <div class="peca-title">🛡️ Petição de Garantia do Juízo — Execução Fiscal</div>
+          <div class="peca-sub">Oferta de garantia integral para viabilizar embargos e suspender execução</div>
+        </div>
+        <button class="peca-copy-btn" onclick="pecaCopy('ta-par-garantia', this)">📋 Copiar</button>
+      </div>
+      <textarea id="ta-par-garantia" class="peca-textarea" spellcheck="false" onclick="this.select()">EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA ___ VARA DA SEÇÃO JUDICIÁRIA DE [COMARCA/UF]
+
+[NOME DO EXECUTADO], pessoa jurídica de direito privado, inscrita no CNPJ sob nº ___, nos autos da Execução Fiscal nº ___, promovida pela AGÊNCIA NACIONAL DE MINERAÇÃO — ANM, por seus advogados subscritos, vem, respeitosamente, à presença de Vossa Excelência, oferecer
+
+GARANTIA DO JUÍZO
+
+com fundamento nos arts. 9º e 15 da Lei nº 6.830/80 (LEF), pelos motivos a seguir.
+
+I — DO VALOR DA EXECUÇÃO
+
+O valor constante da(s) CDA(s) é de R$ ___ (principal) + acréscimos legais, totalizando, segundo cálculo da Exequente, R$ ___. O Executado contesta parte deste valor, conforme será demonstrado em sede de Embargos à Execução.
+
+II — DA GARANTIA OFERECIDA
+
+O Executado oferece como garantia do juízo:
+
+[OPÇÃO A — SEGURO-GARANTIA:]
+Apólice de Seguro-Garantia nº ___, emitida pela [Seguradora ___], com cobertura de R$ ___, suficiente para cobrir integralmente o valor da dívida exequenda com acréscimos (doc. ___).
+
+[OPÇÃO B — FIANÇA BANCÁRIA:]
+Carta de Fiança Bancária nº ___, emitida pelo [Banco ___], no valor de R$ ___, garantindo a execução até seu término (doc. ___).
+
+[OPÇÃO C — DEPÓSITO JUDICIAL:]
+O Executado depositará R$ ___ em conta judicial vinculada ao presente feito, conforme comprovante a ser juntado.
+
+[OPÇÃO D — PENHORA DE BENS:]
+Oferece à penhora o(s) bem(ns) a seguir descrito(s), avaliado(s) em R$ ___:
+— [Imóvel situado em ___, matrícula nº ___ do CRI de ___ — doc. ___]
+— [Veículo [marca/modelo/ano], placa ___ — doc. ___]
+
+III — DO PEDIDO
+
+Ante o exposto, requer:
+a) A aceitação da garantia ofertada, declarando-se o juízo integralmente garantido;
+b) A suspensão dos atos executivos, nos termos dos arts. 9º, 15 e 19 da LEF;
+c) A intimação da ANM-Exequente para manifestação no prazo legal;
+d) A fixação do prazo para o Executado apresentar Embargos à Execução Fiscal (LEF, art. 16, §1º — 30 dias da aceitação da garantia).
+
+[Local], ___ de ___________ de ___.
+[Nome do Advogado(a)]
+OAB/__ nº ___</textarea>
+    </div>
+
+  </div><!-- /#sec-pareceres -->
 
   <!-- CONFIGURAÇÕES LLM -->
   <div id="sec-config" class="section">
@@ -2864,13 +3477,14 @@ OAB/__ nº ___</textarea>
 
 <script>
 // ── NAVEGAÇÃO ──
-const sections = ['home','principios','cfem','tah','multas','vistoria','sumulas','legislacao','jurisprudencia','calculos','estrategia','checklist','antipadroes','pecas','config','admin','legmineral'];
+const sections = ['home','principios','cfem','tah','multas','vistoria','sumulas','legislacao','jurisprudencia','calculos','estrategia','checklist','antipadroes','pecas','pareceres','config','admin','legmineral'];
 const titles = {
   home: 'Início', principios: 'Princípios Jurídicos', cfem: 'CFEM',
   tah: 'TAH', multas: 'Multas ANM', vistoria: 'Taxa de Vistoria',
   sumulas: 'Súmulas ANM', legislacao: 'Legislação', jurisprudencia: 'Jurisprudência',
   calculos: 'Cálculos', estrategia: 'Estratégia Processual',
   checklist: 'Checklist', antipadroes: 'Anti-Padrões', pecas: 'Peças Processuais',
+  pareceres: '⚖️ Pareceres PFE-ANM/PGF/AGU',
   config: 'Configurações LLM', admin: 'Gestão de Usuários',
   legmineral: '📚 Legislação Mineral — Plataforma Jurídico-Mineral'
 };
@@ -3033,6 +3647,7 @@ const searchData = [
   { section: 'checklist', title: 'Checklist', keywords: 'checklist verificar conferir' },
   { section: 'antipadroes', title: 'Anti-Padrões', keywords: 'nunca erro tributo ctn decreto 20910 prescrição intercorrente frete pré-venda pelotização consumo proprio agua mineral embargos sem garantia' },
   { section: 'pecas', title: 'Peças Processuais', keywords: 'embargos execução fiscal exceção pre-executividade cadin suspensão prescrição intercorrente modelo peça petição lef cfem tah multa' },
+  { section: 'pareceres', title: 'Pareceres PFE', keywords: 'parecer PFE AGU procuradoria força executória prescrição intercorrente executória baixo valor tema 1184 apelação anulatória usurpação mandado segurança garantia juízo nota jurídica prazos decadência' },
   { section: 'principios', title: 'Princípios', keywords: 'principio fundamental decadência prescrição intercorrente patrimonial penalidade' },
 ];
 
