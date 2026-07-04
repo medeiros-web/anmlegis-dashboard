@@ -2895,7 +2895,7 @@ OAB/__ nº ___</textarea>
           <div class="alert alert-blue" style="margin-bottom:12px">🔐 A chave abaixo é usada para autenticar diretamente na API Anthropic. Ela é salva apenas neste navegador (localStorage) e enviada de forma segura via HTTPS.</div>
           <label class="cfg-label">Chave API Anthropic</label>
           <div class="cfg-key-row">
-            <input type="password" id="cfg-claude-key" class="cfg-input" placeholder="sk-ant-... (opcional — deixe em branco para usar a chave do servidor)" autocomplete="off">
+            <input type="password" id="cfg-claude-key" class="cfg-input" placeholder="sk-ant-... (opcional — deixe em branco para usar a chave do servidor)" autocomplete="off" oninput="cfgAutoSaveClaude(this)">
             <button class="cfg-eye" onclick="toggleKey('cfg-claude-key', this)">👁</button>
           </div>
           <label class="cfg-label" style="margin-top:10px">Modelo</label>
@@ -4244,6 +4244,12 @@ const LLM_PROVIDERS = {
 
 function cfgLoad() {
   return JSON.parse(localStorage.getItem('anmlegis_llm') || '{}');
+}
+
+function cfgAutoSaveClaude(input) {
+  const saved = cfgLoad();
+  saved.claude_key = input.value.trim();
+  localStorage.setItem('anmlegis_llm', JSON.stringify(saved));
 }
 
 function cfgSave() {
