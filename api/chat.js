@@ -100,9 +100,11 @@ Somente constrição efetiva de bens (penhora real) interrompe (Tema 566, Tese 5
 ## JURISPRUDÊNCIA
 - STF RE 228.800/DF (2001): CFEM/TAH/Vistoria = receitas patrimoniais, CTN inaplicável.
 - STF ADI 2.586/DF: constitucionalidade da CFEM confirmada — receita patrimonial.
-- STF Tema 1184: extinção execução fiscal de baixo valor por ausência de interesse de agir (eficiência). Pré-requisito: conciliação + protesto antes de ajuizar.
+- STF Tema 1184 + Resolução CNJ 547/2024: execuções fiscais < R$ 10.000 sem movimentação útil > 1 ano = extinção automática. Pré-requisito Tema 1184: conciliação + protesto antes de ajuizar. §4º Res. CNJ 547/24: nova propositura possível no prazo prescricional. Execuções apensadas somam-se para o limite.
 - STJ Tema 566 (REsp 1.340.553/RS): prescrição intercorrente execução fiscal = 1 ano suspensão + 5 anos (automáticos) = 6 anos total. VINCULANTE. Expedição de ofícios NÃO interrompe.
-- STJ Tema 567 (REsp 1.340.553/RS): prazo intercorrente inicia automaticamente — independe de decisão de arquivamento. VINCULANTE.
+- STJ Tema 567 (REsp 1.340.553/RS): prazo intercorrente inicia automaticamente — independe de decisão de arquivamento. NT CGCOB/DIGEVAT 37/2010 e 45/2010: marco = término automático do prazo de 1 ano; despacho de arquivamento não é necessário. VINCULANTE.
+- STJ REsp 2.174.870/MG (2ª Turma, 04/02/2025): SOMENTE constrição efetiva com resultado positivo (penhora, arresto, bloqueio SISBAJUD bem-sucedido) interrompe prescrição intercorrente. Petições, ofícios e diligências infrutíferas NÃO interrompem o prazo. Decisivo para demonstrar que movimentação formal não interrompeu prescrição.
+- STJ Tema 444 (REsp 1.201.993/SP + 1.145.563/PR — Repetitivo VINCULANTE): prescrição do redirecionamento para sócio-gerente = 5 anos. Se dissolução irregular antes da citação da PJ: prazo conta da citação da PJ. Se dissolução após a citação: prazo conta do ato inequívoco de dissolução irregular.
 - STJ REsp 1.122.696/PE (repetitivo): receitas patrimoniais pré-30/12/1998 = 5 anos (Decreto 20.910/32); pós-30/12/1998 = prazo próprio; MP 1527/2003 ampliou para 10 anos.
 - STJ Súmula 314: suspensão 1 ano → prescrição intercorrente quinquenal.
 - STJ Súmula 393: exceção de pré-executividade admissível para matéria de ordem pública sem dilação probatória.
@@ -116,19 +118,23 @@ Somente constrição efetiva de bens (penhora real) interrompe (Tema 566, Tese 5
 1. Prescrição punitiva (multas — 5 anos Lei 9.873/99) ou decadência CFEM/TAH/Vistoria (5 ou 10 anos conforme período)
 2. Prescrição anterior ao lançamento (vencimento até 29/12/1998: 5 anos do vencimento)
 3. Prescrição executória: inscrito em DA mas não ajuizado em 5 anos (LEF art. 2º, §3º)
-4. Prescrição intercorrente (Tema 566/567 STJ — 6 anos de execução parada = 1+5)
-5. Nulidade da CDA (LEF art. 2º §5º — requisitos formais)
-6. Excesso de execução (indexadores incorretos, encargos indevidos — encargos 20%/10% somente a partir de 04/12/2008)
-7. Baixo valor: Tema 1184 STF — ausência de interesse de agir
-8. Ilegitimidade passiva (sócio vs. empresa, redirecionamento irregular)
+4. Prescrição intercorrente (Tema 566/567 STJ — 6 anos de execução parada = 1+5; verificar REsp 2.174.870/MG para confirmar ausência de constrição efetiva)
+5. Prescrição do redirecionamento (Tema 444 STJ — 5 anos contados da citação PJ ou do ato de dissolução — verificar data exata)
+6. Nulidade da CDA (LEF art. 2º §5º — requisitos formais)
+7. Excesso de execução (indexadores incorretos, encargos indevidos — encargos 20%/10% somente a partir de 04/12/2008)
+8. Baixo valor: Tema 1184 STF + Resolução CNJ 547/2024 — extinção automática abaixo de R$ 10.000 sem movimentação > 1 ano
 9. Bis in idem com auto de infração pelo mesmo fato
+10. Corredores em redução de área: Parecer PFE-ANM 00051/2020 — polígono remanescente deve ser contínuo
 
 ## PARECERES PFE-ANM/PGF/AGU CONSOLIDADOS
-- PARECER DE FORÇA EXECUTÓRIA: reconhecimento de prescrição intercorrente → não recorrer (Portaria 377/2011 + Portaria 488/2016 + Lei 9.469/97 art. 1º-C).
+- PARECER DE FORÇA EXECUTÓRIA: reconhecimento de prescrição intercorrente → não recorrer (Portaria 377/2011 + Portaria 488/2016 + Lei 9.469/97 art. 1º-C). Pós-extinção: baixa SERASA, cancelamento protesto, exclusão CADIN, comunicação ANM (OS CGCOB 03/2020).
 - PARECER n. 00108/2023/PFE-ANM: TAH inscrita há mais de 5 anos sem ajuizamento → prescrição executória.
 - NOTA JUR. 00939/2023 + Nota 00110/2024: tabela de prazos decadenciais/prescricionais CFEM/TAH por período.
-- NOTA JUR. 00088/2024: baixo valor → Tema 1184 STF → não ajuizar / reconhecer extinção.
+- NOTA JUR. 00088/2024: baixo valor → Tema 1184 STF + Res. CNJ 547/2024 → não ajuizar / reconhecer extinção.
 - DESPACHO 00295/2023: aprovação de reconhecimento de prescrição intercorrente + autorização para não recorrer.
+- NT CGCOB/DIGEVAT 37/2010: marco inicial da prescrição intercorrente = término automático do prazo de 1 ano de suspensão.
+- NT CGCOB/DIGEVAT 45/2010: despacho de arquivamento não é necessário para início do prazo prescricional intercorrente.
+- PARECER PFE-ANM 00051/2020: corredores em redução de área = vício formal insanável.
 
 ## ANTI-PADRÕES (erros a evitar)
 - Aplicar CTN arts. 173/174 à CFEM/TAH/Vistoria (inaplicável — receita patrimonial)
@@ -139,6 +145,9 @@ Somente constrição efetiva de bens (penhora real) interrompe (Tema 566, Tese 5
 - Usar indexador diferente da Portaria ANM 389/2010 (Súmula ANM 08/25)
 - Admitir exceção de pré-executividade quando há dilação probatória necessária (Súmula STJ 393)
 - Propor embargos sem garantia do juízo (LEF art. 16, §1º)
+- Alegar que petição/ofício sem resultado interrompe prescrição (REsp 2.174.870/MG — somente constrição efetiva)
+- Esquecer Res. CNJ 547/2024 em execuções < R$ 10.000 sem movimentação > 1 ano
+- Confundir prescrição do redirecionamento (Tema 444 — 5 anos) com prescrição intercorrente geral (Tema 566)
 
 ---
 
