@@ -617,10 +617,18 @@
     position: fixed; bottom: 0; right: 0; width: 400px; height: 100vh;
     max-height: 100vh; background: #11151e; border-left: 1px solid var(--border);
     display: flex; flex-direction: column; z-index: 600;
-    transform: translateX(110%); transition: transform .3s cubic-bezier(.4,0,.2,1);
+    transform: translateX(110%); transition: transform .3s cubic-bezier(.4,0,.2,1), width .3s cubic-bezier(.4,0,.2,1);
     box-shadow: -8px 0 40px rgba(0,0,0,.5);
   }
   #chat-panel.open { transform: translateX(0); }
+  #chat-panel.expanded { width: 680px; }
+  #chat-panel.fullscreen { width: 100vw; border-left: none; }
+  #chat-expand {
+    background: none; border: none; color: var(--muted); cursor: pointer;
+    font-size: 16px; padding: 4px 8px; border-radius: 6px; transition: .15s;
+    flex-shrink: 0;
+  }
+  #chat-expand:hover { background: var(--border); color: var(--text); }
 
   #chat-head {
     display: flex; align-items: center; gap: 12px;
@@ -3597,6 +3605,7 @@ OAB/__ nº ___</textarea>
       <span>● Online — Especialista em Direito Minerário</span>
     </div>
     <button id="chat-clear" onclick="chatClear()" title="Limpar conversa">🗑</button>
+    <button id="chat-expand" onclick="chatCycleSize()" title="Expandir / Tela cheia" aria-label="Expandir">⤢</button>
     <button id="chat-close" onclick="chatToggle()" aria-label="Fechar">✕</button>
   </div>
 
@@ -3960,6 +3969,19 @@ function chatToggle() {
     if (!document.querySelector('.chat-msg')) chatWelcome();
     setTimeout(() => document.getElementById('chat-input').focus(), 300);
   }
+}
+
+let chatSizeStep = 0; // 0=normal 1=expanded 2=fullscreen
+function chatCycleSize() {
+  const panel = document.getElementById('chat-panel');
+  const btn   = document.getElementById('chat-expand');
+  const isMob = window.innerWidth <= 768;
+  if (isMob) return; // no mobile já é full-width
+  chatSizeStep = (chatSizeStep + 1) % 3;
+  panel.classList.remove('expanded', 'fullscreen');
+  if (chatSizeStep === 1) { panel.classList.add('expanded');   btn.textContent = '⤡'; btn.title = 'Tela cheia / Reduzir'; }
+  else if (chatSizeStep === 2) { panel.classList.add('fullscreen'); btn.textContent = '⊡'; btn.title = 'Reduzir'; }
+  else { btn.textContent = '⤢'; btn.title = 'Expandir / Tela cheia'; }
 }
 
 function chatWelcome() {
