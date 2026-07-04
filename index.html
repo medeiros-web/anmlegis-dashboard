@@ -4077,6 +4077,7 @@ async function doLogin(e) {
       localStorage.setItem(AUTH_KEY, data.token);
       _currentUser = jwtPayload(data.token);
       authShow(data.email, data.name, data.is_admin);
+      if (data.is_admin) cfgLoadFromServer();
     }
   } catch {
     errEl.textContent = '⚠️ Falha de conexão. Tente novamente.';
@@ -4280,6 +4281,41 @@ function cfgLoad() {
   return JSON.parse(localStorage.getItem('anmlegis_llm') || '{}');
 }
 
+// Carrega config do servidor e sobrescreve localStorage
+async function cfgLoadFromServer() {
+  const token = authGetToken();
+  if (!token) return;
+  try {
+    const res = await fetch('/api/settings', {
+      headers: { 'Authorization': 'Bearer ' + token },
+    });
+    if (!res.ok) return;
+    const { config } = await res.json();
+    if (config && typeof config === 'object') {
+      localStorage.setItem('anmlegis_llm', JSON.stringify(config));
+      cfgApplyToUI(config);
+      chatUpdateProviderBadge(config.provider || 'claude');
+    }
+  } catch (e) {
+    console.warn('cfgLoadFromServer falhou (modo offline):', e.message);
+  }
+}
+
+// Persiste config no servidor em background
+async function cfgSaveToServer(data) {
+  const token = authGetToken();
+  if (!token) return;
+  try {
+    await fetch('/api/settings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+      body: JSON.stringify({ config: data }),
+    });
+  } catch (e) {
+    console.warn('cfgSaveToServer falhou:', e.message);
+  }
+}
+
 function cfgAutoSaveClaude(input) {
   const saved = cfgLoad();
   saved.claude_key = input.value.trim();
@@ -4300,6 +4336,7 @@ function cfgSave() {
     claude_model:  document.getElementById('cfg-claude-model')?.value,
   };
   localStorage.setItem('anmlegis_llm', JSON.stringify(data));
+  cfgSaveToServer(data); // persiste no banco em background
   chatUpdateProviderBadge(provider);
   const st = document.getElementById('cfg-status');
   st.textContent = `✓ Configuração salva — usando ${LLM_PROVIDERS[provider]?.label || provider}`;
@@ -4351,8 +4388,10 @@ async function cfgTest() {
 }
 
 function cfgReset() {
-  localStorage.removeItem('anmlegis_llm');
-  cfgApplyToUI({ provider: 'claude' });
+  const defaults = { provider: 'claude' };
+  localStorage.setItem('anmlegis_llm', JSON.stringify(defaults));
+  cfgSaveToServer(defaults); // limpa chaves no servidor também
+  cfgApplyToUI(defaults);
   chatUpdateProviderBadge('claude');
   const st = document.getElementById('cfg-status');
   st.textContent = '↩ Padrão restaurado — Claude ativo';
@@ -4410,6 +4449,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const saved = cfgLoad();
   cfgApplyToUI(saved);
   chatUpdateProviderBadge(saved.provider || 'claude');
+  // se já estava logado como admin, sincroniza config do servidor
+  const token = authGetToken();
+  if (token) {
+    const p = jwtPayload(token);
+    if (p && p.is_admin) cfgLoadFromServer();
+  }
   // card click handlers
   document.querySelectorAll('.llm-card').forEach(card => {
     card.addEventListener('click', () => cfgSelectProvider(card.dataset.provider));
