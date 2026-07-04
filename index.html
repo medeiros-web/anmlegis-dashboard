@@ -127,8 +127,37 @@
     margin-left: auto; font-size: 9px; font-weight: 800; letter-spacing: .5px;
     background: rgba(255,255,255,.25); border-radius: 4px; padding: 2px 6px; color: #fff;
   }
-  /* Legislação Mineral — filtros */
-  .leg-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  /* Legislação Mineral — layout */
+  .leg-layout { display: flex; gap: 20px; align-items: flex-start; }
+  .leg-sidebar {
+    width: 220px; flex-shrink: 0; position: sticky; top: 16px;
+    background: var(--sidebar-bg); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+  }
+  .leg-sidebar-head {
+    padding: 14px 16px 10px; border-bottom: 1px solid var(--border);
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--muted);
+  }
+  .leg-sidebar-nav { padding: 8px 0; }
+  .leg-sb-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 16px; cursor: pointer; font-size: 13px;
+    color: var(--muted); border-left: 3px solid transparent;
+    transition: all .15s; min-height: 40px;
+  }
+  .leg-sb-item:hover { color: var(--text); background: rgba(255,255,255,.04); }
+  .leg-sb-item.active { color: var(--accent); border-left-color: var(--accent); background: rgba(245,158,11,.07); font-weight: 600; }
+  .leg-sb-count {
+    margin-left: auto; font-size: 10px; font-weight: 700;
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--muted); border-radius: 10px; padding: 1px 7px;
+  }
+  .leg-sb-item.active .leg-sb-count { background: rgba(245,158,11,.15); border-color: rgba(245,158,11,.3); color: var(--accent); }
+  .leg-sb-sep { height: 1px; background: var(--border); margin: 6px 0; }
+  .leg-content { flex: 1; min-width: 0; }
+  /* filtros mobile (escondidos no desktop) */
+  .leg-filters { display: none; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
   .leg-filter-btn {
     padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer;
     border: 1px solid var(--border); background: var(--card); color: var(--muted);
@@ -136,6 +165,12 @@
   }
   .leg-filter-btn:hover, .leg-filter-btn.active {
     background: rgba(245,158,11,.15); border-color: var(--accent); color: var(--accent);
+  }
+  @media(max-width:768px) {
+    .leg-layout { flex-direction: column; }
+    .leg-sidebar { display: none; }
+    .leg-filters { display: flex; }
+    .leg-content { width: 100%; }
   }
   .leg-card {
     background: var(--card); border: 1px solid var(--border); border-radius: 12px;
@@ -2162,7 +2197,7 @@ OAB/__ nº ___</textarea>
   <div id="sec-legmineral" class="section">
     <div class="hero" style="margin-bottom:20px">
       <h2>📚 Legislação Mineral — Plataforma Jurídico-Mineral</h2>
-      <p>Repositório completo das normas que regulamentam a atividade de mineração no Brasil: Constituição Federal, Código de Mineração, leis ordinárias, decretos, portarias ANM e resoluções. Filtro por categoria e acesso direto às fontes oficiais.</p>
+      <p>Repositório completo das normas que regulamentam a atividade de mineração no Brasil: Constituição Federal, Código de Mineração, leis ordinárias, decretos, portarias ANM e resoluções.</p>
       <div class="tags" style="margin-top:14px">
         <span class="pill">Código de Mineração</span>
         <span class="pill">CFEM</span>
@@ -2175,13 +2210,13 @@ OAB/__ nº ___</textarea>
     </div>
 
     <div class="leg-stat-row">
-      <div class="leg-stat"><div class="n">30+</div><div class="l">Normas catalogadas</div></div>
+      <div class="leg-stat"><div class="n">20+</div><div class="l">Normas catalogadas</div></div>
       <div class="leg-stat"><div class="n">8</div><div class="l">Categorias</div></div>
       <div class="leg-stat"><div class="n">1967</div><div class="l">Código de Mineração</div></div>
       <div class="leg-stat"><div class="n">2021</div><div class="l">Resolução mais recente</div></div>
     </div>
 
-    <!-- Filtros -->
+    <!-- Filtros mobile -->
     <div class="leg-filters" id="leg-filters">
       <button class="leg-filter-btn active" onclick="legFilter('todos',this)">Todas</button>
       <button class="leg-filter-btn" onclick="legFilter('constitucional',this)">Constitucional</button>
@@ -2194,7 +2229,53 @@ OAB/__ nº ___</textarea>
       <button class="leg-filter-btn" onclick="legFilter('seguranca',this)">Segurança</button>
     </div>
 
-    <div id="leg-cards-container">
+    <!-- Layout desktop: sidebar + conteúdo -->
+    <div class="leg-layout">
+
+      <!-- Sidebar de categorias -->
+      <div class="leg-sidebar">
+        <div class="leg-sidebar-head">Categorias</div>
+        <div class="leg-sidebar-nav">
+          <div class="leg-sb-item active" onclick="legFilter('todos',this)" data-cat="todos">
+            <span>📋</span> Todas as normas <span class="leg-sb-count">20</span>
+          </div>
+          <div class="leg-sb-sep"></div>
+          <div class="leg-sb-item" onclick="legFilter('constitucional',this)" data-cat="constitucional">
+            <span>⚖️</span> Constitucional <span class="leg-sb-count">1</span>
+          </div>
+          <div class="leg-sb-item" onclick="legFilter('mineracao',this)" data-cat="mineracao">
+            <span>⛏️</span> Mineração <span class="leg-sb-count">4</span>
+          </div>
+          <div class="leg-sb-item" onclick="legFilter('ambiental',this)" data-cat="ambiental">
+            <span>🌿</span> Ambiental <span class="leg-sb-count">5</span>
+          </div>
+          <div class="leg-sb-sep"></div>
+          <div class="leg-sb-item" onclick="legFilter('cfem',this)" data-cat="cfem">
+            <span>💰</span> CFEM <span class="leg-sb-count">7</span>
+          </div>
+          <div class="leg-sb-item" onclick="legFilter('tah',this)" data-cat="tah">
+            <span>📐</span> TAH <span class="leg-sb-count">5</span>
+          </div>
+          <div class="leg-sb-item" onclick="legFilter('multas',this)" data-cat="multas">
+            <span>🚫</span> Multas / PAF <span class="leg-sb-count">4</span>
+          </div>
+          <div class="leg-sb-sep"></div>
+          <div class="leg-sb-item" onclick="legFilter('seguranca',this)" data-cat="seguranca">
+            <span>🛡️</span> Segurança <span class="leg-sb-count">1</span>
+          </div>
+          <div class="leg-sb-item" onclick="legFilter('nuclear',this)" data-cat="nuclear">
+            <span>☢️</span> Nuclear <span class="leg-sb-count">1</span>
+          </div>
+          <div class="leg-sb-sep"></div>
+          <div class="leg-sb-item" onclick="window.open('https://www.gov.br/anm/pt-br/acesso-a-informacao/legislacao','_blank')" style="color:var(--accent2)">
+            <span>🔗</span> Portal ANM
+          </div>
+        </div>
+      </div>
+
+      <!-- Área de conteúdo -->
+      <div class="leg-content">
+        <div id="leg-cards-container">
 
       <!-- CF/88 -->
       <div class="leg-card" data-cat="constitucional">
@@ -2632,8 +2713,8 @@ OAB/__ nº ___</textarea>
 
     </div><!-- /#leg-cards-container -->
 
-    <!-- Links externos -->
-    <div class="card" style="margin-top:8px">
+        <!-- Links externos -->
+        <div class="card" style="margin-top:8px">
       <div class="card-title">🔗 Fontes Oficiais de Consulta</div>
       <div class="card-body">
         <div class="grid-2">
@@ -2656,7 +2737,10 @@ OAB/__ nº ___</textarea>
           </div>
         </div>
       </div>
-    </div>
+      </div><!-- /.card links -->
+
+      </div><!-- /.leg-content -->
+    </div><!-- /.leg-layout -->
   </div>
 
   <!-- GESTÃO DE USUÁRIOS (Admin) -->
@@ -2829,8 +2913,17 @@ function show(id) {
 
 // ── LEGISLAÇÃO MINERAL — FILTRO ───────────────────────────────────────────────
 function legFilter(cat, btn) {
+  // Sincroniza filtros mobile e sidebar desktop
   document.querySelectorAll('#leg-filters .leg-filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+  document.querySelectorAll('.leg-sb-item').forEach(b => b.classList.remove('active'));
+  if (btn) {
+    btn.classList.add('active');
+    // Ativa o item correspondente na sidebar se vier do mobile e vice-versa
+    document.querySelectorAll('.leg-sb-item[data-cat="' + cat + '"]').forEach(b => b.classList.add('active'));
+    document.querySelectorAll('#leg-filters .leg-filter-btn').forEach(b => {
+      if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + cat + "'")) b.classList.add('active');
+    });
+  }
   document.querySelectorAll('#leg-cards-container .leg-card').forEach(card => {
     if (cat === 'todos') {
       card.style.display = '';
