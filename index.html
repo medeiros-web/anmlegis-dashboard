@@ -112,6 +112,52 @@
   .nav-item:hover { color: var(--text); background: rgba(255,255,255,.04); }
   .nav-item.active { color: var(--accent); border-left-color: var(--accent); background: rgba(245,158,11,.07); }
   .nav-icon { font-size: 16px; width: 20px; text-align: center; flex-shrink: 0; }
+  .nav-item-highlight {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px; border-radius: 10px; cursor: pointer;
+    font-size: 13px; font-weight: 700; color: #fff;
+    background: linear-gradient(135deg, #b45309 0%, #f59e0b 100%);
+    box-shadow: 0 2px 12px rgba(245,158,11,.35);
+    transition: all .18s; border: 1px solid rgba(255,255,255,.15);
+    min-height: 44px;
+  }
+  .nav-item-highlight:hover { box-shadow: 0 4px 18px rgba(245,158,11,.55); transform: translateY(-1px); }
+  .nav-item-highlight.active { box-shadow: 0 4px 18px rgba(245,158,11,.55); }
+  .nav-hl-badge {
+    margin-left: auto; font-size: 9px; font-weight: 800; letter-spacing: .5px;
+    background: rgba(255,255,255,.25); border-radius: 4px; padding: 2px 6px; color: #fff;
+  }
+  /* Legislação Mineral — filtros */
+  .leg-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .leg-filter-btn {
+    padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer;
+    border: 1px solid var(--border); background: var(--card); color: var(--muted);
+    transition: all .15s;
+  }
+  .leg-filter-btn:hover, .leg-filter-btn.active {
+    background: rgba(245,158,11,.15); border-color: var(--accent); color: var(--accent);
+  }
+  .leg-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px 20px; margin-bottom: 12px; position: relative;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .leg-card:hover { border-color: rgba(245,158,11,.4); box-shadow: 0 2px 12px rgba(245,158,11,.1); }
+  .leg-card-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+  .leg-card-num { font-size: 14px; font-weight: 800; color: var(--accent); min-width: 140px; flex-shrink: 0; }
+  .leg-card-year { font-size: 11px; color: var(--muted); background: var(--card-hover); border-radius: 4px; padding: 2px 7px; align-self: center; }
+  .leg-card-title { font-size: 13px; font-weight: 600; color: var(--text); }
+  .leg-card-desc { font-size: 12px; color: var(--muted); line-height: 1.65; margin-top: 6px; }
+  .leg-card-tags { margin-top: 10px; }
+  .leg-card-link { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--accent2); text-decoration: none; margin-top: 8px; }
+  .leg-card-link:hover { text-decoration: underline; }
+  .leg-card-copy { position: absolute; top: 14px; right: 14px; background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.25); color: var(--accent2); border-radius: 6px; padding: 3px 9px; font-size: 11px; cursor: pointer; transition: all .15s; }
+  .leg-card-copy:hover { background: rgba(59,130,246,.25); }
+  .leg-card-copy.copied { background: rgba(16,185,129,.15); border-color: rgba(16,185,129,.3); color: var(--accent3); }
+  .leg-stat-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+  .leg-stat { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; flex: 1; min-width: 100px; text-align: center; }
+  .leg-stat .n { font-size: 22px; font-weight: 800; color: var(--accent); }
+  .leg-stat .l { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
   /* ── MAIN ────────────────────────────────────────────────────────────────── */
   #main { margin-left: var(--sidebar-w); flex: 1; padding: 24px; min-height: 100vh; }
@@ -772,6 +818,16 @@
     </div>
     <div class="nav-item" onclick="show('vistoria')">
       <span class="nav-icon">🔍</span> Taxa de Vistoria
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <div style="padding:10px 10px 6px">
+      <div class="nav-item-highlight" onclick="show('legmineral')">
+        <span style="font-size:18px">📚</span>
+        <span>Legislação Mineral</span>
+        <span class="nav-hl-badge">NOVO</span>
+      </div>
     </div>
   </div>
 
@@ -2102,6 +2158,507 @@ OAB/__ nº ___</textarea>
     </div>
   </div>
 
+  <!-- LEGISLAÇÃO MINERAL -->
+  <div id="sec-legmineral" class="section">
+    <div class="hero" style="margin-bottom:20px">
+      <h2>📚 Legislação Mineral — Plataforma Jurídico-Mineral</h2>
+      <p>Repositório completo das normas que regulamentam a atividade de mineração no Brasil: Constituição Federal, Código de Mineração, leis ordinárias, decretos, portarias ANM e resoluções. Filtro por categoria e acesso direto às fontes oficiais.</p>
+      <div class="tags" style="margin-top:14px">
+        <span class="pill">Código de Mineração</span>
+        <span class="pill">CFEM</span>
+        <span class="pill">Meio Ambiente</span>
+        <span class="pill">ANM</span>
+        <span class="pill">Lavra</span>
+        <span class="pill">Segurança</span>
+        <span class="pill">Nuclear</span>
+      </div>
+    </div>
+
+    <div class="leg-stat-row">
+      <div class="leg-stat"><div class="n">30+</div><div class="l">Normas catalogadas</div></div>
+      <div class="leg-stat"><div class="n">8</div><div class="l">Categorias</div></div>
+      <div class="leg-stat"><div class="n">1967</div><div class="l">Código de Mineração</div></div>
+      <div class="leg-stat"><div class="n">2021</div><div class="l">Resolução mais recente</div></div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="leg-filters" id="leg-filters">
+      <button class="leg-filter-btn active" onclick="legFilter('todos',this)">Todas</button>
+      <button class="leg-filter-btn" onclick="legFilter('constitucional',this)">Constitucional</button>
+      <button class="leg-filter-btn" onclick="legFilter('mineracao',this)">Mineração</button>
+      <button class="leg-filter-btn" onclick="legFilter('ambiental',this)">Ambiental</button>
+      <button class="leg-filter-btn" onclick="legFilter('cfem',this)">CFEM</button>
+      <button class="leg-filter-btn" onclick="legFilter('tah',this)">TAH</button>
+      <button class="leg-filter-btn" onclick="legFilter('multas',this)">Multas / PAF</button>
+      <button class="leg-filter-btn" onclick="legFilter('nuclear',this)">Nuclear</button>
+      <button class="leg-filter-btn" onclick="legFilter('seguranca',this)">Segurança</button>
+    </div>
+
+    <div id="leg-cards-container">
+
+      <!-- CF/88 -->
+      <div class="leg-card" data-cat="constitucional">
+        <button class="leg-card-copy" onclick="copyText('Constituição Federal de 1988 — Art. 176: as jazidas, em lavra ou não, e demais recursos minerais constituem propriedade distinta da do solo, para efeito de exploração ou aproveitamento, e pertencem à União. Art. 225: todos têm direito ao meio ambiente ecologicamente equilibrado.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">CF/88 — Arts. 176 e 225</div>
+          <div class="leg-card-year">1988</div>
+        </div>
+        <div class="leg-card-title">Constituição Federal — Base Constitucional da Mineração</div>
+        <div class="leg-card-desc">Art. 176: jazidas e recursos minerais pertencem à União, distinto do solo. Exploração depende de autorização ou concessão federal. Art. 225: direito ao meio ambiente equilibrado — obrigação de recuperar áreas degradadas pela mineração. Base constitucional da CFEM (art. 20, § 1º).</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">Mineração</span>
+          <span class="badge badge-green">Meio Ambiente</span>
+          <span class="badge badge-yellow">CFEM</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Dec.-Lei 227/67 -->
+      <div class="leg-card" data-cat="mineracao">
+        <button class="leg-card-copy" onclick="copyText('Dec.-Lei nº 227/1967 — Código de Mineração. Principal diploma legal para atividades de mineração no Brasil. Regula concessão de lavra, autorização de pesquisa, licenciamento e permissão garimpeira. Regulamentado pelo Decreto nº 9.406/2018.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Dec.-Lei nº 227/1967</div>
+          <div class="leg-card-year">1967</div>
+        </div>
+        <div class="leg-card-title">Código de Mineração — Principal Diploma Legal</div>
+        <div class="leg-card-desc">Base do direito minerário brasileiro. Institui as modalidades de direito minerário: autorização de pesquisa, concessão de lavra, licenciamento, permissão de lavra garimpeira, registro de extração. Define obrigações do titular, direitos e vedações. Regulamentado pelo Decreto nº 9.406/2018.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">Código de Mineração</span>
+          <span class="badge badge-blue">Lavra</span>
+          <span class="badge badge-blue">Pesquisa</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del0227.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Dec. 9.406/2018 -->
+      <div class="leg-card" data-cat="mineracao">
+        <button class="leg-card-copy" onclick="copyText('Decreto nº 9.406/2018 — Regulamenta o Código de Mineração (Dec.-Lei 227/1967). Detalha procedimentos administrativos, prazos, requisitos técnicos para autorização de pesquisa e concessão de lavra.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Decreto nº 9.406/2018</div>
+          <div class="leg-card-year">2018</div>
+        </div>
+        <div class="leg-card-title">Regulamentação do Código de Mineração</div>
+        <div class="leg-card-desc">Regulamenta integralmente o Código de Mineração. Detalha procedimentos para autorização de pesquisa, concessão de lavra, licenciamento, permissão garimpeira e registro de extração. Define prazos, requisitos técnicos e documentais, e atribuições da ANM.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">Mineração</span>
+          <span class="badge badge-blue">Regulamentação</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2018/Decreto/D9406.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Lei 6.938/81 -->
+      <div class="leg-card" data-cat="ambiental">
+        <button class="leg-card-copy" onclick="copyText('Lei nº 6.938/1981 — Política Nacional do Meio Ambiente (PNMA). Institui o Sistema Nacional do Meio Ambiente (SISNAMA), o licenciamento ambiental obrigatório e as sanções por danos ambientais. Fundamental para mineração por exigir EIA/RIMA e licença prévia.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Lei nº 6.938/1981</div>
+          <div class="leg-card-year">1981</div>
+        </div>
+        <div class="leg-card-title">Política Nacional do Meio Ambiente (PNMA)</div>
+        <div class="leg-card-desc">Institui o SISNAMA e o licenciamento ambiental obrigatório. Para mineração: exige Estudo de Impacto Ambiental (EIA/RIMA) para concessão de lavra. Define responsabilidade objetiva por danos ambientais. Base do Plano de Recuperação de Área Degradada (PRAD).</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-green">Ambiental</span>
+          <span class="badge badge-green">Licenciamento</span>
+          <span class="badge badge-yellow">PRAD</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/leis/l6938.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Dec. 97.632/89 -->
+      <div class="leg-card" data-cat="ambiental">
+        <button class="leg-card-copy" onclick="copyText('Decreto nº 97.632/1989 — Plano de Recuperação de Área Degradada (PRAD). Exige que toda atividade de mineração elabore e execute PRAD como condição para obtenção e manutenção de licença ambiental.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Decreto nº 97.632/1989</div>
+          <div class="leg-card-year">1989</div>
+        </div>
+        <div class="leg-card-title">Plano de Recuperação de Área Degradada (PRAD)</div>
+        <div class="leg-card-desc">Regulamenta o PRAD como obrigação legal para mineradoras. O plano deve contemplar a recuperação da área ao estado anterior ou equivalente após o encerramento das atividades. Exigência vinculada ao licenciamento ambiental.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-green">PRAD</span>
+          <span class="badge badge-green">Ambiental</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/decreto/1980-1989/D97632.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Lei 7.990/89 -->
+      <div class="leg-card" data-cat="cfem">
+        <button class="leg-card-copy" onclick="copyText('Lei nº 7.990/1989 — Institui a CFEM (Compensação Financeira pela Exploração de Recursos Minerais). Art. 6º: alíquotas originais. Distribuição entre União, Estados e Municípios. Base legal primária da CFEM.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Lei nº 7.990/1989</div>
+          <div class="leg-card-year">1989</div>
+        </div>
+        <div class="leg-card-title">Institui a CFEM — Base Legal Primária</div>
+        <div class="leg-card-desc">Cria a Compensação Financeira pela Exploração de Recursos Minerais (CFEM). Define alíquotas originais e regras de distribuição entre União, Estados, Distrito Federal e Municípios. Alterada substancialmente pela Lei 13.540/2017.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">CFEM</span>
+          <span class="badge badge-blue">Distribuição</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/leis/l7990.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Lei 8.001/90 -->
+      <div class="leg-card" data-cat="cfem">
+        <button class="leg-card-copy" onclick="copyText('Lei nº 8.001/1990 — Define percentuais de distribuição da CFEM. Base de cálculo: receita bruta da venda do produto mineral. Regula repasse aos entes federativos.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Lei nº 8.001/1990</div>
+          <div class="leg-card-year">1990</div>
+        </div>
+        <div class="leg-card-title">Distribuição da CFEM entre Entes Federativos</div>
+        <div class="leg-card-desc">Define os percentuais de distribuição da CFEM entre União (12%), Estados (23%) e Municípios (65%). Base de cálculo original: receita bruta da venda. Sofreu alterações pela Lei 13.540/2017 que modificou alíquotas e base de cálculo.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">CFEM</span>
+          <span class="badge badge-blue">Distribuição</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/leis/l8001.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Dec. 01/91 -->
+      <div class="leg-card" data-cat="cfem">
+        <button class="leg-card-copy" onclick="copyText('Decreto nº 01/1991 — Regulamenta a cobrança da CFEM. Estabelece forma de cálculo, prazos de recolhimento (até o último dia útil do mês seguinte ao fato gerador) e obrigações acessórias.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Decreto nº 01/1991</div>
+          <div class="leg-card-year">1991</div>
+        </div>
+        <div class="leg-card-title">Regulamentação da Cobrança da CFEM</div>
+        <div class="leg-card-desc">Regulamenta a forma de cálculo, prazos de recolhimento e obrigações acessórias da CFEM. Prazo de recolhimento: até o último dia útil do mês subsequente ao fato gerador. Estabelece declaração mensal obrigatória.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">CFEM</span>
+          <span class="badge badge-blue">Prazo</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/decreto/1990-1994/D0001.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Lei 9.605/98 -->
+      <div class="leg-card" data-cat="ambiental">
+        <button class="leg-card-copy" onclick="copyText('Lei nº 9.605/1998 — Lei de Crimes Ambientais. Art. 55: extração de recursos minerais sem autorização pode configurar crime ambiental com pena de detenção de 6 meses a 1 ano. Sanções penais e administrativas aplicáveis à mineração irregular.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Lei nº 9.605/1998</div>
+          <div class="leg-card-year">1998</div>
+        </div>
+        <div class="leg-card-title">Lei de Crimes Ambientais</div>
+        <div class="leg-card-desc">Define sanções penais e administrativas por condutas lesivas ao meio ambiente. Art. 55: crime de extração mineral sem autorização — detenção de 6 meses a 1 ano. Aplica-se também a: garimpo ilegal, usurpação de bem mineral (art. 2º do Código de Mineração), poluição hídrica por rejeitos.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-red">Criminal</span>
+          <span class="badge badge-green">Ambiental</span>
+          <span class="badge badge-red">Infração</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/leis/l9605.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Lei 9.636/98 -->
+      <div class="leg-card" data-cat="cfem tah">
+        <button class="leg-card-copy" onclick="copyText('Lei nº 9.636/1998, art. 47 — Prazo decadencial de 10 anos para constituição de créditos de receitas patrimoniais da União. Aplicável à CFEM, TAH e Taxa de Vistoria. Confirmado pela Súmula ANM 03/25.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Lei nº 9.636/1998</div>
+          <div class="leg-card-year">1998</div>
+        </div>
+        <div class="leg-card-title">Prazo Decadencial de 10 Anos — CFEM, TAH, Vistoria</div>
+        <div class="leg-card-desc">Art. 47: prazo decadencial de 10 anos para constituição de créditos de receitas patrimoniais da União. Aplicável à CFEM, TAH e Taxa de Vistoria (não ao CTN — pois não são tributos). Base legal da decadência nas execuções fiscais da ANM. Ver também Lei 10.852/2004.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">CFEM</span>
+          <span class="badge badge-yellow">TAH</span>
+          <span class="badge badge-purple">Decadência</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/leis/l9636.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Lei 9.827/99 -->
+      <div class="leg-card" data-cat="tah">
+        <button class="leg-card-copy" onclick="copyText('Lei nº 9.827/1999 — Institui a Taxa Anual por Hectare (TAH). Obrigação do titular de direitos minerários, calculada proporcionalmente à área do título em hectares. Natureza jurídica: receita patrimonial (não tributo).', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Lei nº 9.827/1999</div>
+          <div class="leg-card-year">1999</div>
+        </div>
+        <div class="leg-card-title">Institui a TAH — Taxa Anual por Hectare</div>
+        <div class="leg-card-desc">Cria a Taxa Anual por Hectare (TAH) como obrigação do titular de direitos minerários. Calculada proporcionalmente à área em hectares do título minerário e à fase (autorização de pesquisa, concessão de lavra, etc.). Natureza jurídica: preço público / receita patrimonial — não tributo.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">TAH</span>
+          <span class="badge badge-blue">Receita Patrimonial</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/leis/l9827.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Lei 9.873/99 -->
+      <div class="leg-card" data-cat="multas">
+        <button class="leg-card-copy" onclick="copyText('Lei nº 9.873/1999, art. 1º — Prescrição punitiva de 5 anos para o exercício de ação punitiva pela Administração Pública Federal. Aplica-se às multas ANM (Procedimento Administrativo de Fiscalização — PAF). Prazo conta da data do ato lesivo.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Lei nº 9.873/1999</div>
+          <div class="leg-card-year">1999</div>
+        </div>
+        <div class="leg-card-title">Prescrição Punitiva das Multas ANM — 5 Anos</div>
+        <div class="leg-card-desc">Art. 1º: prescrição em 5 anos para o exercício de ação punitiva pela Administração Pública Federal. Aplica-se às multas ANM. Prazo conta da data do ato ou da cessação da infração continuada. Interrupção por notificação/auto de infração. Base da tese de prescrição no PAF.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-red">Multas ANM</span>
+          <span class="badge badge-purple">Prescrição</span>
+          <span class="badge badge-blue">PAF</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/leis/l9873.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Dec. 3.358/2000 -->
+      <div class="leg-card" data-cat="tah">
+        <button class="leg-card-copy" onclick="copyText('Decreto nº 3.358/2000 — Regulamenta a TAH (Taxa Anual por Hectare). Estabelece tabelas de valores por fase do título minerário e categoria de substância. Define prazo de pagamento anual.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Decreto nº 3.358/2000</div>
+          <div class="leg-card-year">2000</div>
+        </div>
+        <div class="leg-card-title">Regulamentação da TAH — Tabelas de Valores</div>
+        <div class="leg-card-desc">Regulamenta a Lei 9.827/99. Estabelece tabelas de valores da TAH por fase do título minerário (autorização de pesquisa: menor valor; concessão de lavra: valor pleno). Define prazo anual de pagamento e critérios de proporcionalidade pela área.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">TAH</span>
+          <span class="badge badge-blue">Tabela</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/decreto/D3358.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Dec. 6.514/2008 -->
+      <div class="leg-card" data-cat="ambiental multas">
+        <button class="leg-card-copy" onclick="copyText('Decreto nº 6.514/2008 — Dispõe sobre as infrações e sanções administrativas ao meio ambiente. Regulamenta o processo administrativo federal de apuração de infrações ambientais. Aplicável também a infrações minerárias com impacto ambiental.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Decreto nº 6.514/2008</div>
+          <div class="leg-card-year">2008</div>
+        </div>
+        <div class="leg-card-title">Infrações e Sanções Administrativas Ambientais</div>
+        <div class="leg-card-desc">Regulamenta as infrações e sanções administrativas ao meio ambiente e o processo administrativo federal para apuração dessas infrações. Aplica-se à mineração em situações de dano ambiental, operação sem licença e descumprimento do PRAD. Multas escalonadas por gravidade.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-green">Ambiental</span>
+          <span class="badge badge-red">Infração</span>
+          <span class="badge badge-blue">PAF</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6514.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Lei 10.852/2004 -->
+      <div class="leg-card" data-cat="cfem tah">
+        <button class="leg-card-copy" onclick="copyText('Lei nº 10.852/2004 — Estende o prazo decadencial de 10 anos para créditos de CFEM/TAH/Taxa de Vistoria anteriores a 24/08/1999. O prazo de 10 anos passa a ser contado de 30/03/2004 (data de publicação da lei).', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Lei nº 10.852/2004</div>
+          <div class="leg-card-year">2004</div>
+        </div>
+        <div class="leg-card-title">Extensão do Prazo Decadencial — Créditos Anteriores a 1999</div>
+        <div class="leg-card-desc">Altera a Lei 9.636/98: estende o prazo decadencial de 10 anos para créditos de receitas patrimoniais anteriores a 24/08/1999. Para créditos desse período, o prazo de 10 anos conta de 30/03/2004 (data de publicação). Impacta cálculo de créditos históricos de CFEM e TAH.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">CFEM</span>
+          <span class="badge badge-yellow">TAH</span>
+          <span class="badge badge-purple">Decadência</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10.852.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- LC 140/2011 -->
+      <div class="leg-card" data-cat="ambiental">
+        <button class="leg-card-copy" onclick="copyText('Lei Complementar nº 140/2011, arts. 7º e 9º — Define competências administrativas da União, Estados e Municípios no licenciamento ambiental. A União (IBAMA) licencia atividades de significativo impacto ambiental nacional, incluindo mineração de grande porte.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">LC nº 140/2011</div>
+          <div class="leg-card-year">2011</div>
+        </div>
+        <div class="leg-card-title">Competências no Licenciamento Ambiental</div>
+        <div class="leg-card-desc">Arts. 7º e 9º: define competências da União, Estados e Municípios para o licenciamento ambiental. IBAMA: licencia mineração com significativo impacto ambiental nacional. Estados: mineração de médio impacto. Municípios: impacto local. Evita duplicidade de licenças.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-green">Ambiental</span>
+          <span class="badge badge-blue">Competência</span>
+          <span class="badge badge-blue">IBAMA</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp140.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Lei 12.651/2012 -->
+      <div class="leg-card" data-cat="ambiental">
+        <button class="leg-card-copy" onclick="copyText('Lei nº 12.651/2012 — Código Florestal Brasileiro. Regula APPs (Áreas de Preservação Permanente) e Reserva Legal. A mineração em APP exige licença especial e PRAD reforçado. Proibição de lavra em determinadas áreas protegidas.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Lei nº 12.651/2012</div>
+          <div class="leg-card-year">2012</div>
+        </div>
+        <div class="leg-card-title">Código Florestal — APPs e Reserva Legal na Mineração</div>
+        <div class="leg-card-desc">Regula a proteção de Áreas de Preservação Permanente (APP) e Reserva Legal. A atividade minerária em APP é permitida excepcionalmente com licença especial, PRAD reforçado e compensação ambiental. Restrições a lavra em topos de morro, margens de rios e áreas de recarga hídrica.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-green">Ambiental</span>
+          <span class="badge badge-green">APP</span>
+          <span class="badge badge-green">Florestal</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Lei 13.540/2017 -->
+      <div class="leg-card" data-cat="cfem">
+        <button class="leg-card-copy" onclick="copyText('Lei nº 13.540/2017 — Reforma geral da CFEM. Novas alíquotas: minério de ferro 3,5%, ouro 1,5%, diamante 2%, demais substâncias 3%. Nova base de cálculo: receita bruta da venda menos ICMS, PIS e COFINS. Novas regras de distribuição. Altera Lei 7.990/89 e Lei 8.001/90.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Lei nº 13.540/2017</div>
+          <div class="leg-card-year">2017</div>
+        </div>
+        <div class="leg-card-title">Reforma Geral da CFEM — Novas Alíquotas e Base de Cálculo</div>
+        <div class="leg-card-desc">Reforma estrutural da CFEM vigente. Novas alíquotas: minério de ferro 3,5% / ouro 1,5% / diamante 2% / demais substâncias 3%. Nova base de cálculo: receita bruta da venda menos ICMS, PIS e COFINS. Distribui 15% para Fundo Nacional de Desenvolvimento Científico e Tecnológico da Mineração (FNDCT-Min).</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">CFEM</span>
+          <span class="badge badge-yellow">Alíquotas</span>
+          <span class="badge badge-blue">Distribuição</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13540.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Lei 13.575/2017 -->
+      <div class="leg-card" data-cat="mineracao">
+        <button class="leg-card-copy" onclick="copyText('Lei nº 13.575/2017 — Cria a Agência Nacional de Mineração (ANM) em substituição ao DNPM. Define competências, estrutura e atribuições da agência reguladora federal de mineração.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Lei nº 13.575/2017</div>
+          <div class="leg-card-year">2017</div>
+        </div>
+        <div class="leg-card-title">Criação da ANM — Agência Nacional de Mineração</div>
+        <div class="leg-card-desc">Cria a Agência Nacional de Mineração (ANM) em substituição ao DNPM (Departamento Nacional de Produção Mineral). Define competências regulatórias, de fiscalização, arrecadação e gestão do patrimônio mineral. Vinculada ao Ministério de Minas e Energia.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">ANM</span>
+          <span class="badge badge-blue">Regulação</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13575.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Lei 14.514/2022 -->
+      <div class="leg-card" data-cat="nuclear">
+        <button class="leg-card-copy" onclick="copyText('Lei nº 14.514/2022 — Indústrias Nucleares do Brasil. Regula a pesquisa, lavra e comercialização de minérios nucleares (urânio, tório). Regime especial de autorização pelo Ministério de Minas e Energia com anuência da Comissão Nacional de Energia Nuclear (CNEN).', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Lei nº 14.514/2022</div>
+          <div class="leg-card-year">2022</div>
+        </div>
+        <div class="leg-card-title">Minérios Nucleares — Urânio e Tório</div>
+        <div class="leg-card-desc">Regula a pesquisa, lavra e comercialização de minérios nucleares (urânio, tório e outros materiais físseis). Regime especial: autorização do Ministério de Minas e Energia com anuência da CNEN. A exploração nuclear é monopólio da União (CF/88, art. 177). INB — Indústrias Nucleares do Brasil S.A. tem papel central.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-purple">Nuclear</span>
+          <span class="badge badge-yellow">Minérios Especiais</span>
+          <span class="badge badge-blue">CNEN</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14514.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+      <!-- Port. ANM 155/2016 -->
+      <div class="leg-card" data-cat="mineracao multas">
+        <button class="leg-card-copy" onclick="copyText('Portaria ANM 155/2016 — Consolidação Normativa do DNPM. Compila todas as normas internas do DNPM em 10 Títulos: I Pesquisa / II Lavra / III Registro / IV Garimpo / V Beneficiamento / VI Direitos e Obrigações / VII Fiscalização / VIII Arrecadação (CFEM, TAH, Multas, Taxa de Vistoria) / IX Patrimônio / X Disposições Finais.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Portaria ANM 155/2016</div>
+          <div class="leg-card-year">2016</div>
+        </div>
+        <div class="leg-card-title">Consolidação Normativa do DNPM — 10 Títulos</div>
+        <div class="leg-card-desc">Compila todas as normas internas do DNPM/ANM em 10 Títulos: I–Pesquisa / II–Lavra / III–Registro de Extração / IV–Garimpo / V–Beneficiamento / VI–Direitos e Obrigações do Titular / VII–Fiscalização / VIII–Arrecadação (CFEM, TAH, Multas, Taxa de Vistoria) / IX–Patrimônio Mineral / X–Disposições Finais. Referência normativa fundamental na defesa administrativa.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">ANM</span>
+          <span class="badge badge-blue">Fiscalização</span>
+          <span class="badge badge-yellow">CFEM</span>
+          <span class="badge badge-yellow">TAH</span>
+        </div>
+        <a class="leg-card-link" href="https://www.gov.br/anm/pt-br/acesso-a-informacao/legislacao/portarias-dnpm/2016/portaria_155_2016.pdf" target="_blank" rel="noopener">🔗 Texto oficial — gov.br/anm</a>
+      </div>
+
+      <!-- Port. ANM 389/2010 -->
+      <div class="leg-card" data-cat="cfem tah">
+        <button class="leg-card-copy" onclick="copyText('Portaria ANM 389/2010 — Indexadores históricos de correção monetária da CFEM por período: BTN (jan-fev/1991) → INPC (mar-dez/1991) → UFIR (jan/1992-dez/2000) → IPCA-15 (jan/2001-03/dez/2008) → SELIC (a partir de 04/dez/2008). Confirmada pela Súmula ANM 08/25.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Portaria ANM 389/2010</div>
+          <div class="leg-card-year">2010</div>
+        </div>
+        <div class="leg-card-title">Indexadores de Correção Monetária da CFEM</div>
+        <div class="leg-card-desc">Define os indexadores históricos de correção monetária da CFEM por período: BTN (jan-fev/1991) → INPC (mar-dez/1991) → UFIR (jan/1992-dez/2000) → IPCA-15 (jan/2001-03/dez/2008) → SELIC (a partir de 04/dez/2008). Confirmada e incorporada pela Súmula ANM 08/25. Fundamental para contestar cálculo de débitos históricos.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">CFEM</span>
+          <span class="badge badge-purple">Correção Monetária</span>
+          <span class="badge badge-blue">SELIC</span>
+        </div>
+        <a class="leg-card-link" href="https://www.gov.br/anm/pt-br/acesso-a-informacao/legislacao" target="_blank" rel="noopener">🔗 Legislação ANM — gov.br/anm</a>
+      </div>
+
+      <!-- Res. ANM 48/2020 -->
+      <div class="leg-card" data-cat="multas">
+        <button class="leg-card-copy" onclick="copyText('Resolução ANM nº 48/2020 — Regulamenta o Procedimento Administrativo de Fiscalização (PAF): rito do auto de infração, prazo de impugnação (30 dias), recurso ao CONSUP (30 dias, efeito suspensivo automático), julgamento e execução. Base do processo administrativo de multas ANM.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Resolução ANM nº 48/2020</div>
+          <div class="leg-card-year">2020</div>
+        </div>
+        <div class="leg-card-title">PAF — Procedimento Administrativo de Fiscalização</div>
+        <div class="leg-card-desc">Regulamenta o rito do PAF: lavratura do auto de infração → notificação → impugnação (30 dias) → julgamento em 1ª instância → recurso ao CONSUP (30 dias, efeito suspensivo automático) → inscrição em Dívida Ativa → execução fiscal. Base do processo administrativo de multas ANM. Ler em conjunto com a Lei 9.873/99 (prescrição punitiva).</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-red">Multas ANM</span>
+          <span class="badge badge-blue">PAF</span>
+          <span class="badge badge-blue">CONSUP</span>
+        </div>
+        <a class="leg-card-link" href="https://www.gov.br/anm/pt-br/acesso-a-informacao/legislacao/resolucoes/2020/resolucao_48_2020.pdf" target="_blank" rel="noopener">🔗 Resolução — gov.br/anm</a>
+      </div>
+
+      <!-- Res. ANM 68/2021 -->
+      <div class="leg-card" data-cat="seguranca">
+        <button class="leg-card-copy" onclick="copyText('Resolução ANM nº 68/2021 — Plano de Fechamento de Mina (PFM). Obrigatório para todas as concessões de lavra. Define cronograma, responsabilidades e garantias financeiras para o fechamento seguro da operação minerária, visando proteção ambiental e segurança da comunidade.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Resolução ANM nº 68/2021</div>
+          <div class="leg-card-year">2021</div>
+        </div>
+        <div class="leg-card-title">Plano de Fechamento de Mina (PFM)</div>
+        <div class="leg-card-desc">Institui o Plano de Fechamento de Mina (PFM) como obrigação para titulares de concessão de lavra. O PFM deve contemplar: inventário de riscos, cronograma de descomissionamento, garantias financeiras, reabilitação ambiental e plano de comunicação com a comunidade. Vigência obrigatória desde 2022.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-red">Segurança</span>
+          <span class="badge badge-green">Ambiental</span>
+          <span class="badge badge-blue">PFM</span>
+        </div>
+        <a class="leg-card-link" href="https://www.gov.br/anm/pt-br/acesso-a-informacao/legislacao/resolucoes/2021/resolucao_68_2021.pdf" target="_blank" rel="noopener">🔗 Resolução — gov.br/anm</a>
+      </div>
+
+      <!-- Lei 11.491/09 / encargos -->
+      <div class="leg-card" data-cat="cfem tah multas">
+        <button class="leg-card-copy" onclick="copyText('Lei nº 11.491/2007 (art. 39 da Lei 13.575/2017) — Encargos legais ANM: 20% na inscrição em Dívida Ativa; 10% se pagar ou parcelar antes do ajuizamento. Vigência dos encargos: a partir de 04/12/2008.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Encargos Legais ANM — art. 39 Lei 13.575/17</div>
+          <div class="leg-card-year">2008–</div>
+        </div>
+        <div class="leg-card-title">Encargos Legais na Inscrição em Dívida Ativa</div>
+        <div class="leg-card-desc">Encargos legais ANM: 20% incidentes na inscrição em Dívida Ativa; 10% se o devedor pagar ou parcelar antes do ajuizamento da execução fiscal. Esses encargos vigem a partir de 04/12/2008 — créditos anteriores não estão sujeitos. Tese defensiva relevante em execuções fiscais de CFEM/TAH antigos.</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-red">Dívida Ativa</span>
+          <span class="badge badge-yellow">Encargos</span>
+          <span class="badge badge-blue">Execução Fiscal</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13575.htm" target="_blank" rel="noopener">🔗 Lei 13.575/2017 — planalto.gov.br</a>
+      </div>
+
+      <!-- Dec. 7.655/2011 -->
+      <div class="leg-card" data-cat="tah">
+        <button class="leg-card-copy" onclick="copyText('Decreto nº 7.655/2011 — Tabela de diárias de servidores federais. Utilizado como base de cálculo da Taxa de Ressarcimento de Vistoria ANM, que é calculada em função das diárias dos servidores que realizam a vistoria do título minerário.', this)">📋 Copiar</button>
+        <div class="leg-card-header">
+          <div class="leg-card-num">Decreto nº 7.655/2011</div>
+          <div class="leg-card-year">2011</div>
+        </div>
+        <div class="leg-card-title">Base de Cálculo da Taxa de Vistoria ANM</div>
+        <div class="leg-card-desc">Tabela de diárias de servidores federais. Serve como base de cálculo da Taxa de Ressarcimento de Vistoria ANM: o valor da taxa é calculado em função das diárias dos servidores que realizam a vistoria do título minerário (número de diárias × valor da diária do cargo).</div>
+        <div class="leg-card-tags">
+          <span class="badge badge-yellow">Taxa de Vistoria</span>
+          <span class="badge badge-blue">Base de Cálculo</span>
+        </div>
+        <a class="leg-card-link" href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/decreto/d7655.htm" target="_blank" rel="noopener">🔗 Texto oficial — planalto.gov.br</a>
+      </div>
+
+    </div><!-- /#leg-cards-container -->
+
+    <!-- Links externos -->
+    <div class="card" style="margin-top:8px">
+      <div class="card-title">🔗 Fontes Oficiais de Consulta</div>
+      <div class="card-body">
+        <div class="grid-2">
+          <div>
+            <p style="margin-bottom:8px"><strong>Legislação Federal</strong></p>
+            <p><a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del0227.htm" target="_blank" rel="noopener" style="color:var(--accent2)">📄 Código de Mineração — Dec.-Lei 227/67</a></p>
+            <p><a href="https://www.planalto.gov.br/ccivil_03/leis/l13575.htm" target="_blank" rel="noopener" style="color:var(--accent2)">📄 Lei de Criação da ANM — 13.575/2017</a></p>
+            <p><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13540.htm" target="_blank" rel="noopener" style="color:var(--accent2)">📄 Reforma da CFEM — Lei 13.540/2017</a></p>
+            <p style="margin-top:12px"><strong>Portal ANM</strong></p>
+            <p><a href="https://www.gov.br/anm/pt-br/acesso-a-informacao/legislacao" target="_blank" rel="noopener" style="color:var(--accent2)">📄 Legislação ANM completa — gov.br</a></p>
+            <p><a href="https://www.gov.br/anm/pt-br/acesso-a-informacao/legislacao/resolucoes" target="_blank" rel="noopener" style="color:var(--accent2)">📄 Resoluções ANM</a></p>
+          </div>
+          <div>
+            <p style="margin-bottom:8px"><strong>SIGMINE / SGM</strong></p>
+            <p><a href="https://sigmine.dnpm.gov.br/webmap/" target="_blank" rel="noopener" style="color:var(--accent2)">🗺️ SIGMINE — Mapa de Títulos Minerários</a></p>
+            <p><a href="https://sistemas.anm.gov.br/arrecadacao/extra/relatorios/cfem_areaextracao.aspx" target="_blank" rel="noopener" style="color:var(--accent2)">💰 Relatórios de Arrecadação CFEM</a></p>
+            <p style="margin-top:12px"><strong>Jurisprudência</strong></p>
+            <p><a href="https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2022/06022022-STJ-julgara-em-repetitivo-questoes-sobre-cobran.aspx" target="_blank" rel="noopener" style="color:var(--accent2)">🏛️ STJ — Teses sobre CFEM e TAH</a></p>
+            <p><a href="https://portal.stf.jus.br/jurisprudencia/pesquisarJurisprudencia.asp" target="_blank" rel="noopener" style="color:var(--accent2)">🏛️ STF — Pesquisa de Jurisprudência</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- GESTÃO DE USUÁRIOS (Admin) -->
   <div id="sec-admin" class="section">
     <div class="card" style="margin-bottom:20px">
@@ -2225,14 +2782,15 @@ OAB/__ nº ___</textarea>
 
 <script>
 // ── NAVEGAÇÃO ──
-const sections = ['home','principios','cfem','tah','multas','vistoria','sumulas','legislacao','jurisprudencia','calculos','estrategia','checklist','antipadroes','pecas','config','admin'];
+const sections = ['home','principios','cfem','tah','multas','vistoria','sumulas','legislacao','jurisprudencia','calculos','estrategia','checklist','antipadroes','pecas','config','admin','legmineral'];
 const titles = {
   home: 'Início', principios: 'Princípios Jurídicos', cfem: 'CFEM',
   tah: 'TAH', multas: 'Multas ANM', vistoria: 'Taxa de Vistoria',
   sumulas: 'Súmulas ANM', legislacao: 'Legislação', jurisprudencia: 'Jurisprudência',
   calculos: 'Cálculos', estrategia: 'Estratégia Processual',
   checklist: 'Checklist', antipadroes: 'Anti-Padrões', pecas: 'Peças Processuais',
-  config: 'Configurações LLM', admin: 'Gestão de Usuários'
+  config: 'Configurações LLM', admin: 'Gestão de Usuários',
+  legmineral: '📚 Legislação Mineral — Plataforma Jurídico-Mineral'
 };
 
 function show(id) {
@@ -2251,6 +2809,10 @@ function show(id) {
     el.classList.toggle('active',
       !!(el.getAttribute('onclick') && el.getAttribute('onclick').includes("'" + id + "'")));
   });
+  document.querySelectorAll('.nav-item-highlight').forEach(el => {
+    el.classList.toggle('active',
+      !!(el.getAttribute('onclick') && el.getAttribute('onclick').includes("'" + id + "'")));
+  });
 
   // Bottom nav active
   document.querySelectorAll('.bn-item[data-sec]').forEach(el => {
@@ -2263,6 +2825,20 @@ function show(id) {
 
   // Close sidebar on mobile after nav
   closeSidebar();
+}
+
+// ── LEGISLAÇÃO MINERAL — FILTRO ───────────────────────────────────────────────
+function legFilter(cat, btn) {
+  document.querySelectorAll('#leg-filters .leg-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#leg-cards-container .leg-card').forEach(card => {
+    if (cat === 'todos') {
+      card.style.display = '';
+    } else {
+      const cats = (card.dataset.cat || '').split(' ');
+      card.style.display = cats.includes(cat) ? '' : 'none';
+    }
+  });
 }
 
 // ── MOBILE SEARCH ─────────────────────────────────────────────────────────────
