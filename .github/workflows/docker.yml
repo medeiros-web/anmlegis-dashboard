@@ -1,12 +1,13 @@
-name: Build & Deploy Docker Image
+name: Build & Push Docker Image
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: medeiros-web/anmlegis-dashboard
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push:
@@ -26,13 +27,30 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=latest
+            type=sha,prefix=sha-
+
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Trigger Portainer redeploy
+      - name: Deploy to Portainer
         run: |
-          curl -s -X POST "${{ secrets.PORTAINER_WEBHOOK_URL }}"
+          HTTP_STATUS=$(curl -sk -o /dev/null -w "%{http_code}" -X POST \
+            "https://portainer.chatatender.ia.br/api/webhooks/${{ secrets.PORTAINER_WEBHOOK_TOKEN }}")
+          echo "Portainer webhook status: $HTTP_STATUS"
+          if [[ "$HTTP_STATUS" -lt 200 || "$HTTP_STATUS" -ge 300 ]]; then
+            echo "::error::Portainer redeploy failed with status $HTTP_STATUS"
+            exit 1
+          fi
+          echo "Portainer redeploy triggered successfully"
