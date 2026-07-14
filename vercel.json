@@ -5,6 +5,7 @@
     { "src": "/api/login", "dest": "/api/login.js" },
     { "src": "/api/users",    "dest": "/api/users.js"    },
     { "src": "/api/settings", "dest": "/api/settings.js" },
+    { "src": "/api/disponibilidade", "dest": "/api/disponibilidade.js" },
     { "src": "/(.*)",      "dest": "/index.html"   }
   ]
 }

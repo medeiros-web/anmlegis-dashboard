@@ -14,10 +14,11 @@ app.use(express.static(path.join(__dirname), {
 }));
 
 // ── API routes (load the same Vercel handlers) ────────────────────────────────
-const chatHandler     = require('./api/chat.js');
-const loginHandler    = require('./api/login.js');
-const usersHandler    = require('./api/users.js');
-const settingsHandler = require('./api/settings.js');
+const chatHandler          = require('./api/chat.js');
+const loginHandler         = require('./api/login.js');
+const usersHandler         = require('./api/users.js');
+const settingsHandler      = require('./api/settings.js');
+const disponibilidadeHandler = require('./api/disponibilidade.js');
 
 // Wrap Vercel-style handler (req, res) in Express route
 function wrap(handler) {
@@ -32,6 +33,7 @@ app.delete('/api/users', wrap(usersHandler));
 app.patch('/api/users',  wrap(usersHandler));
 app.get('/api/settings',  wrap(settingsHandler));
 app.post('/api/settings', wrap(settingsHandler));
+app.get('/api/disponibilidade', wrap(disponibilidadeHandler));
 app.options('/api/*', (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE,PATCH,OPTIONS');

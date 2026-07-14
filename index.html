@@ -201,6 +201,42 @@
   .leg-stat .n { font-size: 22px; font-weight: 800; color: var(--accent); }
   .leg-stat .l { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
+  /* ── DISPONIBILIDADE — quadro de situações ──────────────────────────────── */
+  .disp-toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; align-items: center; }
+  .disp-toolbar input[type="text"], .disp-toolbar select, .disp-toolbar input[type="date"] {
+    background: var(--card); border: 1px solid var(--border); color: var(--text);
+    border-radius: 8px; padding: 8px 12px; font-size: 12px; font-family: inherit;
+  }
+  .disp-toolbar input[type="text"] { flex: 1; min-width: 180px; }
+  .disp-toolbar button { border-radius: 8px; padding: 8px 14px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid var(--border); background: var(--card); color: var(--text); transition: .15s; }
+  .disp-toolbar button:hover { border-color: var(--accent); color: var(--accent); }
+  .disp-toolbar button.primary { background: var(--accent); border-color: var(--accent); color: #1a1305; }
+  .disp-datebanner { display: none; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.35); border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; font-size: 12.5px; color: var(--text); }
+  .disp-datebanner.active { display: block; }
+  .disp-datebanner b { color: var(--accent); }
+  .disp-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 12px; transition: .15s; }
+  .disp-card:hover { border-color: rgba(245,158,11,.4); }
+  .disp-card.disp-match { border-color: var(--accent); box-shadow: 0 0 0 1px rgba(245,158,11,.3); }
+  .disp-card-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+  .disp-card-id { font-size: 12px; font-weight: 800; color: var(--accent); flex-shrink: 0; }
+  .disp-card-title { font-size: 13.5px; font-weight: 600; color: var(--text); flex: 1; }
+  .disp-periods { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+  .disp-period { display: flex; align-items: flex-start; gap: 8px; padding: 8px 10px; border-radius: 8px; background: var(--card-hover); font-size: 11.5px; border: 1px solid transparent; }
+  .disp-period.disp-current { border-color: var(--accent); background: rgba(245,158,11,.09); }
+  .disp-status { flex-shrink: 0; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
+  .disp-status.livre { background: rgba(16,185,129,.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,.3); }
+  .disp-status.disponibilidade { background: rgba(245,158,11,.15); color: var(--accent); border: 1px solid rgba(245,158,11,.3); }
+  .disp-period-body { flex: 1; min-width: 0; }
+  .disp-interval { font-weight: 600; color: var(--text); }
+  .disp-ref { color: var(--muted); margin-top: 2px; line-height: 1.5; }
+  .disp-copy { background: none; border: none; color: var(--accent2); cursor: pointer; font-size: 10.5px; flex-shrink: 0; padding: 2px 4px; }
+  .disp-copy:hover { text-decoration: underline; }
+  .disp-empty { text-align: center; color: var(--muted); font-size: 13px; padding: 40px 0; }
+  .disp-api-box { background: var(--card-hover); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-family: 'Consolas','Monaco',monospace; font-size: 11.5px; color: var(--accent3); overflow-x: auto; white-space: pre; margin: 8px 0; }
+  @media (max-width: 860px) {
+    .disp-toolbar input[type="text"] { min-width: 100%; order: -1; }
+  }
+
   /* ── MAIN ────────────────────────────────────────────────────────────────── */
   #main { margin-left: var(--sidebar-w); flex: 1; padding: 24px; min-height: 100vh; }
   .topbar { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
@@ -876,6 +912,16 @@
       <div class="nav-item-highlight" onclick="show('legmineral')">
         <span style="font-size:18px">📚</span>
         <span>Legislação Mineral</span>
+        <span class="nav-hl-badge">NOVO</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <div style="padding:0 10px 6px">
+      <div class="nav-item-highlight" onclick="show('disponibilidade')">
+        <span style="font-size:18px">📅</span>
+        <span>Quadro de Disponibilidade</span>
         <span class="nav-hl-badge">NOVO</span>
       </div>
     </div>
@@ -3069,6 +3115,9 @@ OAB/__ nº ___</textarea>
             <span>☢️</span> Nuclear <span class="leg-sb-count">1</span>
           </div>
           <div class="leg-sb-sep"></div>
+          <div class="leg-sb-item" onclick="show('disponibilidade')" style="color:var(--accent)">
+            <span>📅</span> Quadro de Disponibilidade
+          </div>
           <div class="leg-sb-item" onclick="window.open('https://www.gov.br/anm/pt-br/acesso-a-informacao/legislacao','_blank')" style="color:var(--accent2)">
             <span>🔗</span> Portal ANM
           </div>
@@ -3543,6 +3592,133 @@ OAB/__ nº ___</textarea>
     </div><!-- /.leg-layout -->
   </div>
 
+  <!-- DISPONIBILIDADE — Quadro de situações e efeitos no tempo -->
+  <div id="sec-disponibilidade" class="section">
+    <div style="margin-bottom:12px">
+      <button onclick="show('home')" style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:var(--accent3);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s" onmouseover="this.style.background='rgba(16,185,129,.2)'" onmouseout="this.style.background='rgba(16,185,129,.1)'">
+        ← Voltar ao Painel Principal
+      </button>
+    </div>
+    <div class="hero" style="margin-bottom:20px">
+      <h2>📅 Quadro de Disponibilidade — Situações e Efeitos no Tempo</h2>
+      <p>Compilação das 37 situações minerárias (pesquisa, lavra, licenciamento, lavra garimpeira, registro de extração e procedimentos de disponibilidade) e do regime jurídico — <strong>Livre</strong> ou <strong>Disponibilidade</strong> — aplicável em cada intervalo de tempo, com a norma que fundamenta cada transição. Fonte: "Legislação Disponibilidade" (compilação interna).</p>
+      <div class="tags" style="margin-top:14px">
+        <span class="pill">Pesquisa Mineral</span>
+        <span class="pill">Lavra</span>
+        <span class="pill">Licenciamento</span>
+        <span class="pill">Lavra Garimpeira</span>
+        <span class="pill">Registro de Extração</span>
+        <span class="pill">Procedimento de Disponibilidade</span>
+      </div>
+    </div>
+
+    <div class="leg-stat-row">
+      <div class="leg-stat"><div class="n" id="disp-stat-total">–</div><div class="l">Situações catalogadas</div></div>
+      <div class="leg-stat"><div class="n" id="disp-stat-cat">–</div><div class="l">Categorias</div></div>
+      <div class="leg-stat"><div class="n" id="disp-stat-diplomas">–</div><div class="l">Diplomas legais referenciados</div></div>
+      <div class="leg-stat"><div class="n" id="disp-stat-periodo">–</div><div class="l">Período coberto</div></div>
+    </div>
+
+    <!-- Consultar por data -->
+    <div class="disp-toolbar" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;">
+      <strong style="font-size:12px;white-space:nowrap">🗓️ Consultar regime em uma data:</strong>
+      <input type="date" id="disp-date-input">
+      <button class="primary" onclick="dispCheckDate()">Consultar</button>
+      <button onclick="dispClearDate()">Limpar</button>
+    </div>
+    <div class="disp-datebanner" id="disp-datebanner"></div>
+
+    <!-- Filtros -->
+    <div class="disp-toolbar">
+      <input type="text" id="disp-search" placeholder="Buscar por situação, lei, decreto, portaria..." oninput="dispRender()">
+      <select id="disp-status-filter" onchange="dispRender()">
+        <option value="todos">Status atual — Todos</option>
+        <option value="livre">Atualmente Livre</option>
+        <option value="disponibilidade">Atualmente em Disponibilidade</option>
+      </select>
+      <select id="disp-ref-filter" onchange="dispRender()">
+        <option value="todos">Diploma legal — Todos</option>
+      </select>
+      <button onclick="dispClearFilters()">✕ Limpar filtros</button>
+    </div>
+
+    <!-- Filtros de categoria (mobile) -->
+    <div class="leg-filters" id="disp-filters">
+      <button class="leg-filter-btn active" onclick="dispFilterCat('todos',this)">Todas</button>
+      <button class="leg-filter-btn" onclick="dispFilterCat('pesquisa',this)">Pesquisa</button>
+      <button class="leg-filter-btn" onclick="dispFilterCat('lavra',this)">Lavra</button>
+      <button class="leg-filter-btn" onclick="dispFilterCat('licenciamento',this)">Licenciamento</button>
+      <button class="leg-filter-btn" onclick="dispFilterCat('garimpeira',this)">Garimpeira</button>
+      <button class="leg-filter-btn" onclick="dispFilterCat('extracao',this)">Extração</button>
+      <button class="leg-filter-btn" onclick="dispFilterCat('procedimento',this)">Procedimento</button>
+      <button class="leg-filter-btn" onclick="dispFilterCat('geral',this)">Geral</button>
+    </div>
+
+    <!-- Layout desktop: sidebar de categorias + conteúdo -->
+    <div class="leg-layout">
+      <div class="leg-sidebar">
+        <div class="leg-sidebar-head">Categorias</div>
+        <div class="leg-sidebar-nav" id="disp-sidebar-nav">
+          <div class="leg-sb-item active" onclick="dispFilterCat('todos',this)" data-cat="todos">
+            <span>📋</span> Todas as situações <span class="leg-sb-count" id="disp-count-todos">0</span>
+          </div>
+          <div class="leg-sb-sep"></div>
+          <div class="leg-sb-item" onclick="dispFilterCat('pesquisa',this)" data-cat="pesquisa">
+            <span>🔎</span> Pesquisa Mineral <span class="leg-sb-count" id="disp-count-pesquisa">0</span>
+          </div>
+          <div class="leg-sb-item" onclick="dispFilterCat('lavra',this)" data-cat="lavra">
+            <span>⛏️</span> Lavra <span class="leg-sb-count" id="disp-count-lavra">0</span>
+          </div>
+          <div class="leg-sb-item" onclick="dispFilterCat('licenciamento',this)" data-cat="licenciamento">
+            <span>📄</span> Licenciamento <span class="leg-sb-count" id="disp-count-licenciamento">0</span>
+          </div>
+          <div class="leg-sb-item" onclick="dispFilterCat('garimpeira',this)" data-cat="garimpeira">
+            <span>💎</span> Lavra Garimpeira <span class="leg-sb-count" id="disp-count-garimpeira">0</span>
+          </div>
+          <div class="leg-sb-item" onclick="dispFilterCat('extracao',this)" data-cat="extracao">
+            <span>🪨</span> Registro de Extração <span class="leg-sb-count" id="disp-count-extracao">0</span>
+          </div>
+          <div class="leg-sb-item" onclick="dispFilterCat('procedimento',this)" data-cat="procedimento">
+            <span>📢</span> Procedimento de Disponibilidade <span class="leg-sb-count" id="disp-count-procedimento">0</span>
+          </div>
+          <div class="leg-sb-item" onclick="dispFilterCat('geral',this)" data-cat="geral">
+            <span>🗂️</span> Títulos (Geral) <span class="leg-sb-count" id="disp-count-geral">0</span>
+          </div>
+          <div class="leg-sb-sep"></div>
+          <div class="leg-sb-item" onclick="show('legmineral')" style="color:var(--accent2)">
+            <span>📚</span> Legislação Mineral
+          </div>
+          <div class="leg-sb-sep"></div>
+          <div class="leg-sb-item" onclick="show('home')" style="color:var(--accent3); font-weight:700;">
+            <span>🏠</span> Página Principal
+          </div>
+        </div>
+      </div>
+
+      <div class="leg-content">
+        <div id="disp-results-count" style="font-size:11px;color:var(--muted);margin-bottom:10px"></div>
+        <div id="disp-cards-container"></div>
+
+        <!-- Integração / API -->
+        <div class="card" style="margin-top:8px">
+          <div class="card-title">🔗 Integração com outros processos (API)</div>
+          <div class="card-body">
+            <p style="font-size:12px;color:var(--muted);line-height:1.6">Este quadro também é exposto como API pública somente-leitura, para consumo por n8n, chatbots, planilhas ou outros sistemas.</p>
+            <p style="margin-top:10px;font-size:12px"><strong>Dataset completo (JSON):</strong></p>
+            <div class="disp-api-box">GET /api/disponibilidade</div>
+            <p style="margin-top:10px;font-size:12px"><strong>Situação em uma data específica:</strong></p>
+            <div class="disp-api-box">GET /api/disponibilidade?data=2015-06-01</div>
+            <p style="margin-top:10px;font-size:12px"><strong>Filtrar por categoria:</strong></p>
+            <div class="disp-api-box">GET /api/disponibilidade?categoria=pesquisa</div>
+            <p style="margin-top:10px;font-size:12px"><strong>Exportar como CSV:</strong></p>
+            <div class="disp-api-box">GET /api/disponibilidade?format=csv</div>
+            <p style="margin-top:10px;font-size:11.5px;color:var(--muted)">⚠️ Compilação de referência elaborada a partir do quadro "Legislação Disponibilidade". Confirme sempre o texto oficial da norma antes de decisões críticas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- GESTÃO DE USUÁRIOS (Admin) -->
   <div id="sec-admin" class="section">
     <div class="card" style="margin-bottom:20px">
@@ -3667,7 +3843,7 @@ OAB/__ nº ___</textarea>
 
 <script>
 // ── NAVEGAÇÃO ──
-const sections = ['home','principios','cfem','tah','multas','vistoria','sumulas','legislacao','jurisprudencia','calculos','estrategia','checklist','antipadroes','pecas','pareceres','config','admin','legmineral'];
+const sections = ['home','principios','cfem','tah','multas','vistoria','sumulas','legislacao','jurisprudencia','calculos','estrategia','checklist','antipadroes','pecas','pareceres','config','admin','legmineral','disponibilidade'];
 const titles = {
   home: 'Início', principios: 'Princípios Jurídicos', cfem: 'CFEM',
   tah: 'TAH', multas: 'Multas ANM', vistoria: 'Taxa de Vistoria',
@@ -3676,7 +3852,8 @@ const titles = {
   checklist: 'Checklist', antipadroes: 'Anti-Padrões', pecas: 'Peças Processuais',
   pareceres: '⚖️ Pareceres PFE-ANM/PGF/AGU',
   config: 'Configurações LLM', admin: 'Gestão de Usuários',
-  legmineral: '📚 Legislação Mineral — Plataforma Jurídico-Mineral'
+  legmineral: '📚 Legislação Mineral — Plataforma Jurídico-Mineral',
+  disponibilidade: '📅 Quadro de Disponibilidade'
 };
 
 function show(id) {
@@ -3734,6 +3911,282 @@ function legFilter(cat, btn) {
       card.style.display = cats.includes(cat) ? '' : 'none';
     }
   });
+}
+
+// ── DISPONIBILIDADE — Quadro de situações e efeitos no tempo ──────────────────
+// Fonte: "Legislação Disponibilidade" (compilação interna). Cada situação traz
+// os períodos cronológicos em que vigeu regime Livre ou Disponibilidade e a
+// norma que fundamenta cada transição. de/ate em ISO (null = sem limite).
+const CAT_LABELS = {
+  pesquisa: 'Pesquisa Mineral', lavra: 'Lavra', licenciamento: 'Licenciamento',
+  garimpeira: 'Lavra Garimpeira', extracao: 'Registro de Extração',
+  procedimento: 'Procedimento de Disponibilidade', geral: 'Títulos Minerários (Geral)'
+};
+// período: [status, intervalo (texto), referência normativa, de (ISO|null), ate (ISO|null)]
+const DISP_DATA = [
+  { id:'1.1', cat:'pesquisa', situacao:'Aprovação de relatório final de pesquisa', periodos:[
+    ['livre','Até 01/06/2006','Instrução Normativa nº 01/1983 (item 16.3)',null,'2006-06-01'],
+    ['disponibilidade','A partir de 02/06/2006','Portaria nº 152/2006 (Art. 2º)','2006-06-02',null]]},
+  { id:'1.2', cat:'licenciamento', situacao:'Redução de requerimento e registro de licença', periodos:[
+    ['livre','Até 10/08/2008','Instrução Normativa nº 01/2001 (Art. 16)',null,'2008-08-10'],
+    ['disponibilidade','A partir de 11/08/2008','Portaria nº 266/2008 (§ 1º Art. 14)','2008-08-11',null]]},
+  { id:'1.3', cat:'geral', situacao:'Renúncia parcial de títulos', periodos:[
+    ['disponibilidade','A partir de 05/12/2018','Decreto nº 9.406/2018 (inciso VII-a do Art. 22 e § 5º do art. 51)','2018-12-05',null]]},
+  { id:'1.4', cat:'geral', situacao:'Desistência parcial de requerimento', periodos:[
+    ['disponibilidade','A partir de 05/12/2018','Decreto nº 9.406/2018 (§ 1º do Art. 16)','2018-12-05',null]]},
+  { id:'2', cat:'pesquisa', situacao:'Desistência total do requerimento de pesquisa', periodos:[
+    ['livre','Até 13/01/1997','Lei nº 7.886/1989 (§ 7º do art. 26)',null,'1997-01-13'],
+    ['disponibilidade','A partir de 14/01/1997','Lei nº 9.314/1996 (Art. 26)','1997-01-14',null]]},
+  { id:'3', cat:'pesquisa', situacao:'Indeferimento do requerimento de pesquisa (descumprimento de exigência)', periodos:[
+    ['livre','Até 13/01/1997','Lei nº 7.886/1989 (§ 7º do art. 26)',null,'1997-01-13'],
+    ['disponibilidade','A partir de 14/01/1997','Lei nº 9.314/1996 (Art. 26)','1997-01-14',null]]},
+  { id:'4', cat:'pesquisa', situacao:'Caducidade da autorização de pesquisa, incluindo nulidade "ex officio" por não pagamento da taxa anual por hectare', periodos:[
+    ['livre','Até 13/01/1997','Lei nº 7.886/1989 (§ 7º do art. 26)',null,'1997-01-13'],
+    ['disponibilidade','A partir de 14/01/1997','Lei nº 9.314/1996 (Art. 26)','1997-01-14',null]]},
+  { id:'5', cat:'pesquisa', situacao:'Renúncia total à autorização de pesquisa', periodos:[
+    ['livre','Até 13/01/1997','Lei nº 7.886/1989 (§ 7º do art. 26)',null,'1997-01-13'],
+    ['disponibilidade','A partir de 14/01/1997','Lei nº 9.314/1996 (Art. 26)','1997-01-14',null]]},
+  { id:'6', cat:'pesquisa', situacao:'Vencimento do alvará sem apresentação tempestiva de relatório final de pesquisa ou de pedido de prorrogação do prazo de pesquisa', periodos:[
+    ['livre','Até 25/07/2017','Decreto nº 62.934/1968 (parágrafo único do art. 25)',null,'2017-07-25'],
+    ['disponibilidade','Entre 26/07/2017 e 28/11/2017','Medida Provisória nº 790/2017','2017-07-26','2017-11-28'],
+    ['livre','Entre 29/11/2017 e 04/12/2018','Decreto nº 62.934/1968 (parágrafo único do art. 25) — regra restaurada após a MP 790/2017 perder eficácia','2017-11-29','2018-12-04'],
+    ['disponibilidade','A partir de 05/12/2018','Decreto nº 9.406/2018 (inciso VII-a do Art. 8º)','2018-12-05',null]]},
+  { id:'7', cat:'pesquisa', situacao:'Indeferimento do pedido de prorrogação do prazo de alvará de pesquisa', periodos:[
+    ['livre','Até 13/01/1997','Lei nº 7.886/1989 (§ 7º do art. 26)',null,'1997-01-13'],
+    ['disponibilidade','A partir de 14/01/1997','Lei nº 9.314/1996 (Art. 26)','1997-01-14',null]]},
+  { id:'8', cat:'lavra', situacao:'Perda do prazo para requerer a lavra', periodos:[
+    ['disponibilidade','A partir de 15/12/1976','Lei nº 6.403/1976, Art. 1º (nova redação do art. 31 do Decreto-Lei nº 227/1967)','1976-12-15',null]]},
+  { id:'9', cat:'lavra', situacao:'Desistência do direito de requerer a lavra', periodos:[
+    ['disponibilidade','A partir de 13/01/1997','Lei nº 9.314/1996; Portaria nº 15/1997 (art. 6º)','1997-01-13',null]]},
+  { id:'10', cat:'lavra', situacao:'Desistência total do requerimento de lavra', periodos:[
+    ['disponibilidade','A partir de 14/01/1997','Lei nº 9.314/1996; Portaria nº 15/1997 (art. 6º)','1997-01-14',null]]},
+  { id:'11', cat:'lavra', situacao:'Indeferimento do requerimento de lavra', periodos:[
+    ['disponibilidade','A partir de 14/01/1997','Lei nº 9.314/1996 (§ 4º do art. 41)','1997-01-14',null]]},
+  { id:'12', cat:'lavra', situacao:'Caducidade da concessão de lavra', periodos:[
+    ['disponibilidade','A partir de 15/12/1976','Lei nº 6.403/1976, Art. 1º (nova redação do § 1º do art. 65 do Decreto-Lei nº 227/1967)','1976-12-15',null]]},
+  { id:'13', cat:'lavra', situacao:'Renúncia total à concessão de lavra', periodos:[
+    ['disponibilidade','A partir de 14/01/1997','Lei nº 9.314/1996 (§ 4º do art. 41)','1997-01-14',null]]},
+  { id:'14', cat:'licenciamento', situacao:'Desistência total do requerimento de registro de licença', periodos:[
+    ['disponibilidade','Vigente desde a edição da norma (sem marco temporal expresso no quadro-fonte)','Portaria nº 266/2008 (§ 1º do art. 9º)',null,null]]},
+  { id:'15', cat:'licenciamento', situacao:'Indeferimento do requerimento de registro de licença com oneração', periodos:[
+    ['disponibilidade','A partir de 22/02/2001','Instrução Normativa nº 01/2001 (art. 7º); Portaria nº 266/2008 (inciso II do art. 7º)','2001-02-22',null]]},
+  { id:'16', cat:'licenciamento', situacao:'Renúncia total ao título de licenciamento', periodos:[
+    ['disponibilidade','A partir de 11/08/2008','Portaria nº 266/2008 (§ 1º do art. 37)','2008-08-11',null]]},
+  { id:'17', cat:'licenciamento', situacao:'Cancelamento do título de licenciamento', periodos:[
+    ['livre','Até 21/02/2001','Portaria nº 148/1980 (item V)',null,'2001-02-21'],
+    ['disponibilidade','A partir de 22/02/2001','Instrução Normativa nº 01/2001 (art. 23); Portaria nº 70.590/2017 (art. 37); Portaria nº 155/2016 (Art. 195)','2001-02-22',null]]},
+  { id:'18', cat:'licenciamento', situacao:'Cassação do título de licenciamento', periodos:[
+    ['disponibilidade','A partir de 11/08/2008','Portaria nº 266/2008 (§ 1º do art. 37)','2008-08-11',null]]},
+  { id:'19', cat:'licenciamento', situacao:'Vencimento do prazo do título de licenciamento sem apresentação tempestiva de pedido de prorrogação', periodos:[
+    ['livre','Até 25/07/2017','Portaria nº 148/1980 (item XIV); Instrução Normativa nº 01/2001 (Art. 21 e 22)',null,'2017-07-25'],
+    ['disponibilidade','A partir de 26/07/2017','Portaria nº 70.590/2017 (Art. 1º); Portaria nº 70.948/2017 (Art. 2º)','2017-07-26',null]]},
+  { id:'20', cat:'licenciamento', situacao:'Indeferimento do pedido de prorrogação do título de licenciamento', periodos:[
+    ['disponibilidade','Vigente desde a edição da norma (sem marco temporal expresso no quadro-fonte)','Portaria nº 266/2008 (Art. 27)',null,null]]},
+  { id:'21', cat:'garimpeira', situacao:'Desistência total do requerimento de permissão de lavra garimpeira', periodos:[
+    ['disponibilidade','A partir de 20/01/1997','Portaria nº 284/2000; Portaria nº 178/2004 (Art. 29)','1997-01-20',null]]},
+  { id:'22', cat:'garimpeira', situacao:'Indeferimento do requerimento de permissão de lavra garimpeira', periodos:[
+    ['disponibilidade','A partir de 20/01/1997','Portaria nº 284/2000; Portaria nº 178/2004 (Art. 29)','1997-01-20',null]]},
+  { id:'23', cat:'garimpeira', situacao:'Renúncia total à permissão de lavra garimpeira', periodos:[
+    ['disponibilidade','A partir de 20/01/1997','Portaria nº 284/2000; Portaria nº 178/2004 (Art. 29)','1997-01-20',null]]},
+  { id:'24', cat:'garimpeira', situacao:'Vencimento do prazo da permissão de lavra garimpeira sem apresentação tempestiva de pedido de renovação', periodos:[
+    ['livre','Até 25/07/2017','Portaria nº 178/2004 (Art. 17)',null,'2017-07-25'],
+    ['disponibilidade','A partir de 26/07/2017','Portaria nº 70.590/2017','2017-07-26',null]]},
+  { id:'25', cat:'garimpeira', situacao:'Indeferimento do pedido de renovação da permissão de lavra garimpeira', periodos:[
+    ['disponibilidade','A partir de 13/04/2004','Portaria nº 178/2004 (Art. 29)','2004-04-13',null]]},
+  { id:'26', cat:'extracao', situacao:'Desistência total do requerimento de registro de extração', periodos:[
+    ['disponibilidade','A partir de 12/12/2018','Resolução ANM nº 01/2018 (Art. 14)','2018-12-12',null]]},
+  { id:'27', cat:'extracao', situacao:'Indeferimento do requerimento de registro de extração (descumprimento de exigência)', periodos:[
+    ['disponibilidade','De 03/02/2000 a 12/12/2018','Decreto nº 3.358/2010 (Art. 4º, § 3º)','2000-02-03','2018-12-12'],
+    ['disponibilidade','A partir de 12/12/2018','Resolução ANM nº 01/2018 (Art. 4º, § 3º)','2018-12-12',null]]},
+  { id:'28', cat:'extracao', situacao:'Renúncia total ao registro de extração', periodos:[
+    ['disponibilidade','A partir de 12/12/2018','Resolução ANM nº 01/2018 (Art. 14)','2018-12-12',null]]},
+  { id:'29', cat:'extracao', situacao:'Cassação do registro de extração', periodos:[
+    ['disponibilidade','De 03/02/2000 a 12/12/2018','Decreto nº 3.358/2000 (Art. 10 e 11)','2000-02-03','2018-12-12'],
+    ['disponibilidade','A partir de 12/12/2018','Resolução ANM nº 01/2018 (Art. 10)','2018-12-12',null]]},
+  { id:'30', cat:'extracao', situacao:'Vencimento do prazo do registro de extração sem apresentação tempestiva de pedido de prorrogação', periodos:[
+    ['disponibilidade','De 03/02/2000 a 12/12/2018','Decreto nº 3.358/2000 (Art. 10, inciso VII)','2000-02-03','2018-12-12'],
+    ['disponibilidade','A partir de 12/12/2018','Resolução ANM nº 01/2018 (Art. 13, § 1º)','2018-12-12',null]]},
+  { id:'31', cat:'extracao', situacao:'Indeferimento do pedido de prorrogação do registro de extração', periodos:[
+    ['disponibilidade','A partir de 03/02/2000','Decreto nº 3.358/2000 (Art. 10 e 11)','2000-02-03',null]]},
+  { id:'32', cat:'procedimento', situacao:'Desistência de todas as propostas habilitadas em procedimento anterior de disponibilidade após o prazo do edital', periodos:[
+    ['disponibilidade','Vigente desde a edição da norma (sem marco temporal expresso no quadro-fonte)','Portaria nº 268/2008 (Art. 42)',null,null]]},
+  { id:'33', cat:'procedimento', situacao:'Indeferimento de todas as propostas de habilitação em procedimento anterior de disponibilidade', periodos:[
+    ['livre','Até 10/08/2008','Portaria nº 71/1997 (item 4.5); Portaria nº 72/1997 (item 4.5); Portaria nº 419/1999 (§ único do art. 20)',null,'2008-08-10'],
+    ['disponibilidade','A partir de 11/08/2008','Portaria nº 268/2008 (Art. 42)','2008-08-11',null]]},
+  { id:'34', cat:'procedimento', situacao:'Indeferimento por não cumprimento de intimação em procedimento anterior de disponibilidade', periodos:[
+    ['disponibilidade','A partir de 11/08/2008','Portaria nº 268/2008 (Art. 44)','2008-08-11',null]]},
+];
+
+let dispCatActive = 'todos';
+let dispQueryDate = null; // ISO string ou null
+
+function dispFmtDate(iso) {
+  if (!iso) return null;
+  const [y,m,d] = iso.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+function dispDiplomas(item) {
+  const set = new Set();
+  item.periodos.forEach(p => {
+    p[2].split(';').forEach(part => {
+      const base = part.trim().split(' (')[0].trim();
+      if (base) set.add(base);
+    });
+  });
+  return set;
+}
+
+function dispPeriodoNaData(item, iso) {
+  if (!iso) return null;
+  let match = null;
+  item.periodos.forEach(p => {
+    const [, , , de, ate] = p;
+    if ((de === null || iso >= de) && (ate === null || iso <= ate)) match = p;
+  });
+  return match;
+}
+
+function dispInit() {
+  // Popula select de diplomas legais
+  const allDiplomas = new Set();
+  DISP_DATA.forEach(item => dispDiplomas(item).forEach(d => allDiplomas.add(d)));
+  const refSelect = document.getElementById('disp-ref-filter');
+  if (refSelect) {
+    [...allDiplomas].sort().forEach(d => {
+      const opt = document.createElement('option');
+      opt.value = d; opt.textContent = d;
+      refSelect.appendChild(opt);
+    });
+  }
+
+  // Stats
+  document.getElementById('disp-stat-total').textContent = DISP_DATA.length;
+  document.getElementById('disp-stat-cat').textContent = Object.keys(CAT_LABELS).length;
+  document.getElementById('disp-stat-diplomas').textContent = allDiplomas.size;
+  let minYear = Infinity, maxYear = 0;
+  DISP_DATA.forEach(item => item.periodos.forEach(p => {
+    [p[3], p[4]].forEach(iso => { if (iso) { const y = +iso.slice(0,4); if (y < minYear) minYear = y; if (y > maxYear) maxYear = y; } });
+  }));
+  document.getElementById('disp-stat-periodo').textContent = (minYear === Infinity ? '—' : minYear) + '–hoje';
+
+  dispRender();
+}
+
+function dispFilterCat(cat, btn) {
+  dispCatActive = cat;
+  document.querySelectorAll('#disp-filters .leg-filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#disp-sidebar-nav .leg-sb-item[data-cat]').forEach(b => b.classList.remove('active'));
+  if (btn) {
+    btn.classList.add('active');
+    document.querySelectorAll('#disp-sidebar-nav .leg-sb-item[data-cat="' + cat + '"]').forEach(b => b.classList.add('active'));
+    document.querySelectorAll('#disp-filters .leg-filter-btn').forEach(b => {
+      if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + cat + "'")) b.classList.add('active');
+    });
+  }
+  dispRender();
+}
+
+function dispCheckDate() {
+  const val = document.getElementById('disp-date-input').value;
+  if (!val) return;
+  dispQueryDate = val;
+  dispRender();
+  const total = DISP_DATA.length;
+  let livre = 0, disp = 0, sem = 0;
+  DISP_DATA.forEach(item => {
+    const m = dispPeriodoNaData(item, dispQueryDate);
+    if (!m) sem++; else if (m[0] === 'livre') livre++; else disp++;
+  });
+  const banner = document.getElementById('disp-datebanner');
+  banner.innerHTML = `Em <b>${dispFmtDate(dispQueryDate)}</b>, das ${total} situações catalogadas: <b>${livre}</b> em regime Livre, <b>${disp}</b> em regime de Disponibilidade` + (sem ? `, <b>${sem}</b> sem regra vigente registrada nesta data` : '') + `. As situações compatíveis com a data estão destacadas abaixo.`;
+  banner.classList.add('active');
+}
+
+function dispClearDate() {
+  dispQueryDate = null;
+  document.getElementById('disp-date-input').value = '';
+  document.getElementById('disp-datebanner').classList.remove('active');
+  dispRender();
+}
+
+function dispClearFilters() {
+  document.getElementById('disp-search').value = '';
+  document.getElementById('disp-status-filter').value = 'todos';
+  document.getElementById('disp-ref-filter').value = 'todos';
+  dispFilterCat('todos', document.querySelector('#disp-filters .leg-filter-btn'));
+}
+
+function dispStatusAtual(item) {
+  // Último período (sem "ate", ou o de data mais recente) representa o regime atual
+  let atual = item.periodos[item.periodos.length - 1];
+  return atual[0];
+}
+
+function dispRender() {
+  const search = (document.getElementById('disp-search')?.value || '').toLowerCase().trim();
+  const statusFilter = document.getElementById('disp-status-filter')?.value || 'todos';
+  const refFilter = document.getElementById('disp-ref-filter')?.value || 'todos';
+
+  const filtered = DISP_DATA.filter(item => {
+    if (dispCatActive !== 'todos' && item.cat !== dispCatActive) return false;
+    if (statusFilter !== 'todos' && dispStatusAtual(item) !== statusFilter) return false;
+    if (refFilter !== 'todos' && !dispDiplomas(item).has(refFilter)) return false;
+    if (search) {
+      const hay = (item.situacao + ' ' + item.periodos.map(p => p[1] + ' ' + p[2]).join(' ')).toLowerCase();
+      if (!hay.includes(search)) return false;
+    }
+    return true;
+  });
+
+  // Contadores por categoria (respeitando busca/status/ref, ignorando o próprio filtro de categoria)
+  const baseFiltered = DISP_DATA.filter(item => {
+    if (statusFilter !== 'todos' && dispStatusAtual(item) !== statusFilter) return false;
+    if (refFilter !== 'todos' && !dispDiplomas(item).has(refFilter)) return false;
+    if (search) {
+      const hay = (item.situacao + ' ' + item.periodos.map(p => p[1] + ' ' + p[2]).join(' ')).toLowerCase();
+      if (!hay.includes(search)) return false;
+    }
+    return true;
+  });
+  document.getElementById('disp-count-todos').textContent = baseFiltered.length;
+  Object.keys(CAT_LABELS).forEach(cat => {
+    const el = document.getElementById('disp-count-' + cat);
+    if (el) el.textContent = baseFiltered.filter(i => i.cat === cat).length;
+  });
+
+  const container = document.getElementById('disp-cards-container');
+  const countLabel = document.getElementById('disp-results-count');
+  countLabel.textContent = filtered.length + ' de ' + DISP_DATA.length + ' situações';
+
+  if (!filtered.length) {
+    container.innerHTML = '<div class="disp-empty">Nenhuma situação encontrada com os filtros atuais.</div>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(item => {
+    const matchPeriodo = dispQueryDate ? dispPeriodoNaData(item, dispQueryDate) : null;
+    const periodosHtml = item.periodos.map(p => {
+      const [status, intervalo, ref, de, ate] = p;
+      const isCurrent = matchPeriodo === p;
+      return `<div class="disp-period${isCurrent ? ' disp-current' : ''}">
+        <span class="disp-status ${status}">${status === 'livre' ? 'LIVRE' : 'DISPONIBILIDADE'}</span>
+        <div class="disp-period-body">
+          <div class="disp-interval">${intervalo}${isCurrent ? ' — ✓ vigente na data consultada' : ''}</div>
+          <div class="disp-ref">${ref}</div>
+        </div>
+        <button class="disp-copy" onclick="copyText('${item.situacao.replace(/'/g,"\\'")} — ${status === 'livre' ? 'Livre' : 'Disponibilidade'} (${intervalo}) — ${ref.replace(/'/g,"\\'")}', this)">📋</button>
+      </div>`;
+    }).join('');
+    return `<div class="disp-card${dispQueryDate && matchPeriodo ? ' disp-match' : ''}">
+      <div class="disp-card-head">
+        <span class="disp-card-id">#${item.id}</span>
+        <span class="disp-card-title">${item.situacao}</span>
+        <span class="pill">${CAT_LABELS[item.cat]}</span>
+      </div>
+      <div class="disp-periods">${periodosHtml}</div>
+    </div>`;
+  }).join('');
 }
 
 // ── MOBILE SEARCH ─────────────────────────────────────────────────────────────
@@ -3838,6 +4291,7 @@ const searchData = [
   { section: 'antipadroes', title: 'Anti-Padrões', keywords: 'nunca erro tributo ctn decreto 20910 prescrição intercorrente frete pré-venda pelotização consumo proprio agua mineral embargos sem garantia' },
   { section: 'pecas', title: 'Peças Processuais', keywords: 'embargos execução fiscal exceção pre-executividade cadin suspensão prescrição intercorrente modelo peça petição lef cfem tah multa' },
   { section: 'pareceres', title: 'Pareceres PFE', keywords: 'parecer PFE AGU procuradoria força executória prescrição intercorrente executória baixo valor tema 1184 apelação anulatória usurpação mandado segurança garantia juízo nota jurídica prazos decadência' },
+  { section: 'disponibilidade', title: 'Quadro de Disponibilidade', keywords: 'disponibilidade livre situação pesquisa lavra licenciamento garimpeira extração 9314 7886 9406 62934 3358 266 268 178 284 70590 quadro resumo efeitos no tempo' },
   { section: 'principios', title: 'Princípios', keywords: 'principio fundamental decadência prescrição intercorrente patrimonial penalidade' },
 ];
 
@@ -4482,6 +4936,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.llm-card').forEach(card => {
     card.addEventListener('click', () => cfgSelectProvider(card.dataset.provider));
   });
+  dispInit();
 });
 
 // ── CHAT SEND (multi-provider) ───────────────────────────────────────────────
