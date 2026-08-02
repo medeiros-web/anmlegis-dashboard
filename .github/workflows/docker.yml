@@ -45,10 +45,42 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Deploy to Portainer
+        env:
+          PORTAINER_URL: https://portainer.chatatender.ia.br
+          PORTAINER_USER: ${{ secrets.PORTAINER_USER }}
+          PORTAINER_PASSWORD: ${{ secrets.PORTAINER_PASSWORD }}
+          PORTAINER_STACK_ID: 32
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
         run: |
-          HTTP_STATUS=$(curl -sk -o /dev/null -w "%{http_code}" -X POST \
-            "https://portainer.chatatender.ia.br/api/webhooks/${{ secrets.PORTAINER_WEBHOOK_TOKEN }}")
-          echo "Portainer webhook status: $HTTP_STATUS"
+          echo "Authenticating with Portainer..."
+          TOKEN=$(curl -sf --max-time 15 -X POST "$PORTAINER_URL/api/auth" \
+            -H "Content-Type: application/json" \
+            -d "{\"username\":\"$PORTAINER_USER\",\"password\":\"$PORTAINER_PASSWORD\"}" \
+            | python3 -c "import sys,json; print(json.load(sys.stdin)['jwt'])")
+
+          echo "Triggering stack redeploy with pullImage..."
+          HTTP_STATUS=$(curl -s --max-time 60 -o /tmp/portainer_resp.json -w "%{http_code}" \
+            -X PUT "$PORTAINER_URL/api/stacks/$PORTAINER_STACK_ID?endpointId=1" \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"stackFileContent\": $(cat docker-compose.yml | python3 -c 'import sys,json; print(json.dumps(sys.stdin.read()))'),
+              \"env\": [
+                {\"name\": \"DATABASE_URL\", \"value\": \"$DATABASE_URL\"},
+                {\"name\": \"JWT_SECRET\", \"value\": \"$JWT_SECRET\"},
+                {\"name\": \"RESEND_API_KEY\", \"value\": \"\"},
+                {\"name\": \"NODE_ENV\", \"value\": \"production\"},
+                {\"name\": \"PORT\", \"value\": \"3000\"},
+                {\"name\": \"SITE_URL\", \"value\": \"https://anmlegis.chatatender.ia.br\"}
+              ],
+              \"pullImage\": true,
+              \"prune\": false
+            }")
+
+          echo "Portainer response status: $HTTP_STATUS"
+          cat /tmp/portainer_resp.json | python3 -c "import sys,json; d=json.load(sys.stdin); print('Stack:', d.get('Name'), '| Status:', d.get('Status'))" 2>/dev/null || cat /tmp/portainer_resp.json
+
           if [[ "$HTTP_STATUS" -lt 200 || "$HTTP_STATUS" -ge 300 ]]; then
             echo "::error::Portainer redeploy failed with status $HTTP_STATUS"
             exit 1
