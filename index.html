@@ -613,13 +613,23 @@
     width:250px; flex-shrink:0; position:sticky; top:16px;
     background:var(--sidebar-bg); border:1px solid var(--border);
     border-radius:14px; overflow:hidden;
+    max-height:calc(100vh - 32px);
+    display:flex; flex-direction:column;
   }
   .pecas-sidebar-head {
     padding:14px 16px 10px; border-bottom:1px solid var(--border);
     font-size:10px; font-weight:700; text-transform:uppercase;
-    letter-spacing:1px; color:var(--muted);
+    letter-spacing:1px; color:var(--muted); flex-shrink:0;
   }
-  .pecas-sidebar-nav { padding:8px 0; }
+  .pecas-sidebar-nav {
+    padding:8px 0; overflow-y:auto; flex:1; min-height:0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .pecas-sidebar-nav::-webkit-scrollbar { width:5px; }
+  .pecas-sidebar-nav::-webkit-scrollbar-track { background:transparent; }
+  .pecas-sidebar-nav::-webkit-scrollbar-thumb { background:var(--border); border-radius:4px; }
+  .pecas-sidebar-nav::-webkit-scrollbar-thumb:hover { background:var(--muted); }
   .pecas-sidebar-nav .nav-label { padding:10px 16px 6px; }
   .pecas-sb-item {
     display:flex; align-items:center; gap:10px;
