@@ -78,6 +78,7 @@
     --sidebar-w: 260px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
   body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); display: flex; min-height: 100vh; overscroll-behavior: none; }
 
   /* ── SIDEBAR ─────────────────────────────────────────────────────────────── */
@@ -605,6 +606,37 @@
   .peca-textarea:focus { background:var(--card-hover); }
   .peca-jump { display:inline-block; padding:7px 14px; background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.3); border-radius:8px; font-size:13px; font-weight:600; color:var(--primary); text-decoration:none; transition:.15s; }
   .peca-jump:hover { background:rgba(245,158,11,.2); }
+  /* ── PEÇAS PROCESSUAIS — navegação em coluna vertical ── */
+  .pecas-mobile-jumps { display:none; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+  .pecas-layout { display:flex; gap:20px; align-items:flex-start; }
+  .pecas-sidebar {
+    width:250px; flex-shrink:0; position:sticky; top:16px;
+    background:var(--sidebar-bg); border:1px solid var(--border);
+    border-radius:14px; overflow:hidden;
+  }
+  .pecas-sidebar-head {
+    padding:14px 16px 10px; border-bottom:1px solid var(--border);
+    font-size:10px; font-weight:700; text-transform:uppercase;
+    letter-spacing:1px; color:var(--muted);
+  }
+  .pecas-sidebar-nav { padding:8px 0; }
+  .pecas-sidebar-nav .nav-label { padding:10px 16px 6px; }
+  .pecas-sb-item {
+    display:flex; align-items:center; gap:10px;
+    padding:9px 16px; cursor:pointer; font-size:12.5px; line-height:1.35;
+    color:var(--muted); border-left:3px solid transparent;
+    transition:all .15s; text-decoration:none;
+  }
+  .pecas-sb-item:hover { color:var(--text); background:rgba(255,255,255,.04); }
+  .pecas-sb-item.active { color:var(--accent); border-left-color:var(--accent); background:rgba(245,158,11,.07); font-weight:600; }
+  .pecas-sb-sep { height:1px; background:var(--border); margin:6px 0; }
+  .pecas-content { flex:1; min-width:0; }
+  .peca-card { scroll-margin-top:16px; }
+  @media(max-width:860px) {
+    .pecas-layout { flex-direction:column; gap:0; }
+    .pecas-sidebar { display:none; }
+    .pecas-mobile-jumps { display:flex; }
+  }
   [data-theme="light"] .peca-textarea { background:#f8fafc; color:#1a202c; }
   [data-theme="light"] .peca-textarea:focus { background:#fff; }
   [data-theme="light"] .peca-badge { background:rgba(0,0,0,.05); }
@@ -1785,8 +1817,6 @@ ATENÇÃO — Súmula ANM 03/25:
               <td>MS sobre prescrição intercorrente de CFEM (NFLDPs 515-2010, 607-2013, 606-2013) — defesa administrativa protocolada em 2011/2014 sem julgamento por mais de 6 anos → prescrição intercorrente administrativa não aplicável (Súmula ANM 03/25); prescrição executória posterior ao ajuizamento sujeita ao Tema 566.</td>
               <td class="td-copy" onclick="copyText('TRF-3ª, 5011358-84.2020.4.03.6100: Discussão sobre prescrição intercorrente de CFEM — fase administrativa não gera prescrição intercorrente (Súmula ANM 03/25). Prescrição só incide na fase de execução fiscal (Tema 566).', this)">📋</td>
             </tr>
-          </table>
-        </div>
             <tr>
               <td><strong>TRF-2ª Região</strong><br><small>Ac. 2024 — Redução de área/Corredores</small></td>
               <td>Corredores em pedido de redução de área minerária constituem vício formal insanável — o polígono remanescente deve ser contínuo e operacionalmente coeso. Baseado no Parecer PFE-ANM 00051/2020.</td>
@@ -2075,29 +2105,58 @@ print("* Acrescentar CM + Juros (SELIC acumulada) ao principal.")</code></pre>
   <!-- PEÇAS PROCESSUAIS -->
   <div id="sec-pecas" class="section">
 
-    <!-- índice rápido -->
-    <div class="card" style="margin-bottom:16px">
-      <div class="card-title">📄 Peças Processuais — Execução Fiscal ANM</div>
-      <div class="card-body">
-        <div class="alert alert-blue" style="margin-bottom:16px">Modelos anonimizados. Substitua os campos <strong>[___]</strong> com os dados do caso concreto antes de usar. Clique em <strong>📋 Copiar</strong> para copiar o texto completo.</div>
-        <div style="display:flex;flex-wrap:wrap;gap:10px">
-          <a href="#peca-card-embargos" class="peca-jump">⚖️ Embargos à Execução Fiscal</a>
-          <a href="#peca-card-excecao"  class="peca-jump">🛡️ Exceção de Pré-Executividade</a>
-          <a href="#peca-card-cadin"    class="peca-jump">🔒 Suspensão CADIN</a>
-          <a href="#peca-card-skill-defesa-impugnacao-adm" class="peca-jump">📋 Defesa / Impugnação Administrativa</a>
-          <a href="#peca-card-skill-recurso-administrativo" class="peca-jump">📋 Recurso Administrativo</a>
-          <a href="#peca-card-skill-requerimento-parcelamento" class="peca-jump">🧾 Requerimento de Parcelamento Administrativo</a>
-          <a href="#peca-card-skill-excecao-pre-executividade" class="peca-jump">🛡️ Exceção de Pré-Executividade — modelo geral (4 receitas)</a>
-          <a href="#peca-card-skill-embargos-execucao-fiscal" class="peca-jump">⚖️ Embargos à Execução Fiscal — modelo geral (4 receitas)</a>
-          <a href="#peca-card-skill-acao-anulatoria" class="peca-jump">📜 Ação Anulatória de Ato Administrativo</a>
-          <a href="#peca-card-skill-mandado-seguranca" class="peca-jump">🔰 Mandado de Segurança</a>
-          <a href="#peca-card-skill-acao-repeticao-indebito" class="peca-jump">💰 Ação de Repetição de Indébito</a>
-          <a href="#peca-card-skill-agravo-instrumento" class="peca-jump">📎 Agravo de Instrumento</a>
-          <a href="#peca-card-skill-apelacao" class="peca-jump">📤 Apelação</a>
-          <a href="#peca-card-skill-contrarrazoes-apelacao" class="peca-jump">📥 Contrarrazões de Apelação</a>
+    <div class="alert alert-blue" style="margin-bottom:16px">Modelos anonimizados. Substitua os campos <strong>[___]</strong> com os dados do caso concreto antes de usar. Clique em <strong>📋 Copiar</strong> para copiar o texto completo.</div>
+
+    <!-- navegação — pílulas horizontais (mobile/tablet) -->
+    <div class="pecas-mobile-jumps">
+      <a href="#peca-card-embargos" class="peca-jump">⚖️ Embargos à Execução Fiscal</a>
+      <a href="#peca-card-excecao"  class="peca-jump">🛡️ Exceção de Pré-Executividade</a>
+      <a href="#peca-card-cadin"    class="peca-jump">🔒 Suspensão CADIN</a>
+      <a href="#peca-card-skill-defesa-impugnacao-adm" class="peca-jump">📋 Defesa / Impugnação Administrativa</a>
+      <a href="#peca-card-skill-recurso-administrativo" class="peca-jump">📋 Recurso Administrativo</a>
+      <a href="#peca-card-skill-requerimento-parcelamento" class="peca-jump">🧾 Requerimento de Parcelamento Administrativo</a>
+      <a href="#peca-card-skill-excecao-pre-executividade" class="peca-jump">🛡️ Exceção de Pré-Executividade — modelo geral (4 receitas)</a>
+      <a href="#peca-card-skill-embargos-execucao-fiscal" class="peca-jump">⚖️ Embargos à Execução Fiscal — modelo geral (4 receitas)</a>
+      <a href="#peca-card-skill-acao-anulatoria" class="peca-jump">📜 Ação Anulatória de Ato Administrativo</a>
+      <a href="#peca-card-skill-mandado-seguranca" class="peca-jump">🔰 Mandado de Segurança</a>
+      <a href="#peca-card-skill-acao-repeticao-indebito" class="peca-jump">💰 Ação de Repetição de Indébito</a>
+      <a href="#peca-card-skill-agravo-instrumento" class="peca-jump">📎 Agravo de Instrumento</a>
+      <a href="#peca-card-skill-apelacao" class="peca-jump">📤 Apelação</a>
+      <a href="#peca-card-skill-contrarrazoes-apelacao" class="peca-jump">📥 Contrarrazões de Apelação</a>
+    </div>
+
+    <div class="pecas-layout">
+
+      <!-- Coluna vertical de navegação (desktop) -->
+      <div class="pecas-sidebar">
+        <div class="pecas-sidebar-head">14 Modelos de Peça</div>
+        <div class="pecas-sidebar-nav">
+          <div class="nav-label">Execução Fiscal</div>
+          <a href="#peca-card-embargos" class="pecas-sb-item"><span>⚖️</span> Embargos à Execução Fiscal</a>
+          <a href="#peca-card-excecao" class="pecas-sb-item"><span>🛡️</span> Exceção de Pré-Executividade</a>
+          <a href="#peca-card-cadin" class="pecas-sb-item"><span>🔒</span> Suspensão CADIN</a>
+          <div class="pecas-sb-sep"></div>
+          <div class="nav-label">Fase Administrativa</div>
+          <a href="#peca-card-skill-defesa-impugnacao-adm" class="pecas-sb-item"><span>📋</span> Defesa / Impugnação Administrativa</a>
+          <a href="#peca-card-skill-recurso-administrativo" class="pecas-sb-item"><span>📋</span> Recurso Administrativo</a>
+          <a href="#peca-card-skill-requerimento-parcelamento" class="pecas-sb-item"><span>🧾</span> Requerimento de Parcelamento</a>
+          <div class="pecas-sb-sep"></div>
+          <div class="nav-label">Fase Judicial — 1º Grau</div>
+          <a href="#peca-card-skill-excecao-pre-executividade" class="pecas-sb-item"><span>🛡️</span> Exceção Pré-Executividade (geral)</a>
+          <a href="#peca-card-skill-embargos-execucao-fiscal" class="pecas-sb-item"><span>⚖️</span> Embargos Execução Fiscal (geral)</a>
+          <a href="#peca-card-skill-acao-anulatoria" class="pecas-sb-item"><span>📜</span> Ação Anulatória</a>
+          <a href="#peca-card-skill-mandado-seguranca" class="pecas-sb-item"><span>🔰</span> Mandado de Segurança</a>
+          <a href="#peca-card-skill-acao-repeticao-indebito" class="pecas-sb-item"><span>💰</span> Repetição de Indébito</a>
+          <div class="pecas-sb-sep"></div>
+          <div class="nav-label">Recursos</div>
+          <a href="#peca-card-skill-agravo-instrumento" class="pecas-sb-item"><span>📎</span> Agravo de Instrumento</a>
+          <a href="#peca-card-skill-apelacao" class="pecas-sb-item"><span>📤</span> Apelação</a>
+          <a href="#peca-card-skill-contrarrazoes-apelacao" class="pecas-sb-item"><span>📥</span> Contrarrazões de Apelação</a>
         </div>
       </div>
-    </div>
+
+      <!-- Conteúdo das peças -->
+      <div class="pecas-content">
 
     <!-- ① EMBARGOS À EXECUÇÃO FISCAL -->
     <div class="peca-card" id="peca-card-embargos">
@@ -2706,6 +2765,9 @@ Enfrentei especificamente eventual argumento baseado nas Súmulas ANM 1/2025 e 3
 Pedi honorários recursais
 Incluí a ressalva de revisão por advogado(a) antes do protocolo</textarea>
     </div>
+
+      </div><!-- /.pecas-content -->
+    </div><!-- /.pecas-layout -->
 
   </div>
 
